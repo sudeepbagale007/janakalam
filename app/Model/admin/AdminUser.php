@@ -20,7 +20,7 @@ class AdminUser extends Model{
     }
 
     public static function getAdminUserDetail() {        
-        $userid = session('admin')['userid'];
+        $userid = isset(session('admin')['userid']);
         $data = DB::table('tbl_admin_users')->select('name', 'username')->where('id', $userid)
                 ->first();
         return $data;
