@@ -1,0 +1,19 @@
+[31-Aug-2020 08:17:53 Europe/Rome] PHP Warning:  imagecreatefromjpeg(): gd-jpeg: JPEG library reports unrecoverable error: Not a JPEG file: starts with 0x89 0x50 in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 563
+[31-Aug-2020 08:17:53 Europe/Rome] PHP Warning:  imagecreatefromjpeg(): '/home/youthfrontline/public_html/public/uploads/filemanager/../shares/308817.jpg' is not a valid JPEG file in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 563
+[31-Aug-2020 08:17:53 Europe/Rome] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 723
+[31-Aug-2020 08:17:53 Europe/Rome] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 724
+[31-Aug-2020 08:17:53 Europe/Rome] PHP Warning:  Division by zero in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 732
+[31-Aug-2020 08:17:53 Europe/Rome] PHP Warning:  Division by zero in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 733
+[31-Aug-2020 08:17:53 Europe/Rome] PHP Warning:  imagecreatetruecolor() expects parameter 1 to be integer, float given in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 749
+[31-Aug-2020 08:17:53 Europe/Rome] PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, null given in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 782
+[01-Sep-2020 17:04:27 Europe/Rome] PHP Warning:  imagecreatefrompng(): '/home/youthfrontline/public_html/public/uploads/filemanager/../shares/960x0.png' is not a valid PNG file in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 563
+[01-Sep-2020 17:04:27 Europe/Rome] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 723
+[01-Sep-2020 17:04:27 Europe/Rome] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 724
+[01-Sep-2020 17:04:27 Europe/Rome] PHP Warning:  Division by zero in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 732
+[01-Sep-2020 17:04:27 Europe/Rome] PHP Warning:  Division by zero in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 733
+[01-Sep-2020 17:04:27 Europe/Rome] PHP Warning:  imagecreatetruecolor() expects parameter 1 to be integer, float given in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 749
+[01-Sep-2020 17:04:27 Europe/Rome] PHP Warning:  imagecolorallocate() expects parameter 1 to be resource, null given in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 766
+[01-Sep-2020 17:04:27 Europe/Rome] PHP Warning:  imagecolortransparent() expects parameter 1 to be resource, null given in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 766
+[01-Sep-2020 17:04:27 Europe/Rome] PHP Warning:  imagealphablending() expects parameter 1 to be resource, null given in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 768
+[01-Sep-2020 17:04:27 Europe/Rome] PHP Warning:  imagesavealpha() expects parameter 1 to be resource, null given in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 769
+[01-Sep-2020 17:04:27 Europe/Rome] PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, null given in /home/youthfrontline/public_html/public/uploads/filemanager/UploadHandler.php on line 782

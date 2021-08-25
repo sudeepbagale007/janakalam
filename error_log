@@ -1,0 +1,2 @@
+[25-Aug-2019 10:09:20 Asia/Kathmandu] PHP Fatal error:  Cannot redeclare App\Model\site\Home::getAdvertisement() in /home/nepalissues/public_html/demo/app/Model/site/Home.php on line 111
+[27-Aug-2020 16:02:24 Asia/Kathmandu] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/youthfrontline/public_html/app/Http/Controllers/admin/AdminPostsController.php on line 3

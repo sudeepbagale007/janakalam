@@ -1,0 +1,3 @@
+@if($sitedetail->facebook !='')
+<div class="fb-page" data-href="{{ $sitedetail->facebook }}" data-width="" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{ $sitedetail->facebook }}" class="fb-xfbml-parse-ignore"><a href="{{ $sitedetail->facebook }}">{{ $sitedetail->title_en }}</a></blockquote></div>
+@endif

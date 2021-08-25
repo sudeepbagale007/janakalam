@@ -1,0 +1,19 @@
+{
+  "name": "nepsekhabar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "node-sass scss/style.scss css/style.css --w  --source-map true --output-style compressed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.13.1",
+    "postcss": "^7.0.27"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.7.5"
+  }
+}

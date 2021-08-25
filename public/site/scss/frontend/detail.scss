@@ -1,0 +1,231 @@
+
+  .detail__post__title{
+    font-weight: 700;
+    font-size: 3.8rem;
+    line-height: 1.2;
+  }
+  .detail__post__infos{
+    figure{
+      margin-bottom: 1.5rem;
+    }
+    p{
+      font-size: 1.8rem;
+      line-height: 1.8;
+    }
+  }
+  blockquote {
+    background: #eee;
+    padding: 15px;
+    border-left: 2px solid #ca2424;
+    margin: 15px 0;
+    font-size: 1.8rem;
+  }
+  .top__detail__flex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .media{
+      figure{
+        img{
+          height: 4rem;
+          width: 4rem;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+    }
+    h4{
+      margin-bottom: 0;
+      font-weight: 600;
+    }
+  }
+  .top__detail__post {
+    border-bottom: 1px solid #d6d6d6;
+    padding: 1.5rem 0 0;
+    margin: 0 0 3rem;
+  }
+  .post__share{
+    margin-left: auto;
+    align-items: center;
+    i{
+      height: 3rem;
+      width: 3rem;
+      color: #fff;
+      text-align: center;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      line-height: 3rem;
+      display: inline-block;
+    }
+  }
+  .ri-facebook-fill{
+    background: #3b5998;
+  }
+  .ri-twitter-fill{
+    background: #00acee;
+  }
+  .ri-messenger-line{
+    background: #0084FF;
+  }
+  .ri-youtube-fill{
+    background: #c4302b ;
+  }
+  .ri-share-line{
+    background: #95D03A;
+  }
+  .post__share{
+    .post__title__label{
+      margin-bottom: 0;
+      font-weight: 700;
+    }
+    ul{
+      margin-bottom: 0;
+      li{
+        margin-left: .5rem;
+        a{
+          @include global-transition();
+          position: relative;
+          top:0;
+          &:hover{
+            opacity: 0.8;
+            top: -4px;
+          }
+        }
+      }
+    }
+  }
+  .counter__post{
+    span{
+      font-weight: 700;
+      font-size: 2rem;
+      display: block;
+      line-height: 1;
+    }
+    label{
+      margin-bottom: 0;
+    }
+  }
+  .counter__post{
+    border-left: 1px solid #d0cccc;
+    padding-left: 1rem;
+    margin-left: 1rem;
+  }
+  .fontsize-controllers{
+    text-align: right;
+    margin-bottom: 1.5rem;
+  }
+  
+  .fontsize-controllers{
+    .btn-group{
+      a{
+        border:1px solid #222;
+        @include border-radius1();
+        padding: 0;
+        font-weight: 600;
+        margin-right: .8rem;
+        height: 4rem;
+        width: 4rem;
+         line-height: 4rem;
+      }
+    }
+  }
+  
+  .fontsize-controllers{
+    .btn-group{
+      .rvfs-decrease{
+        border-radius: 50%!important;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  
+  .fontsize-controllers{
+    .btn-group{
+      .rvfs-reset{
+        border-radius: 50%!important;
+        font-size: 1.8rem;
+      }
+    }
+  }
+  
+  .fontsize-controllers{
+    .btn-group{
+      .rvfs-increase{
+        border-radius: 50%!important;
+        font-size: 2rem;
+      }
+    }
+  }
+  .post__share__plugin{
+    margin-top: 3rem;
+    .fb-comment-embed{
+      width: 100%;
+    }
+  }
+  .img-responsive{
+    width: 100%;
+  }
+  .promo__detail{
+    margin-bottom:3rem;
+  }
+  .promo-detail{
+    margin-bottom: 1.5rem;
+  }
+  .post__share__plugin{
+    margin-top: 1.5rem;
+  }
+  .side__bar{
+    margin-bottom:2rem;
+  }
+  .trending___list1 ul li {
+    border-bottom: 1px solid #d8d6d6;
+    padding: .8rem 1.5rem;
+    font-size: 1.7rem;
+    position: relative;
+}
+.trending___list1 ul li:last-child{
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.trending___list1 ul li .post__time--1{
+  font-size: 1.4rem;
+  margin-bottom: .5rem;
+  color:$global_color1;
+}
+.trending___list1 {
+  background: #fff;
+  box-shadow: 0 0 40px -12px rgba(0,0,0,0.2);
+  border: 1px solid #eee;
+}
+.side__bar .side__col h3 {
+  color: #fff;
+  font-size: 2.2rem;
+  margin-bottom: 0;
+}
+.side__bar .trending___list {
+  padding: 1rem;
+}
+.detail__post__infos{
+  margin-top: 4rem;
+}
+.detail__post__infos .breaking__shortInfos{
+  margin: 1rem 0;
+  font-size: 2rem;
+}
+.trending___list1 a{
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+  // font resize //
+  
+  .rvfs-1 p, .rvfs-1 li, .rvfs-1 span, .rvfs-1 a, .rvfs-1 h1, .rvfs-1 h2, .rvfs-1 h3, .rvfs-1 h4, .rvfs-1 h5, .rvfs-1 h6, .rvfs-1 blockquote{ font-size: 1.3rem }
+  .rvfs-2 p, .rvfs-2 li, .rvfs-2 span, .rvfs-2 a, .rvfs-2 h1, .rvfs-2 h2, .rvfs-2 h3, .rvfs-2 h4, .rvfs-2 h5, .rvfs-2 h6, .rvfs-2 blockquote{ font-size: 1.5rem }
+  .rvfs-3 p, .rvfs-3 li, .rvfs-3 span, .rvfs-3 a, .rvfs-3 h1, .rvfs-3 h2, .rvfs-3 h3, .rvfs-3 h4, .rvfs-3 h5, .rvfs-3 h6, .rvfs-3 blockquote{ font-size: 1.7rem }
+  .rvfs-4 p, .rvfs-4 li, .rvfs-4 span, .rvfs-4 a, .rvfs-4 h1, .rvfs-4 h2, .rvfs-4 h3, .rvfs-4 h4, .rvfs-4 h5, .rvfs-4 h6, .rvfs-4 blockquote{ font-size: 1.9rem }
+  .rvfs-5 p, .rvfs-5 li, .rvfs-5 span, .rvfs-5 a, .rvfs-5 h1, .rvfs-5 h2, .rvfs-5 h3, .rvfs-5 h4, .rvfs-5 h5, .rvfs-5 h6, .rvfs-5 blockquote{ font-size: 2.2rem }
+  .rvfs-6 p, .rvfs-6 li, .rvfs-6 span, .rvfs-6 a, .rvfs-6 h1, .rvfs-6 h2, .rvfs-6 h3, .rvfs-6 h4, .rvfs-6 h5, .rvfs-6 h6, .rvfs-6 blockquote{ font-size: 2.4rem }
+  .rvfs-7 p, .rvfs-7 li, .rvfs-7 span, .rvfs-7 a, .rvfs-7 h1, .rvfs-7 h2, .rvfs-7 h3, .rvfs-7 h4, .rvfs-7 h5, .rvfs-7 h6, .rvfs-7 blockquote{ font-size: 2.6rem }

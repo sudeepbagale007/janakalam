@@ -1,0 +1,58 @@
+.contact__infos{
+  margin-top:4rem;
+}
+.contactDetailsBox ul li{
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: 1.7rem;
+    margin-bottom: 2.5rem;
+  }
+  .contactDetailsBox{
+    margin-top: 3rem;
+  }
+  .contact__left{
+    margin-bottom: 1.5rem;
+  }
+  .contactForm form{
+    margin-top: 10px;
+  }
+ .titleHead{
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .company__map iframe{
+    height: 400px;
+    width: 100%;
+    margin-top: 4rem;
+  }
+  .contact__left .titleHead,.contactForm .titleHead{
+      font-weight: 600;
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 1rem;
+  }
+  .fotContactInfos span{
+      font-weight: 700;
+      color: #222;
+      text-transform: uppercase;
+  }
+  .fotContactInfos p{
+      margin-bottom: 0;
+      font-size: 1.5rem;
+    line-height: 2.2rem;
+  }
+  .fotContactIcon i {
+    background: $global_color;
+    display: inline-block;
+    height: 4rem;
+    width: 4rem;
+    text-align: center;
+    line-height: 4rem;
+    color: #fff;
+}
+.fotContactInfos {
+    padding-left: 16px;
+}
+.titleHead-1{
+    font-size:2.4rem
+}

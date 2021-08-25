@@ -1,0 +1,56 @@
+// grid system //
+.two__cols--grid{
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(2,1fr);
+}
+.three__cols--grid{
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(3,1fr);
+}
+.four__cols--grid{
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(4,1fr);
+}
+.five__cols--grid{
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(5,1fr);
+}
+.grid__gap{
+  grid-gap: .5rem 1.5rem;
+}
+.col__span1{
+  grid-column: span 1;
+}
+.col__span2{
+grid-column: span 2;
+}
+.col__span3{
+  grid-column: span 3;
+}
+.col__span4{
+  grid-column: span 4;
+}
+.col__span5{
+  grid-column: span 5;
+}
+.row__span1{
+  grid-row: span 1;
+}
+.row__span2{
+  grid-row: span 2;
+}
+.row__span3{
+  grid-row: span 3;
+}
+.row__span4{
+  grid-row: span 4;
+}
+.row__span5{
+  grid-row: span 5;
+}
+
+
