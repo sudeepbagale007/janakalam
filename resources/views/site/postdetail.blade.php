@@ -80,7 +80,44 @@
 						
 						@include('site.components.pagedetail-footer-ads')
 						
-						
+						<div class="post_reaction">
+								<div class="reaction_title">
+									<div>
+										<h1>यो खबर पढेर तपाईलाई कस्तो महसुस भयो ?</h1>
+									</div>
+								</div>
+								<div class="post_reaction_emo">
+									<form id="update-form" action="{{url('updatereaction')}}" method="POST">@csrf
+										<input id="ract_value" hidden name="post_reaction">
+										<button type="submit"  >Save</button>
+									</form>
+									<div id="laugh">
+										<span class="reaction_score">10%</span>
+										<img src="{{asset('site/images/laugh.png')}}">
+										<span class="emo_title"> उत्साहित</span>
+									</div>
+									<div id="sad">
+										<span class="reaction_score">10%</span>
+										<img src="{{asset('site/images/sad.png')}}">
+										<span class="emo_title">दुःखी</span>
+									</div>
+									<div id="happy">
+										<span class="reaction_score">10%</span>
+										<img src="{{asset('site/images/happy.png')}}">
+										<span class="emo_title">खुसी</span>
+									</div>
+									<div id="confused">
+										<span class="reaction_score">10%</span>
+										<img src="{{asset('site/images/confused.png')}}">
+										<span class="emo_title">अचम्मित</span>
+									</div>
+									<div id="angry">
+										<span class="reaction_score">10%</span>
+										<img src="{{asset('site/images/angry.png')}}">
+										<span class="emo_title">आक्रोशित</span>
+									</div>
+								</div>
+						</div>
 						<div class="post__share__plugin">
 							<div id="fb-root"></div>
 							<div class="fb-comments" data-href="{{Request::url()}}" data-numposts="5" data-width="100%"></div>
@@ -130,9 +167,13 @@
 		</div>
 	</section>
 </main>
+
 @endsection
 {{-- @push('script') --}}
 @section('js')
+<script>
+
+</script>
 <script type="text/javascript" src="{{ asset('site/js/rv-jquery-fontsize-2.0.3.js')}}"></script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0" nonce="77BXNwxQ"></script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f252f920a246dd4"></script>

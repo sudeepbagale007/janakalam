@@ -174,4 +174,9 @@ class BasicController extends Controller {
 		);
    		return view('site.todayshareprice', $result);
 	}
+
+	public function updateReaction()
+	{
+		dd('Hello world');
+	}
 }

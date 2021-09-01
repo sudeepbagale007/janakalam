@@ -11,7 +11,7 @@
 |
 */
 
-
+use App\Http\Controllers\site\BasicController;
 
 Route::group(['namespace' => 'site'], function (){
 	Route::get('album', 'HomeController@albumData')->name('album');
@@ -56,6 +56,8 @@ Route::get('/c', function() {
 	
 	// Route::get('investment', 'InvestmentController@investment')->name('investment');
 	Route::get('todayshareprice', 'BasicController@todaySharePrice')->name('todayshareprice');
+
+	Route::post('updatereaction','BasicController@updateReaction')->name('updatereaction');
 	
 });
 
