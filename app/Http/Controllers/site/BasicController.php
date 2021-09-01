@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Model\site\Basic;
 use App\Model\site\Home;
 use Illuminate\Http\Request;
+use App\Model\site\PostReaction;
 
 class BasicController extends Controller {
 
@@ -175,8 +176,25 @@ class BasicController extends Controller {
    		return view('site.todayshareprice', $result);
 	}
 
-	public function updateReaction()
+	public function updateReaction(Request $request)
 	{
-		dd('Hello world');
+		$post_id = $request->post_id;
+		$emoji=$request->selected_emoji;
+		$reaction_id=$request->reaction_id; 
+		$alldata=PostReaction::find($reaction_id);
+	
+
+		PostReaction::updateOrCreate(['id'=>$reaction_id?:NULL],
+		[
+			'post_id'=>$post_id,
+			'laugh'=>($emoji=='laugh')?($alldata->laugh+1):$alldata->laugh,
+			'sad'=>($emoji=='sad')?($alldata->sad+1):$alldata->sad,
+			'happy'=>($emoji=='happy')?($alldata->happy+1):$alldata->happy,
+			'angry'=>($emoji=='angry')?($alldata->angry+1):$alldata->angry,
+			'confused'=>($emoji=='confused')?($alldata->confused+1):$alldata->confused,
+		]);
+		dd('done');
+		return response()->json(['success'=>'done']);
+
 	}
 }

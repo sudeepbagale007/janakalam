@@ -81,47 +81,44 @@
 						@include('site.components.pagedetail-footer-ads')
 						
 						<div class="post_reaction">
-								<div class="reaction_title">
-									<div>
-										<h1>यो खबर पढेर तपाईलाई कस्तो महसुस भयो ?</h1>
-									</div>
+							<div class="reaction_title">
+								<div>
+									<h1>यो खबर पढेर तपाईलाई कस्तो महसुस भयो ?</h1>
 								</div>
-								<div class="post_reaction_emo">
-									<form id="update-form" action="{{url('updatereaction')}}" method="POST">@csrf
-										<input id="ract_value" hidden name="post_reaction">
-										<button type="submit"  >Save</button>
-									</form>
-									<div id="laugh">
-										<span class="reaction_score">10%</span>
-										<img src="{{asset('site/images/laugh.png')}}">
-										<span class="emo_title"> उत्साहित</span>
-									</div>
-									<div id="sad">
-										<span class="reaction_score">10%</span>
-										<img src="{{asset('site/images/sad.png')}}">
-										<span class="emo_title">दुःखी</span>
-									</div>
-									<div id="happy">
-										<span class="reaction_score">10%</span>
-										<img src="{{asset('site/images/happy.png')}}">
-										<span class="emo_title">खुसी</span>
-									</div>
-									<div id="confused">
-										<span class="reaction_score">10%</span>
-										<img src="{{asset('site/images/confused.png')}}">
-										<span class="emo_title">अचम्मित</span>
-									</div>
-									<div id="angry">
-										<span class="reaction_score">10%</span>
-										<img src="{{asset('site/images/angry.png')}}">
-										<span class="emo_title">आक्रोशित</span>
-									</div>
+							</div>
+							<div class="post_reaction_emo">
+								<div class="emoji" data-id="laugh" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif" >
+									<span class="reaction_score">@if(isset($post_reaction->laugh)) {{$post_reaction->laugh}}@else 10% @endif</span>
+									<img src="{{asset('site/images/laugh.png')}}">
+									<span class="emo_title">उत्साहित</span>
 								</div>
+								<div class="emoji" data-id="sad" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
+									<span class="reaction_score">@if(isset($post_reaction->sad)) {{$post_reaction->sad}}@else 10% @endif</span>
+									<img src="{{asset('site/images/sad.png')}}">
+									<span class="emo_title">दुःखी</span>
+								</div>
+								<div class="emoji" data-id="happy" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
+									<span class="reaction_score">@if(isset($post_reaction->happy)) {{$post_reaction->happy}}@else 10% @endif</span>
+									<img src="{{asset('site/images/happy.png')}}">
+									<span class="emo_title">खुसी</span>
+								</div>
+								<div class="emoji"  data-id="confused" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
+									<span class="reaction_score">@if(isset($post_reaction->confused)) {{$post_reaction->confused}}@else 10% @endif</span>
+									<img src="{{asset('site/images/confused.png')}}">
+									<span class="emo_title">अचम्मित</span>
+								</div>
+								<div class="emoji"  data-id="angry" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
+									<span class="reaction_score">@if(isset($post_reaction->angry)) {{$post_reaction->angry}}@else 10% @endif</span>
+									<img src="{{asset('site/images/angry.png')}}">
+									<span class="emo_title">आक्रोशित</span>
+								</div>
+							</div>
 						</div>
 						<div class="post__share__plugin">
 							<div id="fb-root"></div>
 							<div class="fb-comments" data-href="{{Request::url()}}" data-numposts="5" data-width="100%"></div>
 						</div>
+						
 						
 						<div class="post__related post__mt-1">
 							<div class="title__headFlex">
@@ -172,7 +169,25 @@
 {{-- @push('script') --}}
 @section('js')
 <script>
+	$('.emoji').on('click',function(){
+		var selected_emoji=$(this).attr("data-id");
+		var post_id=$(this).attr("data-post_id");
+		var reaction_id=$(this).attr("data-reaction_id");
+		$.ajax({
+          url: "/updatereaction",
+          type:"POST",
+          data:{
+            "_token": "{{ csrf_token() }}",
+            selected_emoji:selected_emoji,
+			post_id:post_id,
+			reaction_id:reaction_id,
 
+          },
+          success:function(response){
+            console.log(response);
+          },
+         });
+	});
 </script>
 <script type="text/javascript" src="{{ asset('site/js/rv-jquery-fontsize-2.0.3.js')}}"></script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0" nonce="77BXNwxQ"></script>

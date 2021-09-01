@@ -9,6 +9,7 @@ use App\Model\admin\AdminVideoPost;
 use App\Model\admin\Album;
 use App\Model\admin\Gallery;
 use App\Model\site\Home;
+use App\Model\site\PostReaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -74,6 +75,8 @@ class HomeController extends Controller {
 
     public function postDetail($slug){
         $detail = Home::getPostDetail($slug);
+        $post_reaction = PostReaction::where('post_id',$detail->id)->first();
+
         if (!empty($detail)) {
             Home::updatePostsViewCount($detail->id);
             $category = Home::getPostCategoryList($detail->id);
@@ -89,12 +92,14 @@ class HomeController extends Controller {
                 'categorypostlist'      => $categorypostlist,
                 // 'topads'                => $topads,
                 'bottomads'             => $bottomads,
+                'post_reaction'         => $post_reaction
             );
             // return $result;
             return view('site.postdetail', $result);
         } else{
             return view('errors.404');
         }
+
     }
 
     public function videoData(){
