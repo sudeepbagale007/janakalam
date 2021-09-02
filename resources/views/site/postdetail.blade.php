@@ -114,6 +114,89 @@
 								</div>
 							</div>
 						</div>
+
+
+						<div class="response_section">
+							<div class="response_heading">
+								<h1>प्रतिक्रिया</h1>
+								<span>
+									<a href="#">11</a>
+								</span>
+							</div>
+							<div class="response_menu">
+								<ul>
+									<li class="menu_active">भर्खरै</li>
+									<li class="menu_active">लोकप्रिय</li>
+									<li class="menu_active">प्रतिक्रिया</li>
+								</ul>
+							</div>
+							<div class="response_content">
+								<div class="response_content_warp">
+									<div class="response_image">
+										<img src="https://www.onlinekhabar.com/wp-content/themes/onlinekhabar-2018/img/userIcon.png">
+									</div>
+									<div class="response_comment">
+										<div class="name">Sudip Bagale</div>
+										<div class="date">२०७८ भदौ १६ गते २३:२७</div>
+										<div class="comments">
+											भारतले आफ्नो जनतालाई तुइन काटेर मार्दा पनि बोल्न नसक्ने पाच टाउके भातमारा भारतीय दलाल हरुको comfortable सरकारले ध्यान अन्त तिर मोड्न अनि भारतीय मालिकलाइ खुशी बनाउनको लागि मात्र हो यो नौटंकी !!!!! तर पनि.................... भारत जस्तै चिन पनि कम धुर्त छैन !!! कहिले नेपाली भूभाग हडपेको छ, कहिले नाकाबन्दी !!! भुइचालोले थिल थिल भएको बेला नेपालको भूभाग लिम्पियाधुरा लिपुलेक हडपेर बसेको भारत संग चिनले तेही नेपाली भूभाग हुदै ब्यापार गर्न सम्झौता गरेर त्यो कुकर्मलाई मान्याता दिएको छ !! अहिले पनि चिनले आफ्नो पट्टि खुला गर्देन भने भारतले चाहेर मात्र केहि गर्ने सक्दैन !! तर भारत जस्तै चिन पनि कम धुर्त छैन !!! नेपाली सिमाना र अर्थतन्त्र जोगाउने बिषयमा भारत र चिन रुपी दुइटा दुस्ट ब्वासाहरुको कडा भन्दा कडा बिरोध गर्ने पर्छ !!! यिनीहरुसंग युद्ध गरेर जित्न तुरुन्त नसकेपनि आफ्नो दाबि र अडान सधै राखिरहन पर्छ !! बोल्न पनि डरायो भने अझै पेल्छन !!!! हामि आफु बलियो र आत्मनिर्भर नबने सम्म यिनीहरुले हामीलाई पेलिनै रहन्छन !! तेही भएर यिनीहरुले देलान र खाउला भनेर बस्नु आफ्नै मुर्खता हो !!!-------------------- मुख्यगरि नेपालका राजनैतिक दलहरु भारतीय (मुख्यतया मदेसी, कांग्रेस र मावोबादी ) र चिनिया(मुक्यतया आफुलाई कम्निस्ट भन्ने हरु , मावोबादी सहित ) अनि पश्चिमा दलाली गर्न बन्द गर्दै नेपालबादी बन्न पर्छ !!!! यिनीहरुको पन्जाबाट नेपालले छुट्कारा गराउनु पर्छ !!! यिनीहरुको कमजोरी हामीलाई पनि थाहा छ !! !! भारत दुस्ट भन्ने धेरैलाई थाहा छ, तर चिन पनि कम छैन भन्ने कुरा बिगतको मुख्यतया सुगौली सन्धि ताका चिन ले दिएको धोका, थाहा नभएका हरुलाई केहिपनि थाहा छैन !! मुख्य कुरा -- आफु बलियो बन्नु पर्छ, आर्थतंत्र आत्मनिर्भर अनि बलियो बनाउनु पर्छ !! भारतीय र चिनिया बिस्तारबाद, मुर्दाबाद !!!!!!!!!!!!! जय नेपाल, जय नेपाली
+										</div>
+										<div class="comments_ftr">
+											<span class="icon_comment">
+												<i class="fas fa-comment-alt"></i>
+												<span class="react_number">0</span>
+												<span>Comments</span>
+											</span>
+											<div class="like_warp">
+												<span class="icon_comment">
+													<a href="">
+														<i class="fas fa-thumbs-up"></i>
+													</a>
+													<span class="react_number">13</span>
+													<a href="">Likes</a>
+												</span>
+											</div>
+											<div class="dislike_warp">
+												<span class="icon_comment">
+													<a href="">
+														<i class="fas fa-thumbs-down"></i>
+													</a>
+													<span class="react_number">13</span>
+													<a href="">Likes</a>
+												</span>
+											</div>
+											<span class="report_comment">
+												<i class="fas fa-flag"></i>
+												<a href="">Report</a>
+											</span>
+											<a href="" class="reply_button">जवाफ दिनुहोस्</a>
+										</div>
+									</div>
+									<div class="response_reply"></div>
+								</div>
+							</div>
+
+							<div class="response_content_warp">
+								<form>
+								<div class="form_fields">
+									<div class="frm_row">
+										<label>पुरानाम *</label>
+										<input>
+									</div>
+									<div class="frm_row">
+										<label>इमेल *</label>
+										<input>
+									</div>
+									<div class="frm_row">
+										<label>प्रतिकृया *</label>
+										<input>
+									</div>
+								</div>
+								</form>
+							</div>
+
+
+						</div>
 						<div class="post__share__plugin">
 							<div id="fb-root"></div>
 							<div class="fb-comments" data-href="{{Request::url()}}" data-numposts="5" data-width="100%"></div>
