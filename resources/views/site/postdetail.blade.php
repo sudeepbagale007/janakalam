@@ -116,21 +116,27 @@
 						</div>
 
 
-						<div class="response_section">
+						<div class="response_section" x-data={first:true,second:false,third:false}>
 							<div class="response_heading">
 								<h1>प्रतिक्रिया</h1>
 								<span>
 									<a href="#">11</a>
 								</span>
 							</div>
-							<div class="response_menu">
+							{{-- <div class="response_menu">
 								<ul>
 									<li class="menu_active">भर्खरै</li>
 									<li class="menu_active">लोकप्रिय</li>
 									<li class="menu_active">प्रतिक्रिया</li>
 								</ul>
+							</div> --}}
+							
+							<div class="d-flex flex-row text-muted response_menu my-4" style="font-size: 20px; cursor:pointer">
+								<div x-on:click="first=true; second=false; third=false" x-bind:class="first==true?'menu_active':'text-muted'">भर्खरै</div>
+								<div class="ml-4" x-on:click="first=false; second=true; third=false" x-bind:class="second==true?'menu_active':'text-muted'">लोकप्रिय</div>
+								<div class="ml-4" x-on:click="first=false; second=false; third=true" x-bind:class="third==true?'menu_active':'text-muted'">प्रतिक्रिया</div>
 							</div>
-							<div class="response_content">
+							<div class="response_content" x-show="first">
 								<div class="response_content_warp">
 									<div class="response_image">
 										<img src="https://www.onlinekhabar.com/wp-content/themes/onlinekhabar-2018/img/userIcon.png">
@@ -176,26 +182,26 @@
 								</div>
 							</div>
 
-							<div class="response_content_warp">
+							<div x-show="third"> 
 								<form>
-								<div class="form_fields">
-									<div class="frm_row">
-										<label>पुरानाम *</label>
-										<input>
+									<div class="form_fields">
+										<div class="form-group">
+											<label for="exampleInputEmail1" style="font-size: 20px">पुरानाम *</label>
+											<input type="text" class="form-control" style="height: 50px">
+										</div>
+										<div class="form-group" >
+											<label for="exampleInputEmail1" style="font-size: 20px">इमेल *</label>
+											<input type="email" class="form-control" style="height: 50px">
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1" style="font-size: 20px">प्रतिकृया *</label>
+											<textarea class="form-control" style="height: 100px"></textarea>
+										</div>
+
+										<input type="submit" class="btn btn-primary px-5 py-2" value="पठाउनुहोस" style="font-size: 15px; border-radius:50px"/>
 									</div>
-									<div class="frm_row">
-										<label>इमेल *</label>
-										<input>
-									</div>
-									<div class="frm_row">
-										<label>प्रतिकृया *</label>
-										<input>
-									</div>
-								</div>
-								</form>
+								</form>		
 							</div>
-
-
 						</div>
 						<div class="post__share__plugin">
 							<div id="fb-root"></div>
