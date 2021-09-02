@@ -119,8 +119,9 @@
 						<div class="response_section" x-data={first:true,second:false,third:false}>
 							<div class="response_heading">
 								<h1>प्रतिक्रिया</h1>
+								<?php $comment_count = count($post_comments); ?>
 								<span>
-									<a href="#">11</a>
+									<a href="#">{{$comment_count}}</a>
 								</span>
 							</div>
 							{{-- <div class="response_menu">
@@ -137,15 +138,16 @@
 								<div class="ml-4" x-on:click="first=false; second=false; third=true" x-bind:class="third==true?'menu_active':'text-muted'">प्रतिक्रिया</div>
 							</div>
 							<div class="response_content" x-show="first">
+								@foreach ($post_comments as $post_comment )
 								<div class="response_content_warp">
 									<div class="response_image">
 										<img src="https://www.onlinekhabar.com/wp-content/themes/onlinekhabar-2018/img/userIcon.png">
 									</div>
 									<div class="response_comment">
-										<div class="name">Sudip Bagale</div>
+										<div class="name">{{$post_comment->name}}</div>
 										<div class="date">२०७८ भदौ १६ गते २३:२७</div>
 										<div class="comments">
-											भारतले आफ्नो जनतालाई तुइन काटेर मार्दा पनि बोल्न नसक्ने पाच टाउके भातमारा भारतीय दलाल हरुको comfortable सरकारले ध्यान अन्त तिर मोड्न अनि भारतीय मालिकलाइ खुशी बनाउनको लागि मात्र हो यो नौटंकी !!!!! तर पनि.................... भारत जस्तै चिन पनि कम धुर्त छैन !!! कहिले नेपाली भूभाग हडपेको छ, कहिले नाकाबन्दी !!! भुइचालोले थिल थिल भएको बेला नेपालको भूभाग लिम्पियाधुरा लिपुलेक हडपेर बसेको भारत संग चिनले तेही नेपाली भूभाग हुदै ब्यापार गर्न सम्झौता गरेर त्यो कुकर्मलाई मान्याता दिएको छ !! अहिले पनि चिनले आफ्नो पट्टि खुला गर्देन भने भारतले चाहेर मात्र केहि गर्ने सक्दैन !! तर भारत जस्तै चिन पनि कम धुर्त छैन !!! नेपाली सिमाना र अर्थतन्त्र जोगाउने बिषयमा भारत र चिन रुपी दुइटा दुस्ट ब्वासाहरुको कडा भन्दा कडा बिरोध गर्ने पर्छ !!! यिनीहरुसंग युद्ध गरेर जित्न तुरुन्त नसकेपनि आफ्नो दाबि र अडान सधै राखिरहन पर्छ !! बोल्न पनि डरायो भने अझै पेल्छन !!!! हामि आफु बलियो र आत्मनिर्भर नबने सम्म यिनीहरुले हामीलाई पेलिनै रहन्छन !! तेही भएर यिनीहरुले देलान र खाउला भनेर बस्नु आफ्नै मुर्खता हो !!!-------------------- मुख्यगरि नेपालका राजनैतिक दलहरु भारतीय (मुख्यतया मदेसी, कांग्रेस र मावोबादी ) र चिनिया(मुक्यतया आफुलाई कम्निस्ट भन्ने हरु , मावोबादी सहित ) अनि पश्चिमा दलाली गर्न बन्द गर्दै नेपालबादी बन्न पर्छ !!!! यिनीहरुको पन्जाबाट नेपालले छुट्कारा गराउनु पर्छ !!! यिनीहरुको कमजोरी हामीलाई पनि थाहा छ !! !! भारत दुस्ट भन्ने धेरैलाई थाहा छ, तर चिन पनि कम छैन भन्ने कुरा बिगतको मुख्यतया सुगौली सन्धि ताका चिन ले दिएको धोका, थाहा नभएका हरुलाई केहिपनि थाहा छैन !! मुख्य कुरा -- आफु बलियो बन्नु पर्छ, आर्थतंत्र आत्मनिर्भर अनि बलियो बनाउनु पर्छ !! भारतीय र चिनिया बिस्तारबाद, मुर्दाबाद !!!!!!!!!!!!! जय नेपाल, जय नेपाली
+											{{$post_comment->comment}}
 										</div>
 										<div class="comments_ftr">
 											<span class="icon_comment">
@@ -180,22 +182,80 @@
 									</div>
 									<div class="response_reply"></div>
 								</div>
+								@endforeach
 							</div>
-
+							<div class="response_content" x-show="second">
+								@foreach ($post_comments as $post_comment )
+								<div class="response_content_warp">
+									<div class="response_image">
+										<img src="https://www.onlinekhabar.com/wp-content/themes/onlinekhabar-2018/img/userIcon.png">
+									</div>
+									<div class="response_comment">
+										<div class="name">{{$post_comment->name}}</div>
+										<div class="date">२०७८ भदौ १६ गते २३:२७</div>
+										<div class="comments">
+											{{$post_comment->comment}}
+										</div>
+										<div class="comments_ftr">
+											<span class="icon_comment">
+												<i class="fas fa-comment-alt"></i>
+												<span class="react_number">0</span>
+												<span>Comments</span>
+											</span>
+											<div class="like_warp">
+												<span class="icon_comment">
+													<a href="">
+														<i class="fas fa-thumbs-up"></i>
+													</a>
+													<span class="react_number">13</span>
+													<a href="">Likes</a>
+												</span>
+											</div>
+											<div class="dislike_warp">
+												<span class="icon_comment">
+													<a href="">
+														<i class="fas fa-thumbs-down"></i>
+													</a>
+													<span class="react_number">13</span>
+													<a href="">Likes</a>
+												</span>
+											</div>
+											<span class="report_comment">
+												<i class="fas fa-flag"></i>
+												<a href="">Report</a>
+											</span>
+											<a href="" class="reply_button">जवाफ दिनुहोस्</a>
+										</div>
+									</div>
+									<div class="response_reply"></div>
+								</div>
+								@endforeach
+							</div>
+							
 							<div x-show="third"> 
-								<form>
+								<form action="{{route('addComment')}}" method="POST">{{ csrf_field() }}
 									<div class="form_fields">
+										<input type="hidden" name="post_id" value="{{$detail->id}}">
 										<div class="form-group">
 											<label for="exampleInputEmail1" style="font-size: 20px">पुरानाम *</label>
-											<input type="text" class="form-control" style="height: 50px">
+											<input type="text" class="form-control" style="height: 50px" name="name">
+											@error('name')
+												<div class="text-danger error">{{ $message }}</div>
+											@enderror
 										</div>
 										<div class="form-group" >
 											<label for="exampleInputEmail1" style="font-size: 20px">इमेल *</label>
-											<input type="email" class="form-control" style="height: 50px">
+											<input type="email" class="form-control" style="height: 50px" name="email">
+											@error('email')
+												<div class="text-danger error">{{ $message }}</div>
+											@enderror
 										</div>
 										<div class="form-group">
 											<label for="exampleInputEmail1" style="font-size: 20px">प्रतिकृया *</label>
-											<textarea class="form-control" style="height: 100px"></textarea>
+											<textarea class="form-control" style="height: 100px" name="comment"></textarea>
+											@error('comment')
+												<div class="text-danger error">{{ $message }}</div>
+											@enderror
 										</div>
 
 										<input type="submit" class="btn btn-primary px-5 py-2" value="पठाउनुहोस" style="font-size: 15px; border-radius:50px"/>

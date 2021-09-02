@@ -12,6 +12,8 @@
 */
 
 use App\Http\Controllers\site\BasicController;
+// use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'site'], function (){
 	Route::get('album', 'HomeController@albumData')->name('album');
@@ -58,6 +60,8 @@ Route::get('/c', function() {
 	Route::get('todayshareprice', 'BasicController@todaySharePrice')->name('todayshareprice');
 
 	Route::any('updatereaction','BasicController@updateReaction')->name('updatereaction');
+
+	Route::post('add-post-comment','PostCommentsController@addPostComment')->name('addComment');
 	
 });
 
