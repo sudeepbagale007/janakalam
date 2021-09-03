@@ -180,20 +180,33 @@ class BasicController extends Controller {
 	{
 		$post_id = $request->post_id;
 		$emoji=$request->selected_emoji;
-		$reaction_id=$request->reaction_id; 
-		$alldata=PostReaction::find($reaction_id);
-	
 
-		PostReaction::updateOrCreate(['id'=>$reaction_id?:NULL],
-		[
-			'post_id'=>$post_id,
-			'laugh'=>($emoji=='laugh')?($alldata->laugh+1):$alldata->laugh,
-			'sad'=>($emoji=='sad')?($alldata->sad+1):$alldata->sad,
-			'happy'=>($emoji=='happy')?($alldata->happy+1):$alldata->happy,
-			'angry'=>($emoji=='angry')?($alldata->angry+1):$alldata->angry,
-			'confused'=>($emoji=='confused')?($alldata->confused+1):$alldata->confused,
-		]);
-		return response()->json(['success'=>'done']);
+		if(!isset($request->reaction_id)){
+			$allData=PostReaction::create([
+				'post_id'=>$post_id,
+				'laugh'=>($emoji=='laugh')?1:NULL,
+				'sad'=>($emoji=='sad')?1:NULL,
+				'happy'=>($emoji=='happy')?1:NULL,
+				'angry'=>($emoji=='angry')?1:NULL,
+				'confused'=>($emoji=='confused')?1:NULL
+			]);
 
+			$final=PostReaction::find($allData->id);
+
+		}else{
+			$alldata=PostReaction::find($request->reaction_id);
+			$row=PostReaction::where('id',$request->reaction_id)
+						->update([
+							'post_id'=>$post_id,
+							'laugh'=>($emoji=='laugh')?($alldata->laugh+1):$alldata->laugh,
+							'sad'=>($emoji=='sad')?($alldata->sad+1):$alldata->sad,
+							'happy'=>($emoji=='happy')?($alldata->happy+1):$alldata->happy,
+							'angry'=>($emoji=='angry')?($alldata->angry+1):$alldata->angry,
+							'confused'=>($emoji=='confused')?($alldata->confused+1):$alldata->confused,
+						]);
+
+			$final=PostReaction::find($request->reaction_id);				
+		}
+		return response()->json(['data'=>$final]);
 	}
 }

@@ -3,7 +3,6 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>@yield('title') - || {{ $sitedetail['title_en'] }} ||</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" type="text/css"/>
-
 <link rel="apple-touch-icon" sizes="any" href="{{ $sitedetail->logo }}">
 <link rel="icon" type="image/png" href="{{ $sitedetail->logo }}" sizes="any">
 
