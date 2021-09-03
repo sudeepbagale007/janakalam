@@ -87,34 +87,33 @@
 								</div>
 							</div>
 							<div class="post_reaction_emo">
-								<div class="emoji" data-id="laugh" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif" >
-									<span class="reaction_score">@if(isset($post_reaction->laugh)) {{$post_reaction->laugh}}@else 10% @endif</span>
-									<img src="{{asset('site/images/laugh.png')}}">
+								<div class="emoji" id="laugh_id" data-id="laugh" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif" >
+									<span class="reaction_score" id="laugh_score">@if(isset($post_reaction->laugh)) {{$post_reaction->laugh}}@else 0 @endif</span>
+									<img class="emoji_reaction" src="{{asset('site/images/laugh.png')}}">
 									<span class="emo_title">उत्साहित</span>
 								</div>
-								<div class="emoji" data-id="sad" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
-									<span class="reaction_score">@if(isset($post_reaction->sad)) {{$post_reaction->sad}}@else 10% @endif</span>
-									<img src="{{asset('site/images/sad.png')}}">
+								<div class="emoji" id="sad_id" data-id="sad" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
+									<span class="reaction_score" id="sad_score" >@if(isset($post_reaction->sad)) {{$post_reaction->sad}}@else 0 @endif</span>
+									<img class="emoji_reaction" src="{{asset('site/images/sad.png')}}">
 									<span class="emo_title">दुःखी</span>
 								</div>
-								<div class="emoji" data-id="happy" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
-									<span class="reaction_score">@if(isset($post_reaction->happy)) {{$post_reaction->happy}}@else 10% @endif</span>
-									<img src="{{asset('site/images/happy.png')}}">
+								<div class="emoji" id="happy_id" data-id="happy" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
+									<span class="reaction_score" id="happy_score">@if(isset($post_reaction->happy)) {{$post_reaction->happy}}@else 0 @endif</span>
+									<img class="emoji_reaction" src="{{asset('site/images/happy.png')}}">
 									<span class="emo_title">खुसी</span>
 								</div>
-								<div class="emoji"  data-id="confused" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
-									<span class="reaction_score">@if(isset($post_reaction->confused)) {{$post_reaction->confused}}@else 10% @endif</span>
-									<img src="{{asset('site/images/confused.png')}}">
+								<div class="emoji" id="confused_id" data-id="confused" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
+									<span class="reaction_score" id="confused_score">@if(isset($post_reaction->confused)) {{$post_reaction->confused}}@else 0 @endif</span>
+									<img class="emoji_reaction" src="{{asset('site/images/confused.png')}}">
 									<span class="emo_title">अचम्मित</span>
 								</div>
-								<div class="emoji"  data-id="angry" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
-									<span class="reaction_score">@if(isset($post_reaction->angry)) {{$post_reaction->angry}}@else 10% @endif</span>
-									<img src="{{asset('site/images/angry.png')}}">
+								<div class="emoji" id="angry_id" data-id="angry" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
+									<span class="reaction_score" id="angry_score">@if(isset($post_reaction->angry)) {{$post_reaction->angry}}@else 0 @endif</span>
+									<img class="emoji_reaction" src="{{asset('site/images/angry.png')}}">
 									<span class="emo_title">आक्रोशित</span>
 								</div>
 							</div>
 						</div>
-
 
 						<div class="response_section" x-data={first:true,second:false,third:false}>
 							<div class="response_heading">
@@ -152,7 +151,7 @@
 													<a href="">
 														<i class="fas fa-thumbs-up"></i>
 													</a>
-													<span class="react_number">13</span>
+													<span class="react_number">0</span>
 													<a href="">Likes</a>
 												</span>
 											</div>
@@ -161,7 +160,7 @@
 													<a href="">
 														<i class="fas fa-thumbs-down"></i>
 													</a>
-													<span class="react_number">13</span>
+													<span class="react_number">0</span>
 													<a href="">Likes</a>
 												</span>
 											</div>
@@ -199,7 +198,7 @@
 													<a href="">
 														<i class="fas fa-thumbs-up"></i>
 													</a>
-													<span class="react_number">13</span>
+													<span class="react_number">0</span>
 													<a href="">Likes</a>
 												</span>
 											</div>
@@ -208,7 +207,7 @@
 													<a href="">
 														<i class="fas fa-thumbs-down"></i>
 													</a>
-													<span class="react_number">13</span>
+													<span class="react_number">0</span>
 													<a href="">Likes</a>
 												</span>
 											</div>
@@ -290,10 +289,8 @@
 								</div>
 								@endforeach
 								@endif
-							</div>
-							
+							</div>	
 						</div>
-						
 					</div>
 					<div class="col* col-md-4 col-lg-4 col-xl-3">
 						@include('site.components.taja')
@@ -324,8 +321,18 @@
 			reaction_id:reaction_id,
 
           },
-          success:function(response){
-            console.log(response);
+          success:function(response){      
+			(response.data.laugh!=null)?$('#laugh_score').text(response.data.laugh):$('#laugh_score').text(0);
+			(response.data.angry!=null)?$('#angry_score').text(response.data.angry):$('#angry_score').text(0);
+			(response.data.confused!=null)?$('#confused_score').text(response.data.confused):$('#confused_score').text(0);
+			(response.data.sad!=null)?$('#sad_score').text(response.data.sad):$('#sad_score').text(0);
+			(response.data.happy!=null)?$('#happy_score').text(response.data.happy):$('#happy_score').text(0);
+
+			$("#laugh_id").attr('data-reaction_id',response.data.id);
+			$("#angry_id").attr('data-reaction_id',response.data.id);
+			$("#confused_id").attr('data-reaction_id',response.data.id);
+			$("#sad_id").attr('data-reaction_id',response.data.id);
+			$("#happy_id").attr('data-reaction_id',response.data.id);
           },
          });
 	});

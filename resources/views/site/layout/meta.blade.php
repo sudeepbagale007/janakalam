@@ -3,7 +3,6 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>@yield('title') - || {{ $sitedetail['title_en'] }} ||</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" type="text/css"/>
-
 <link rel="apple-touch-icon" sizes="any" href="{{ $sitedetail->logo }}">
 <link rel="icon" type="image/png" href="{{ $sitedetail->logo }}" sizes="any">
 
@@ -53,10 +52,6 @@
 <!--Bootstrap CSS-->
 <link rel="stylesheet" type="text/css" href="{{ asset('site/css/style.css', $secure = null) }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('site/css/custom.css', $secure = null) }}">
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 @stack('vi_style')
