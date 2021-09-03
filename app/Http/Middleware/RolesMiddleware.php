@@ -68,7 +68,8 @@ class RolesMiddleware {
             'AdminGalleryController',
             'AdminFaqListController',
             'AdminUIComponentController',
-            'AdminProfileController'
+            'AdminProfileController',
+            'AdminJanamatController',
         ];
 
         /*
