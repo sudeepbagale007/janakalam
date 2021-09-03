@@ -193,7 +193,6 @@ class BasicController extends Controller {
 			'angry'=>($emoji=='angry')?($alldata->angry+1):$alldata->angry,
 			'confused'=>($emoji=='confused')?($alldata->confused+1):$alldata->confused,
 		]);
-		dd('done');
 		return response()->json(['success'=>'done']);
 
 	}

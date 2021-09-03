@@ -88,27 +88,27 @@
 							</div>
 							<div class="post_reaction_emo">
 								<div class="emoji" data-id="laugh" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif" >
-									<span class="reaction_score">@if(isset($post_reaction->laugh)) {{$post_reaction->laugh}}@else 10% @endif</span>
+									<span class="reaction_score">@if(isset($post_reaction->laugh)) {{$post_reaction->laugh}}@else 0 @endif</span>
 									<img src="{{asset('site/images/laugh.png')}}">
 									<span class="emo_title">उत्साहित</span>
 								</div>
 								<div class="emoji" data-id="sad" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
-									<span class="reaction_score">@if(isset($post_reaction->sad)) {{$post_reaction->sad}}@else 10% @endif</span>
+									<span class="reaction_score">@if(isset($post_reaction->sad)) {{$post_reaction->sad}}@else 0 @endif</span>
 									<img src="{{asset('site/images/sad.png')}}">
 									<span class="emo_title">दुःखी</span>
 								</div>
 								<div class="emoji" data-id="happy" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
-									<span class="reaction_score">@if(isset($post_reaction->happy)) {{$post_reaction->happy}}@else 10% @endif</span>
+									<span class="reaction_score">@if(isset($post_reaction->happy)) {{$post_reaction->happy}}@else 0 @endif</span>
 									<img src="{{asset('site/images/happy.png')}}">
 									<span class="emo_title">खुसी</span>
 								</div>
 								<div class="emoji"  data-id="confused" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
-									<span class="reaction_score">@if(isset($post_reaction->confused)) {{$post_reaction->confused}}@else 10% @endif</span>
+									<span class="reaction_score">@if(isset($post_reaction->confused)) {{$post_reaction->confused}}@else 0 @endif</span>
 									<img src="{{asset('site/images/confused.png')}}">
 									<span class="emo_title">अचम्मित</span>
 								</div>
 								<div class="emoji"  data-id="angry" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
-									<span class="reaction_score">@if(isset($post_reaction->angry)) {{$post_reaction->angry}}@else 10% @endif</span>
+									<span class="reaction_score">@if(isset($post_reaction->angry)) {{$post_reaction->angry}}@else 0 @endif</span>
 									<img src="{{asset('site/images/angry.png')}}">
 									<span class="emo_title">आक्रोशित</span>
 								</div>
@@ -152,7 +152,7 @@
 													<a href="">
 														<i class="fas fa-thumbs-up"></i>
 													</a>
-													<span class="react_number">13</span>
+													<span class="react_number">0</span>
 													<a href="">Likes</a>
 												</span>
 											</div>
@@ -161,7 +161,7 @@
 													<a href="">
 														<i class="fas fa-thumbs-down"></i>
 													</a>
-													<span class="react_number">13</span>
+													<span class="react_number">0</span>
 													<a href="">Likes</a>
 												</span>
 											</div>
@@ -199,7 +199,7 @@
 													<a href="">
 														<i class="fas fa-thumbs-up"></i>
 													</a>
-													<span class="react_number">13</span>
+													<span class="react_number">0</span>
 													<a href="">Likes</a>
 												</span>
 											</div>
@@ -208,7 +208,7 @@
 													<a href="">
 														<i class="fas fa-thumbs-down"></i>
 													</a>
-													<span class="react_number">13</span>
+													<span class="react_number">0</span>
 													<a href="">Likes</a>
 												</span>
 											</div>
