@@ -183,5 +183,6 @@ Route::group(['prefix' => 'u-admin', 'namespace' => 'admin', 'middleware'   => [
 	Route::Post('album/galleryStore/{id}','AlbumController@galleryStore')->name('galleryStore');
 
 	Route::resource('janamat', 'AdminJanamatController');
+	Route::get('janamat/delete/{id}', ['as' => 'janamat.delete', 'uses' => 'AdminJanamatController@destroy']);
 
 });
