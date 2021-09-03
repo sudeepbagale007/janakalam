@@ -80,8 +80,21 @@
 								{!! $detail->description  !!}
 								
 							</div>
-							
-							
+							<div class="top__detail__post">
+								<div class="top__detail__flex">
+									<div class="media">
+										
+										<div class="author__Details">
+											<h4>{{ authorName($detail->author_name,$detail->author_id) }}</h4>
+											<span>{!! changeFullDateTimeToNepaliFormat($detail->published_date) !!}</span>
+										</div>
+									</div>
+            						<div class="post__share d-flex">
+                                        <label class="post__title__label">शेयर गर्नुहोस :</label>
+                                        <div class="addthis_inline_share_toolbox_j83u"></div>
+                                  </div>
+								</div>
+							</div>
 						</div>
 						
 						@include('site.components.pagedetail-footer-ads')
