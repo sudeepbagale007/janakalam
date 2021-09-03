@@ -171,6 +171,30 @@
     </a>
   </div>
 </section> --}}
+<section class="janamat_section d-flex justify-content-center py-5">
+  <h1>जनमत</h1>
+  <div class="d-flex flex-column">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+      <label class="form-check-label" for="exampleRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+      <label class="form-check-label" for="exampleRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+      <label class="form-check-label" for="exampleRadios3">
+        Disabled radio
+      </label>
+    </div>
+  </div>
+</section>
+
 <section class="news__col section__top py-5 bg_p_dim">
   <div class="container">
     @if(!empty($news))
@@ -265,6 +289,8 @@
     @endif
   </div>
 </section>
+
+
 <section class="international__col section__top">
   <div class="container">
     @if(!empty($finance))
