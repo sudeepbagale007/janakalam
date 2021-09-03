@@ -25,10 +25,16 @@
 				<div class="row">
 					<div class="col* col-md-8 col-lg-8 col-xl-9">
 						@include('site.components.pagedetail-sub-head-ads')
+						@if(session('comment'))
+							<div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 1000)" class="alert alert-success" role="alert">
+								{{session('comment')}}
+						  	</div>
+						@endif
 						<div class="detail__post__infos">
 							<!--<div class="top__title">-->
 							<!--	<span class="theme__badge"></span>-->
 							<!--</div>-->
+							
 							@if($detail->short_text != '')
 							<div class="top__title">
                             <span class="theme__badge">{!! str_limit($detail->short_text,50) !!}</span>
@@ -115,6 +121,8 @@
 							</div>
 						</div>
 
+						
+
 
 						<div class="response_section" x-data={first:true,second:false,third:false}>
 							<div class="response_heading">
@@ -137,7 +145,7 @@
 									</div>
 									<div class="response_comment">
 										<div class="name">{{$post_comment->name}}</div>
-										<div class="date">२०७८ भदौ १६ गते २३:२७</div>
+										<div class="date">{!! changeFullDateTimeToNepaliFormat($post_comment->created_at) !!}</div>
 										<div class="comments">
 											{{$post_comment->comment}}
 										</div>
@@ -184,7 +192,7 @@
 									</div>
 									<div class="response_comment">
 										<div class="name">{{$post_comment->name}}</div>
-										<div class="date">२०७८ भदौ १६ गते २३:२७</div>
+										<div class="date">{!! changeFullDateTimeToNepaliFormat($post_comment->created_at) !!}</div>
 										<div class="comments">
 											{{$post_comment->comment}}
 										</div>
@@ -303,6 +311,8 @@
 				</div>
 			</div>
 		</div>
+
+		
 	</section>
 </main>
 
