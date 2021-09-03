@@ -54,9 +54,9 @@
 										<figure class="mr-2">
 											<img src="{{ getImage($sitedetail->logo) }}" alt="{{ $detail->title }}" title="{{ $detail->title }}">
 										</figure>
-										<div class="author__Details">
-											<h4>{{ authorName($detail->author_name,$detail->author_id) }}</h4>
-											<span>{!! changeFullDateTimeToNepaliFormat($detail->published_date) !!}</span>
+										<div class="author__Details d-flex flex-row mt-4">
+											<h4 class="ml-4">{{ authorName($detail->author_name,$detail->author_id) }}</h4>
+											<h4 class="ml-4 text-muted">{!! changeFullDateTimeToNepaliFormat($detail->published_date) !!}</h4>
 										</div>
 									</div>
             						<div class="post__share d-flex">
@@ -99,6 +99,7 @@
 						
 						@include('site.components.pagedetail-footer-ads')
 						
+						<div class="alert alert-success" id="emoji-alert" style="display: none"></div>
 						<div class="post_reaction">
 							<div class="reaction_title">
 								<div>
@@ -106,9 +107,9 @@
 								</div>
 							</div>
 							<div class="post_reaction_emo">
-								<div class="emoji" id="laugh_id" data-id="laugh" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif" >
+								<div class="emoji" id="laugh_id" data-id="laugh" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif" data-status="false" >
 									<span class="reaction_score" id="laugh_score">@if(isset($post_reaction->laugh)) {{$post_reaction->laugh}}@else 0 @endif</span>
-									<img class="emoji_reaction" src="{{asset('site/images/laugh.png')}}">
+									<img class="emoji_reaction" id="laugh_img" src="{{asset('site/images/laugh.png')}}">
 									<span class="emo_title">उत्साहित</span>
 								</div>
 								<div class="emoji" id="sad_id" data-id="sad" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
@@ -134,12 +135,6 @@
 							</div>
 						</div>
 
-<<<<<<< HEAD
-=======
-						
-
-
->>>>>>> eee16d5e4411bd2c289abc311a99086759c6f842
 						<div class="response_section" x-data={first:true,second:false,third:false}>
 							<div class="response_heading">
 								<h1>प्रतिक्रिया</h1>
@@ -324,9 +319,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
-		
+		</div>	
 	</section>
 </main>
 
@@ -335,33 +328,46 @@
 @section('js')
 <script>
 	$('.emoji').on('click',function(){
+		var clicked=$('#laugh_id').attr("data-status");
 		var selected_emoji=$(this).attr("data-id");
 		var post_id=$(this).attr("data-post_id");
 		var reaction_id=$(this).attr("data-reaction_id");
-		$.ajax({
-          url: "/updatereaction",
-          type:"POST",
-          data:{
-            "_token": "{{ csrf_token() }}",
-            selected_emoji:selected_emoji,
-			post_id:post_id,
-			reaction_id:reaction_id,
 
-          },
-          success:function(response){      
-			(response.data.laugh!=null)?$('#laugh_score').text(response.data.laugh):$('#laugh_score').text(0);
-			(response.data.angry!=null)?$('#angry_score').text(response.data.angry):$('#angry_score').text(0);
-			(response.data.confused!=null)?$('#confused_score').text(response.data.confused):$('#confused_score').text(0);
-			(response.data.sad!=null)?$('#sad_score').text(response.data.sad):$('#sad_score').text(0);
-			(response.data.happy!=null)?$('#happy_score').text(response.data.happy):$('#happy_score').text(0);
+		if(clicked=="false"){
+			$.ajax({
+				url: "/updatereaction",
+				type:"POST",
+				data:{
+					"_token": "{{ csrf_token() }}",
+					selected_emoji:selected_emoji,
+					post_id:post_id,
+					reaction_id:reaction_id
+				},
+				success:function(response){      
+					(response.data.laugh!=null)?$('#laugh_score').text(response.data.laugh):$('#laugh_score').text(0);
+					(response.data.angry!=null)?$('#angry_score').text(response.data.angry):$('#angry_score').text(0);
+					(response.data.confused!=null)?$('#confused_score').text(response.data.confused):$('#confused_score').text(0);
+					(response.data.sad!=null)?$('#sad_score').text(response.data.sad):$('#sad_score').text(0);
+					(response.data.happy!=null)?$('#happy_score').text(response.data.happy):$('#happy_score').text(0);
 
-			$("#laugh_id").attr('data-reaction_id',response.data.id);
-			$("#angry_id").attr('data-reaction_id',response.data.id);
-			$("#confused_id").attr('data-reaction_id',response.data.id);
-			$("#sad_id").attr('data-reaction_id',response.data.id);
-			$("#happy_id").attr('data-reaction_id',response.data.id);
-          },
-         });
+					$("#laugh_id").attr('data-reaction_id',response.data.id);
+					$("#angry_id").attr('data-reaction_id',response.data.id);
+					$("#confused_id").attr('data-reaction_id',response.data.id);
+					$("#sad_id").attr('data-reaction_id',response.data.id);
+					$("#happy_id").attr('data-reaction_id',response.data.id);
+
+					$("#laugh_id").attr('data-status',"true");
+
+					$("#emoji-alert").css("display", "block");
+
+					$('#emoji-alert').text("Thank You For The Response");
+
+					setTimeout(function(){
+						$("#emoji-alert").fadeOut(2000);
+					}, 2000);
+				},
+         	});	
+		}
 	});
 </script>
 <script type="text/javascript" src="{{ asset('site/js/rv-jquery-fontsize-2.0.3.js')}}"></script>

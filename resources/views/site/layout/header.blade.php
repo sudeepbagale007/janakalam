@@ -104,8 +104,7 @@
       </div>
     </div>
   </div>
-  <div id="sticky" class="menu__header">
-        
+  <div id="sticky" class="menu__header" style="background:#061E9B">    
     <div class="xs-navBar" style="display: flex; align-items: center;">
         <div class="sticky_logo px-3" style=''>
             <img src="{{ asset($sitedetail->logo) }}" alt="{{ $sitedetail->title_en }}" style="max-height: 50px" title="{{ $sitedetail->title_en }}" class="img-fluid">
