@@ -25,10 +25,16 @@
 				<div class="row">
 					<div class="col* col-md-8 col-lg-8 col-xl-9">
 						@include('site.components.pagedetail-sub-head-ads')
+						@if(session('comment'))
+							<div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 1000)" class="alert alert-success" role="alert">
+								{{session('comment')}}
+						  	</div>
+						@endif
 						<div class="detail__post__infos">
 							<!--<div class="top__title">-->
 							<!--	<span class="theme__badge"></span>-->
 							<!--</div>-->
+							
 							@if($detail->short_text != '')
 							<div class="top__title">
                             <span class="theme__badge">{!! str_limit($detail->short_text,50) !!}</span>
@@ -74,8 +80,21 @@
 								{!! $detail->description  !!}
 								
 							</div>
-							
-							
+							<div class="top__detail__post">
+								<div class="top__detail__flex">
+									<div class="media">
+										
+										<div class="author__Details">
+											<h4>{{ authorName($detail->author_name,$detail->author_id) }}</h4>
+											<span>{!! changeFullDateTimeToNepaliFormat($detail->published_date) !!}</span>
+										</div>
+									</div>
+            						<div class="post__share d-flex">
+                                        <label class="post__title__label">शेयर गर्नुहोस :</label>
+                                        <div class="addthis_inline_share_toolbox_j83u"></div>
+                                  </div>
+								</div>
+							</div>
 						</div>
 						
 						@include('site.components.pagedetail-footer-ads')
@@ -115,6 +134,12 @@
 							</div>
 						</div>
 
+<<<<<<< HEAD
+=======
+						
+
+
+>>>>>>> eee16d5e4411bd2c289abc311a99086759c6f842
 						<div class="response_section" x-data={first:true,second:false,third:false}>
 							<div class="response_heading">
 								<h1>प्रतिक्रिया</h1>
@@ -136,7 +161,7 @@
 									</div>
 									<div class="response_comment">
 										<div class="name">{{$post_comment->name}}</div>
-										<div class="date">२०७८ भदौ १६ गते २३:२७</div>
+										<div class="date">{!! changeFullDateTimeToNepaliFormat($post_comment->created_at) !!}</div>
 										<div class="comments">
 											{{$post_comment->comment}}
 										</div>
@@ -183,7 +208,7 @@
 									</div>
 									<div class="response_comment">
 										<div class="name">{{$post_comment->name}}</div>
-										<div class="date">२०७८ भदौ १६ गते २३:२७</div>
+										<div class="date">{!! changeFullDateTimeToNepaliFormat($post_comment->created_at) !!}</div>
 										<div class="comments">
 											{{$post_comment->comment}}
 										</div>
@@ -300,6 +325,8 @@
 				</div>
 			</div>
 		</div>
+
+		
 	</section>
 </main>
 
