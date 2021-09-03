@@ -24,10 +24,11 @@
                         <th>S.No</th>
                         <th>Title</th>
                         <th class="text-center">Answers</th>
-                        <th class="text-center">Published Date</th>
                         <th class="text-center">Total Response</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Action</th>
+                        <th class="text-center">Published Date</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -38,15 +39,14 @@
                         <td>{{ $count++ }}</td>
                         <td>{!! str_limit(strip_tags($item->question),200) !!}</td>
                         <td class="text-center">{!!$item->answers!!}</td>
-
-                        <td class="text-center">{{ $item->created_at }}</td>
                         <td class="text-center">0</td>
                         <td class="text-center">Active</td>
-
                         <td class="text-center">
                             <a href="{{ route('janamat.edit', $item->id) }}"> {!! EDIT_ICON !!}</a>&nbsp;|
                             <a href="{{ route('janamat.delete', $item->id) }}" class="resetbtn">{!! DELETE_ICON !!} </a>
                         </td>
+                        <td class="text-center">{{ $item->created_at }}</td>
+
                     </tr>
                     @endforeach
                     @else
