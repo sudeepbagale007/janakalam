@@ -171,27 +171,41 @@
     </a>
   </div>
 </section> --}}
-<section class="janamat_section d-flex justify-content-center py-5">
-  <h1>जनमत</h1>
-  <div class="d-flex flex-column">
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-      <label class="form-check-label" for="exampleRadios1">
-        Default radio
-      </label>
+<section class="janamat_section py-5">
+  <h1 class="d-flex justify-content-center font-weight-bold" style="font-size:40px">जनमत</h1>
+  <div class="pt-4">
+    <p class="d-flex justify-content-center text-danger" style="font-size: 30px">नेपाल कम्युनिष्ट पार्टी(एमाले) को बिवाद सुल्झिएकोे हो ?</p>
+    <div class="d-flex justify-content-center">
+      <div class="d-flex flex-column">
+        <div class="form-check mt-2">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked style="height: 25px">
+          <label class="form-check-label ml-4" for="exampleRadios1" style="font-size: 20px">
+            हो
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" style="height: 25px">
+          <label class="form-check-label ml-4" for="exampleRadios2" style="font-size:20px">
+            होइन्
+          </label>
+        </div>
+        <div class="form-check disabled">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" style="height: 25px">
+          <label class="form-check-label ml-4" for="exampleRadios3" style="font-size:20px">
+            हामीलाई के थाहा ?
+          </label>
+        </div>
+      </div>
     </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-      <label class="form-check-label" for="exampleRadios2">
-        Second default radio
-      </label>
-    </div>
-    <div class="form-check disabled">
-      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
-      <label class="form-check-label" for="exampleRadios3">
-        Disabled radio
-      </label>
-    </div>
+  </div>
+
+  <div class="pt-4">
+    <div class="d-flex justify-content-center">
+      <div clas="d-flex flex-column">
+        <input type="text" placeholder="Enter Email Address" class="form-control" style="width:500px"/>
+        <input type="submit" class="btn btn-primary px-4 py-2 mt-4" value="Submit" style="font-size:20px"/>
+      </div> 
+    </div>   
   </div>
 </section>
 
