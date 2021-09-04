@@ -12,6 +12,7 @@ use App\Model\site\Home;
 use App\Model\site\PostComments;
 use App\Model\site\PostReaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -78,6 +79,8 @@ class HomeController extends Controller {
         $detail = Home::getPostDetail($slug);
         $post_reaction = PostReaction::where('post_id',$detail->id)->first();
         $post_comments = PostComments::where('post_id',$detail->id)->get();
+        $previous = DB::table('tbl_posts')->where('id', '<', $detail->id)->orderBy('id','desc')->first();
+        $next = DB::table('tbl_posts')->where('id', '>', $detail->id)->orderBy('id')->first();
 
         if (!empty($detail)) {
             Home::updatePostsViewCount($detail->id);
@@ -96,6 +99,8 @@ class HomeController extends Controller {
                 'bottomads'             => $bottomads,
                 'post_reaction'         => $post_reaction,
                 'post_comments'          =>  $post_comments,
+                'previous'              =>$previous,
+                'next'                  =>$next
             );
             // return $result;
             return view('site.postdetail', $result);

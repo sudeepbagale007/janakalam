@@ -375,3 +375,18 @@
     justify-content: flex-start;
   }
 }
+
+
+.prv_next_news{
+  display: flex;
+  justify-content: space-between;
+}
+
+.prv_next_news a{
+ font-size: 20px;
+ color: #0e5dae;
+}
+
+.prv_next_news a:hover{
+text-decoration: underline;
+}

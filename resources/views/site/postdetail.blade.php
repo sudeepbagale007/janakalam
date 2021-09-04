@@ -80,6 +80,23 @@
 								{!! $detail->description  !!}
 								
 							</div>
+
+							<div class="prv_next_news">
+								<div>
+									<h3>< अघिल्लो समाचार </h3>
+									<div>
+									<a href="{{ route('post.detail',$previous->slug) }}">{{$previous->title}} </a>
+									</div>
+								</div>
+								@if($next)
+								<div>
+								 <h3>	पछिल्लो समाचार > </h3>
+									 <div>
+									 <a href="{{ route('post.detail',$next->slug) }}">{{$next->title}}</a>
+									 </div>
+								</div>
+								@endif
+							</div>
 							<div class="top__detail__post">
 								<div class="top__detail__flex">
 									<div class="media">
@@ -314,6 +331,7 @@
 					</div>
 					<div class="col* col-md-4 col-lg-4 col-xl-3">
 						@include('site.components.taja')
+						@include('site.components.trending')
 						@include('site.components.sidebar-ads')
 						@include('site.components.mostpopular')
 					</div>
