@@ -174,24 +174,25 @@
 <section class="janamat_section py-5">
   <h1 class="d-flex justify-content-center font-weight-bold" style="font-size:40px">जनमत</h1>
   <form action="{{route('save-janamat-answer')}}" method="POST">@csrf
+    <input hidden="" name="janamat_id" value="1">
     <div class="pt-4">
       <p class="d-flex justify-content-center text-danger" style="font-size: 30px">नेपाल कम्युनिष्ट पार्टी(एमाले) को बिवाद सुल्झिएकोे हो ?</p>
       <div class="d-flex justify-content-center">
         <div class="d-flex flex-column">
           <div class="form-check mt-2">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked style="height: 25px">
+            <input class="form-check-input" type="radio" name="answer" id="exampleRadios1" value="option1" checked style="height: 25px">
             <label class="form-check-label ml-4" for="exampleRadios1" style="font-size: 20px">
               हो
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" style="height: 25px">
+            <input class="form-check-input" type="radio" name="answer" id="exampleRadios2" value="option2" style="height: 25px">
             <label class="form-check-label ml-4" for="exampleRadios2" style="font-size:20px">
               होइन्
             </label>
           </div>
           <div class="form-check disabled">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" style="height: 25px">
+            <input class="form-check-input" type="radio" name="answer" id="exampleRadios3" value="option3" style="height: 25px">
             <label class="form-check-label ml-4" for="exampleRadios3" style="font-size:20px">
               हामीलाई के थाहा ?
             </label>

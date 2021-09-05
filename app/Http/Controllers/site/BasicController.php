@@ -220,7 +220,7 @@ class BasicController extends Controller {
 		$user_answer = new UserAnswer();
         $user_answer->user_email=$request->user_email;
 		$user_answer->janamat_id=$request->janamat_id;
-		$user_answer->answer=$request->answer;
+		$user_answer->selected_answer=$request->answer;
         $user_answer->save();
         session()->flash('answer', 'Answer Added  Successfully ');
         return back();
