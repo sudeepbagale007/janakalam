@@ -62,7 +62,8 @@ Route::get('/c', function() {
 	Route::any('updatereaction','BasicController@updateReaction')->name('updatereaction');
 
 	Route::post('add-post-comment','PostCommentsController@addPostComment')->name('addComment');
-	
+	Route::post('save-janamat-answer','BasicController@saveUseranswer')->name('save-janamat-answer');
+
 });
 
 
@@ -184,5 +185,4 @@ Route::group(['prefix' => 'u-admin', 'namespace' => 'admin', 'middleware'   => [
 
 	Route::resource('janamat', 'AdminJanamatController');
 	Route::get('janamat/delete/{id}', ['as' => 'janamat.delete', 'uses' => 'AdminJanamatController@destroy']);
-
 });

@@ -7,6 +7,7 @@ use App\Model\site\Basic;
 use App\Model\site\Home;
 use Illuminate\Http\Request;
 use App\Model\site\PostReaction;
+use App\Model\site\UserAnswer;
 
 class BasicController extends Controller {
 
@@ -208,5 +209,21 @@ class BasicController extends Controller {
 			$final=PostReaction::find($request->reaction_id);				
 		}
 		return response()->json(['data'=>$final]);
+	}
+
+	public function saveUseranswer(Request $request){
+		$user_email=$request->user_email;
+		$this->validate($request, [
+            'answer' => 'required',
+            'user_email'=>'required',
+        ]);
+		$user_answer = new UserAnswer();
+        $user_answer->user_email=$request->user_email;
+		$user_answer->janamat_id=$request->janamat_id;
+		$user_answer->answer=$request->answer;
+        $user_answer->save();
+        session()->flash('answer', 'Answer Added  Successfully ');
+        return back();
+		dd($user_email);
 	}
 }
