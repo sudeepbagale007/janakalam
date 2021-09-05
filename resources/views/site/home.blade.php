@@ -215,7 +215,9 @@
             @error('user_email')
               <div class="text-danger error">{{ $message }}</div>
             @enderror
-          <button type="submit" class="btn btn-primary px-4 py-2 mt-4"  style="font-size:20px">Submit</button>
+            <div>
+              <button type="submit" class="btn btn-primary px-4 py-2 mt-4"  style="font-size:20px">Submit</button>
+            </div>
         </div> 
       </div>   
     </div>

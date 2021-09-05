@@ -198,7 +198,7 @@
 														<i class="fas fa-thumbs-down"></i>
 													</a>
 													<span class="react_number">0</span>
-													<a href="">Likes</a>
+													<a href="">Dislikes</a>
 												</span>
 											</div>
 											<span class="report_comment">
@@ -208,10 +208,42 @@
 											<a href="" class="reply_button">जवाफ दिनुहोस्</a>
 										</div>
 									</div>
-									<div class="response_reply"></div>
+									<div class="response_reply">
+										<span class="comment_close">
+											<i class="fas fa-times"></i>
+										</span>
+										<form class="reply_form" action="{{route('addComment')}}" method="POST">{{ csrf_field() }}
+											<input type="hidden" name="post_id" value="{{$detail->id}}">
+ 											<div class="form_field">
+												<div class="comment_form_row">
+													<label>पुरानाम *</label>
+													<input type="text" class="form-input" name="name">
+													@error('name')
+													<div class="text-danger error">{{ $message }}</div>
+													@enderror
+												</div>
+												<div class="comment_form_row">
+													<label>इमेल *</label>
+													<input type="email" class="form-input" name="email">
+													@error('name')
+													<div class="text-danger error">{{ $message }}</div>
+													@enderror
+												</div>
+												<div class="comment_form_row">
+													<label>प्रतिकृया *</label>
+													<textarea type="text" class="form-textarea" name="comment"></textarea>
+													@error('comment')
+													<div class="text-danger error">{{ $message }}</div>
+													@enderror
+												</div>
+												<button type="submit" class="comment-submit-btn">पठाउनुहोस</button>
+											</div>
+										</form>
+									</div>
 								</div>
 								@endforeach
 							</div>
+
 							<div class="response_content" x-show="second">
 								@foreach ($post_comments as $post_comment )
 								<div class="response_content_warp">
@@ -245,7 +277,7 @@
 														<i class="fas fa-thumbs-down"></i>
 													</a>
 													<span class="react_number">0</span>
-													<a href="">Likes</a>
+													<a href="">Dislikes</a>
 												</span>
 											</div>
 											<span class="report_comment">
@@ -255,40 +287,72 @@
 											<a href="" class="reply_button">जवाफ दिनुहोस्</a>
 										</div>
 									</div>
-									<div class="response_reply"></div>
+									<div class="response_reply">
+										<span class="comment_close">
+											<i class="fas fa-times"></i>
+										</span>
+										<form class="reply_form" action="{{route('addComment')}}" method="POST">{{ csrf_field() }}
+											<input type="hidden" name="post_id" value="{{$detail->id}}">
+ 											<div class="form_field">
+												<div class="comment_form_row">
+													<label>पुरानाम *</label>
+													<input type="text" class="form-input" name="name">
+													@error('name')
+													<div class="text-danger error">{{ $message }}</div>
+													@enderror
+												</div>
+												<div class="comment_form_row">
+													<label>इमेल *</label>
+													<input type="email" class="form-input" name="email">
+													@error('name')
+													<div class="text-danger error">{{ $message }}</div>
+													@enderror
+												</div>
+												<div class="comment_form_row">
+													<label>प्रतिकृया *</label>
+													<textarea type="text" class="form-textarea" name="comment"></textarea>
+													@error('comment')
+													<div class="text-danger error">{{ $message }}</div>
+													@enderror
+												</div>
+												<button type="submit" class="comment-submit-btn">पठाउनुहोस</button>
+											</div>
+										</form>
+									</div>
 								</div>
 								@endforeach
 							</div>
 							
 							<div x-show="third"> 
-								<form action="{{route('addComment')}}" method="POST">{{ csrf_field() }}
-									<div class="form_fields">
-										<input type="hidden" name="post_id" value="{{$detail->id}}">
-										<div class="form-group">
-											<label for="exampleInputEmail1" style="font-size: 20px">पुरानाम *</label>
-											<input type="text" class="form-control" style="height: 50px" name="name">
-											@error('name')
-												<div class="text-danger error">{{ $message }}</div>
-											@enderror
-										</div>
-										<div class="form-group" >
-											<label for="exampleInputEmail1" style="font-size: 20px">इमेल *</label>
-											<input type="email" class="form-control" style="height: 50px" name="email">
-											@error('email')
-												<div class="text-danger error">{{ $message }}</div>
-											@enderror
-										</div>
-										<div class="form-group">
-											<label for="exampleInputEmail1" style="font-size: 20px">प्रतिकृया *</label>
-											<textarea class="form-control" style="height: 100px" name="comment"></textarea>
-											@error('comment')
-												<div class="text-danger error">{{ $message }}</div>
-											@enderror
-										</div>
-
-										<input type="submit" class="btn btn-primary px-5 py-2" value="पठाउनुहोस" style="font-size: 15px; border-radius:50px"/>
+									<div class="comment_section">
+										<form class="reply_form" action="{{route('addComment')}}" method="POST">{{ csrf_field() }}
+											<input type="hidden" name="post_id" value="{{$detail->id}}">
+											<div class="form_field">
+												<div class="comment_form_row">
+													<label>पुरानाम *</label>
+													<input type="text" class="form-input" name="name">
+													@error('name')
+													<div class="text-danger error">{{ $message }}</div>
+													@enderror
+												</div>
+												<div class="comment_form_row">
+													<label>इमेल *</label>
+													<input type="email" class="form-input" name="email">
+													@error('name')
+													<div class="text-danger error">{{ $message }}</div>
+													@enderror
+												</div>
+												<div class="comment_form_row">
+													<label>प्रतिकृया *</label>
+													<textarea type="text" class="form-textarea" name="comment"></textarea>
+													@error('comment')
+													<div class="text-danger error">{{ $message }}</div>
+													@enderror
+												</div>
+												<input type="submit" class="comment-submit-btn">पठाउनुहोस</button>
+											</div>
+										</form>
 									</div>
-								</form>		
 							</div>
 						</div>
 						<div class="post__share__plugin">
