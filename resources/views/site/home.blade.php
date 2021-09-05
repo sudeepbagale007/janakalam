@@ -12,6 +12,13 @@
 @section('main-content')
 {{-- main news --}}
 
+@if(session('answer'))
+  <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 1000)" class="container alert alert-success my-4" role="alert">
+    {{session('answer')}}
+    </div>
+@endif
+
+
 <section class="live__video section__top">
   @if(!empty($videoPosts))
   <div class="container">
@@ -205,6 +212,9 @@
       <div class="d-flex justify-content-center">
         <div clas="d-flex flex-column">
           <input type="text" placeholder="Enter Email Address" name="user_email" class="form-control" style="width:500px"/>
+            @error('user_email')
+              <div class="text-danger error">{{ $message }}</div>
+            @enderror
           <button type="submit" class="btn btn-primary px-4 py-2 mt-4"  style="font-size:20px">Submit</button>
         </div> 
       </div>   
