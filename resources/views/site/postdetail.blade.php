@@ -287,7 +287,7 @@
 											<a href="" class="reply_button">जवाफ दिनुहोस्</a>
 										</div>
 									</div>
-									<div class="response_reply">
+									<div class="response_reply" x-show="{{$post_comment->id}}">
 										<span class="comment_close">
 											<i class="fas fa-times"></i>
 										</span>
