@@ -16,7 +16,7 @@ class PostImport implements ToModel
     */
     public function model(array $row)
     {
-        dd($row[0]);
+        dd($row);
         return new NewPosts([
                 'published_date'=>$row[0],
                 'description'=>$row[1],
