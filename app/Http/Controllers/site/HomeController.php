@@ -36,6 +36,9 @@ class HomeController extends Controller {
         $videoPosts = AdminVideoPost::where('status','1')->where('show_on_homepage','1')->get();
         $albums = Album::where('status','1')->limit(8)->get();
 
+        $janamat=DB::table('tbl_public_opinions')
+                    ->get();
+
         $result = array(
             'page_header'       => 'Home',
             'breakingnews'      => $breakingnews,
@@ -54,6 +57,7 @@ class HomeController extends Controller {
             'entertainment'     => $entertainment,
             'videoPosts'        => $videoPosts,
             'opinion'           =>$opinion,
+            'janamat'           =>$janamat
         );
 
         return view('site.home', $result);
