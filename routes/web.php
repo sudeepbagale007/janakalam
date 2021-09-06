@@ -63,6 +63,9 @@ Route::get('/c', function() {
 
 	Route::post('add-post-comment','PostCommentsController@addPostComment')->name('addComment');
 	Route::post('save-janamat-answer','BasicController@saveUseranswer')->name('save-janamat-answer');
+	Route::get('export', 'FileExportController@export')->name('export');
+	Route::get('importExportView', 'FileExportController@importExportView');
+	Route::post('import', 'FileExportController@import')->name('import');
 
 });
 
