@@ -10,7 +10,7 @@
 <script type="text/javascript" src="{{ asset('admin/js/jquery.tablednd_0_5.js') }}"></script>
 <script type="text/javascript" src="{{ asset('admin/assets/jquery-confirm/jquery-confirm.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('admin/dist/js/app.min.js') }}"></script>
-
-
 <script type="text/javascript" src="{{ asset('admin/js/admin_scripts.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+
 @stack('script')

@@ -25,6 +25,8 @@ class AdminJanamatController extends Controller
 
     public function store(Request $request){
 
+        dd($request->answers);
+
         $this->validate($request, [
             'answers' => 'required',
             'question'=>'required',
