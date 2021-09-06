@@ -178,51 +178,46 @@
     </a>
   </div>
 </section> --}}
-<section class="janamat_section py-5">
-  <h1 class="d-flex justify-content-center font-weight-bold" style="font-size:40px">जनमत</h1>
-  <form action="{{route('save-janamat-answer')}}" method="POST">@csrf
-    <input hidden="" name="janamat_id" value="1">
-    <div class="pt-4">
-      <p class="d-flex justify-content-center text-danger" style="font-size: 30px">नेपाल कम्युनिष्ट पार्टी(एमाले) को बिवाद सुल्झिएकोे हो ?</p>
-      <div class="d-flex justify-content-center">
-        <div class="d-flex flex-column">
-          <div class="form-check mt-2">
-            <input class="form-check-input" type="radio" name="answer" id="exampleRadios1" value="option1" checked style="height: 25px">
-            <label class="form-check-label ml-4" for="exampleRadios1" style="font-size: 20px">
-              हो
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="answer" id="exampleRadios2" value="option2" style="height: 25px">
-            <label class="form-check-label ml-4" for="exampleRadios2" style="font-size:20px">
-              होइन्
-            </label>
-          </div>
-          <div class="form-check disabled">
-            <input class="form-check-input" type="radio" name="answer" id="exampleRadios3" value="option3" style="height: 25px">
-            <label class="form-check-label ml-4" for="exampleRadios3" style="font-size:20px">
-              हामीलाई के थाहा ?
-            </label>
+@if(count($janamat)>0))
+  <section class="janamat_section py-5">
+    <h1 class="d-flex justify-content-center font-weight-bold" style="font-size:40px">जनमत</h1>
+    <form action="{{route('save-janamat-answer')}}" method="POST">@csrf
+      @foreach($janamat as $index=>$row)
+        <div class="pt-4">
+          <p class="d-flex justify-content-center text-danger" style="font-size: 30px">{{strip_tags($row->question)}}</p>
+          <div class="d-flex justify-content-center">
+            <div class="d-flex flex-column">
+              @php $ans=explode(',',$row->answers); @endphp
+              @foreach($ans as $key=>$info)
+                <div class="form-check mt-2">
+                  <input class="form-check-input" type="radio" name="answer[{{$index}}]" value="option{{$key}}"  style="height: 25px">
+                  <label class="form-check-label ml-4" style="font-size: 20px">
+                  {{$info}}
+                  </label>
+                </div>
+              @endforeach  
+              <input type="hidden" name="janamat_id[]" value="{{$row->id}}"/>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      @endforeach  
 
-    <div class="pt-4">
-      <div class="d-flex justify-content-center">
-        <div clas="d-flex flex-column">
-          <input type="text" placeholder="Enter Email Address" name="user_email" class="form-control" style="width:500px"/>
-            @error('user_email')
-              <div class="text-danger error">{{ $message }}</div>
-            @enderror
-            <div>
-              <button type="submit" class="btn btn-primary px-4 py-2 mt-4"  style="font-size:20px">Submit</button>
-            </div>
-        </div> 
-      </div>   
-    </div>
-</form>
-</section>
+      <div class="pt-4">
+        <div class="d-flex justify-content-center">
+          <div clas="d-flex flex-column">
+            <input type="text" placeholder="Enter Email Address" name="user_email" class="form-control" style="width:500px"/>
+              @error('user_email')
+                <div class="text-danger error">{{ $message }}</div>
+              @enderror
+              <div>
+                <button type="submit" class="btn btn-primary px-4 py-2 mt-4"  style="font-size:20px">Submit</button>
+              </div>
+          </div> 
+        </div>   
+      </div>
+  </form>
+  </section>
+@endif  
 
 <section class="news__col section__top py-5 bg_p_dim">
   <div class="container">

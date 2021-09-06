@@ -6,6 +6,7 @@ use App\Model\admin\AdminPosts;
 use App\Model\admin\PublicOpinion;
 
 use Illuminate\Http\Request;
+use DB;
 
 class AdminJanamatController extends Controller
 {
@@ -19,31 +20,41 @@ class AdminJanamatController extends Controller
     }
     public function create()
     {
-        return view('admin.janamat.add');
+        $data=new \stdClass();
+        $data->answers='';
+        return view('admin.janamat.add',['data'=>$data,'id'=>null]);
+    }
 
+    public function edit($id){
+
+        $data=DB::table('tbl_public_opinions')
+                ->where('id',$id)
+                ->first();  
+        
+        return view('admin.janamat.add',['data'=>$data,'id'=>$id]);
     }
 
     public function store(Request $request){
 
-        dd($request->answers);
-
         $this->validate($request, [
-            'answers' => 'required',
+            'answers.*' => 'required',
             'question'=>'required',
         ]);
+
+        $answer=implode(',',$request->answers);
+
         $store_janamat = PublicOpinion::updateOrCreate(
         [
             'id'=> $request->id,
         ]
         ,[
-            'answers'=>$request->answers,
+            'answers'=>$answer,
             'question'=>$request->question
 
         ]);
-        session()->flash('success', 'Janamat Created   Successfully ');
+        session()->flash('success', 'Janamat Created Successfully ');
         return redirect(route('janamat.index'));
     }
-
 
     public function destroy(Request $request){
         

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Model\site\PostReaction;
 use App\Model\site\UserAnswer;
 
+
 class BasicController extends Controller {
 
 	function shareCalculator(){
@@ -212,18 +213,24 @@ class BasicController extends Controller {
 	}
 
 	public function saveUseranswer(Request $request){
-		$user_email=$request->user_email;
-		$this->validate($request, [
-            'answer' => 'required',
-            'user_email'=>'required',
-        ]);
-		$user_answer = new UserAnswer();
-        $user_answer->user_email=$request->user_email;
-		$user_answer->janamat_id=$request->janamat_id;
-		$user_answer->selected_answer=$request->answer;
-        $user_answer->save();
+
+		$request->validate([
+			'user_email'=>['required','email']
+		]);
+
+		foreach($request->janamat_id as $key=>$row){
+			if(isset($request->answer[$key])){
+				UserAnswer::create([
+						'janamat_id'=>$row,
+						'user_email'=>$request->user_email,
+						'selected_answer'=>$request->answer[$key],
+						'created_at'=>date('Y-m-d H:i:s'),
+						'updated_at'=>date('Y-m-d H:i:s'),
+				]);	
+			}
+		}
+
         session()->flash('answer', 'Answer Added  Successfully ');
         return back();
-		dd($user_email);
 	}
 }
