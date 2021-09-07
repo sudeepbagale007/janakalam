@@ -28,9 +28,24 @@ class PostImport implements ToCollection,WithHeadingRow
             ];
         }
 
+
         if(!empty($insert_data))
         {
-            DB::table('new_posts')->insert($insert_data);
+           foreach($insert_data as $info){
+               $rows[]=DB::table('new_posts')->insertGetId($info);
+           }        
         }
+
+        foreach($rows as $id){
+            if(is_int($id)){
+                $new_id[]=$id;
+            }
+        }
+       
+        // foreach($created_datas as  $datas)
+        //     DB::table('rel_post_category')->insert([
+        //             'post_id' => $datas->id,
+        //             'category_id'=>'2',
+        //     ]);
     }
 }
