@@ -152,7 +152,7 @@
 							</div>
 						</div>
 
-						<div class="response_section" x-data={first:true,second:false,third:false}>
+						<div class="response_section" x-data={first:true,second:false,third:false,firstReply:false,secondReply:false}>
 							<div class="response_heading">
 								<h1>प्रतिक्रिया</h1>
 								<?php $comment_count = count($post_comments); ?>
@@ -161,9 +161,9 @@
 								</span>
 							</div>
 							<div class="d-flex flex-row text-muted response_menu my-4" style="font-size: 20px; cursor:pointer">
-								<div x-on:click="first=true; second=false; third=false" x-bind:class="first==true?'menu_active':'text-muted'">भर्खरै</div>
-								<div class="ml-4" x-on:click="first=false; second=true; third=false" x-bind:class="second==true?'menu_active':'text-muted'">लोकप्रिय</div>
-								<div class="ml-4" x-on:click="first=false; second=false; third=true" x-bind:class="third==true?'menu_active':'text-muted'">प्रतिक्रिया</div>
+								<div x-on:click="first=true; second=false; third=false; firstReply=false; secondReply=false" x-bind:class="first==true?'menu_active':'text-muted'">भर्खरै</div>
+								<div class="ml-4" x-on:click="first=false; second=true; third=false; firstReply=false; secondReply=false" x-bind:class="second==true?'menu_active':'text-muted'">लोकप्रिय</div>
+								<div class="ml-4" x-on:click="first=false; second=false; third=true; firstReply=false; secondReply=false" x-bind:class="third==true?'menu_active':'text-muted'">प्रतिक्रिया</div>
 							</div>
 							<div class="response_content" x-show="first">
 								@foreach ($post_comments as $post_comment )
@@ -205,11 +205,11 @@
 												<i class="fas fa-flag"></i>
 												<a href="">Report</a>
 											</span>
-											<a href="" class="reply_button">जवाफ दिनुहोस्</a>
+											<span class="reply_button" x-on:click="firstReply=true" style="cursor: pointer">जवाफ दिनुहोस्</span>
 										</div>
 									</div>
-									<div class="response_reply">
-										<span class="comment_close">
+									<div class="response_reply" x-show="firstReply" style="display: none">
+										<span class="comment_close" style="cursor: pointer" x-on:click="firstReply=false">
 											<i class="fas fa-times"></i>
 										</span>
 										<form class="reply_form" action="{{route('addComment')}}" method="POST">{{ csrf_field() }}
@@ -284,11 +284,11 @@
 												<i class="fas fa-flag"></i>
 												<a href="">Report</a>
 											</span>
-											<a href="" class="reply_button">जवाफ दिनुहोस्</a>
+											<span class="reply_button" x-on:click="secondReply=true" style="cursor:pointer">जवाफ दिनुहोस्</span>
 										</div>
 									</div>
-									<div class="response_reply" x-show="{{$post_comment->id}}">
-										<span class="comment_close">
+									<div class="response_reply" x-show="secondReply">
+										<span class="comment_close" style="cursor:pointer" x-on:click="secondReply=false">
 											<i class="fas fa-times"></i>
 										</span>
 										<form class="reply_form" action="{{route('addComment')}}" method="POST">{{ csrf_field() }}
