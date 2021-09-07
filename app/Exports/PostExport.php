@@ -6,7 +6,7 @@ use App\Post;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class PostExport implements FromCollection
+class PostExport implements FromCollection,WithHeadings
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -18,6 +18,15 @@ class PostExport implements FromCollection
         ->where('post_status','publish')
         ->where('post_type','post')
         ->get();
+    }
+
+    public function headings() :array{
+        return[
+            'post_date',
+            'post_content',
+            'post_title',
+            'post_modified'
+        ];
     }
 
 }
