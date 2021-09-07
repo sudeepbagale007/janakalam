@@ -193,15 +193,17 @@
                 <div class="form-check mt-2">
                   <input class="form-check-input" type="radio" name="answer[{{$index}}]" value="option{{$key}}"  style="height: 25px">
                   <label class="form-check-label ml-4" style="font-size: 20px">
-                  {{$info}}
+                    {{$info}}
                   </label>
                 </div>
-              @endforeach  
+              @endforeach
               <input type="hidden" name="janamat_id[]" value="{{$row->id}}"/>
             </div>
           </div>
         </div>
       @endforeach  
+
+      @if(session()->has('error_opinion'))<div class="text-danger error text-center pt-2">* {{session()->get('error_opinion')}}</div>@endif
 
       <div class="pt-4">
         <div class="d-flex justify-content-center">

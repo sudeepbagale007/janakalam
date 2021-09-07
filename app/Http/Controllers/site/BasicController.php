@@ -218,6 +218,11 @@ class BasicController extends Controller {
 			'user_email'=>['required','email']
 		]);
 
+		if($request->user_email!=NULL && !isset($request->answer)){
+			session()->flash('error_opinion', 'Please Select At Least One Answer');
+			return back();
+		}
+
 		foreach($request->janamat_id as $key=>$row){
 			if(isset($request->answer[$key])){
 				UserAnswer::create([
