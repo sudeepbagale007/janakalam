@@ -349,7 +349,7 @@
 													<div class="text-danger error">{{ $message }}</div>
 													@enderror
 												</div>
-												<input type="submit" class="comment-submit-btn">पठाउनुहोस</button>
+												<button type="submit" class="comment-submit-btn">पठाउनुहोस</button>
 											</div>
 										</form>
 									</div>

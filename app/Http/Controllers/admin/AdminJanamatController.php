@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Model\admin\AdminPosts;
 use App\Model\admin\PublicOpinion;
-
+use App\Model\site\UserAnswer;
 use Illuminate\Http\Request;
 use DB;
 

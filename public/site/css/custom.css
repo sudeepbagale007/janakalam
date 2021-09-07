@@ -462,3 +462,8 @@ text-decoration: underline;
     position: relative;
     flex: 0 0 100%;
 }
+
+.janamat_section{
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.06);
+}

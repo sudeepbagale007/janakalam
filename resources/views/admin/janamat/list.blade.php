@@ -39,7 +39,8 @@
                         <td>{{ $count++ }}</td>
                         <td>{!! str_limit(strip_tags($item->question),200) !!}</td>
                         <td class="text-center">{!!$item->answers!!}</td>
-                        <td class="text-center">0</td>
+                        <?php $janamat_count= DB::table('tbl_users_opinions')->where('janamat_id',$item->id)->count() ?>
+                        <td class="text-center">{{$janamat_count}}</td>
                         <td class="text-center">Active</td>
                         <td class="text-center">
                             <a href="{{ route('janamat.edit', $item->id) }}"> {!! EDIT_ICON !!}</a>&nbsp;|

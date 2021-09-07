@@ -13,7 +13,7 @@
 {{-- main news --}}
 
 @if(session('answer'))
-  <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 1000)" class="container alert alert-success my-4" role="alert">
+  <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 2000)" class="container alert alert-success my-4" role="alert">
     {{session('answer')}}
     </div>
 @endif
@@ -178,13 +178,14 @@
     </a>
   </div>
 </section> --}}
-@if(count($janamat)>0))
+<?php $count=1 ?>
+@if(count($janamat)>0)
   <section class="janamat_section py-5">
     <h1 class="d-flex justify-content-center font-weight-bold" style="font-size:40px">जनमत</h1>
     <form action="{{route('save-janamat-answer')}}" method="POST">@csrf
       @foreach($janamat as $index=>$row)
         <div class="pt-4">
-          <p class="d-flex justify-content-center text-danger" style="font-size: 30px">{{strip_tags($row->question)}}</p>
+          <p class="d-flex justify-content-center text-danger" style="font-size: 30px">{{$count++}}. {{strip_tags($row->question)}}</p>
           <div class="d-flex justify-content-center">
             <div class="d-flex flex-column">
               @php $ans=explode(',',$row->answers); @endphp

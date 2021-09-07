@@ -230,7 +230,7 @@ class BasicController extends Controller {
 			}
 		}
 
-        session()->flash('answer', 'Answer Added  Successfully ');
+        session()->flash('answer', 'तपइको अमूल्य मत को लागी धन्याबाद');
         return back();
 	}
 }
