@@ -188,4 +188,5 @@ Route::group(['prefix' => 'u-admin', 'namespace' => 'admin', 'middleware'   => [
 
 	Route::resource('janamat', 'AdminJanamatController');
 	Route::get('janamat/delete/{id}', ['as' => 'janamat.delete', 'uses' => 'AdminJanamatController@destroy']);
+	Route::get('user-answer/{id}','AdminJanamatController@viewUserAnswer')->name('user-answer');
 });

@@ -59,6 +59,13 @@ class AdminJanamatController extends Controller
     public function destroy(Request $request){
         
     }
+
+    public function viewUserAnswer(Request $request)
+    {
+        // $user_answer = 
+        return view('admin.janamat.user_answer');
+
+    }
 }
 
    
