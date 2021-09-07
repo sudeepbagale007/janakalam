@@ -31,8 +31,10 @@ class PostImport implements ToCollection,WithHeadingRow
 
         if(!empty($insert_data))
         {
-         $rows[]=DB::table('tbl_posts')->insertGetId($insert_data);
-         dd($rows);
+         $rows[]=DB::table('tbl_posts')->insert($insert_data);
+        //  $id = DB::getPdo()->lastInsertId();;
+
+        //  dd($id);
         }
 
        
