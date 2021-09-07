@@ -1,20 +1,16 @@
 @extends('admin.app')
 @section('content')
-@if(session('success'))
-    <div class="col-md-12">
-        <div class="alert alert-success alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            {{session('success')}}
-        </div>
-    </div>
-    @endif
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">List of Janamat</h3>
-        <span class="pull-right"><a href="{{ route('janamat.create') }}" class="btn btn-warning">{!! ADD_ICON !!}</a></span>
+        <h3 class="box-title">List of {!! str_limit(strip_tags($janamat->question),200) !!} Answers</h3>
+    </div>
+    <div class="" style="margin: 5px">
+        <?php $janamat_answers=explode(',',$janamat->answers); ?>
+        @foreach($janamat_answers as $janamat_answer)                                               
+            <h4 class="janamat_answers p-5">{{$janamat_answer}}:1</h4>
+        @endforeach
     </div>
     <div class="box-body">
-   
         <div class="clearfix"></div>
         <br>
         <div class="table-responsive">
@@ -23,30 +19,21 @@
                     <tr>
                         <th>S.No</th>
                         <th>Title</th>
-                        <th class="text-center">Answers</th>
-                        <th class="text-center">Total Response</th>
-                        <th class="text-center">Status</th>
-                        <th class="text-center">Action</th>
-                        <th class="text-center">Published Date</th>
-
+                        <th class="text-center">Selected Answers</th>
+                        <th class="text-center">User Email</th>
+                        <th class="text-center">Submitted at</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $count = 1; ?>
-                    @if(!empty($janamat_list))
-                    @foreach ($janamat_list as $item)
+                    @if(!empty($user_answers))
+                    @foreach ($user_answers as $user_answer)
                     <tr>
                         <td>{{ $count++ }}</td>
-                        <td>{!! str_limit(strip_tags($item->question),200) !!}</td>
-                        <td class="text-center">{!!$item->answers!!}</td>
-                        <?php $janamat_count= DB::table('tbl_users_opinions')->where('janamat_id',$item->id)->count() ?>
-                        <td class="text-center"><a href="{{route('user-answer',$item->id)}}">{{$janamat_count}}</a></td>
-                        <td class="text-center">Active</td>
-                        <td class="text-center">
-                            <a href="{{ route('janamat.edit', $item->id) }}"> {!! EDIT_ICON !!}</a>&nbsp;|
-                            <a href="{{ route('janamat.delete', $item->id) }}" class="resetbtn">{!! DELETE_ICON !!} </a>
-                        </td>
-                        <td class="text-center">{{ $item->created_at }}</td>
+                        <td>{!! str_limit(strip_tags($user_answer->question),200) !!}</td>
+                        <td class="text-center">{!!$user_answer->selected_answer!!}</td>
+                        <td class="text-center">{{ $user_answer->user_email }}</td>
+                        <td class="text-center">{{ $user_answer->created_at }}</td>
 
                     </tr>
                     @endforeach
