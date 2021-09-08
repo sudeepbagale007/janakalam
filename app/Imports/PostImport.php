@@ -31,7 +31,8 @@ class PostImport implements ToCollection,WithHeadingRow
                 'title'=>$row['post_title'],
                 'updated_at'=>$row['post_modified'],
                 'data_type'=>'0',
-                'slug'=>$final_slug
+                'slug'=>$final_slug,
+                'show_image'=>'1'
             ];
         }
 

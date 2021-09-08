@@ -250,6 +250,7 @@
                   <div class="big__img">
                       @if($news->list[0]->image)
                     <figure>
+                      <?php dd($news->list[0]->data_type) ?>
                       <img src="{{ getImage($news->list[0]->image) }}" class="w-100" alt="{{ $news->list[0]->title }}" title="{{ $news->list[0]->title }}">
                     </figure>
                     @endif

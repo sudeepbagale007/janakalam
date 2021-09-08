@@ -67,6 +67,8 @@ Route::get('/c', function() {
 	Route::get('importExportView', 'FileExportController@importExportView');
 	Route::post('import', 'FileExportController@import')->name('import');
 
+	Route::post('updateinteraction','BasicController@updateCommentInteraction')->name('updateinteraction');
+
 });
 
 
