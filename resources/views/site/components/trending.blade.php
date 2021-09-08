@@ -1,6 +1,6 @@
 <?php
 use App\Model\site\Home;
-$list = Home::getPopularNewsList($limit=7);
+$list = Home::getPopularNewsList($limit=10);
 $count = 1;
 ?>
 @if(count($list)>0)

@@ -394,7 +394,6 @@
 						</div>
 					</div>
 					<div class="col* col-md-4 col-lg-4 col-xl-3">
-						@include('site.components.taja')
 						@include('site.components.trending')
 						@include('site.components.sidebar-ads')
 						@include('site.components.mostpopular')
