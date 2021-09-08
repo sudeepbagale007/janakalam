@@ -1,21 +1,49 @@
-<footer>
-  <div class="main__footer">
-    <div class="container">
-      <div class="row">
-        <div class="col* col-sm-6 col-md-4 col-lg-4 footer__menu">
-          <div class="company__infos">
-            <figure>
-              <a href="{{ route('index') }}">
-                <img src="{{ asset($sitedetail->dark_logo) }}" alt="{{ $sitedetail->title_en }}" title="{{ $sitedetail->title_en }}" class="img-fluid">
-              </a>
-            </figure>
-        
-        </div>
+<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-color: rgb(6, 30, 155);  ;">
+  <div class="container">
+      <div class="row mb-1">
+          <div class="col-md ">
+              <div class="ftco-footer-widget pt-md-5 mb-4">
+                <img src="{{ asset($sitedetail->dark_logo) }}" style="max-width: 250px" alt="{{ $sitedetail->title_en }}" title="{{ $sitedetail->title_en }}" class="img-fluid">
+              </div>
+          </div>
+              <div class="col-md  border-left">
+                  <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
+                      <h2 class="ftco-heading-2">प्रकाशक तथा सम्पादक:</h2>
+                      <ul>
+                          <li>कर्ण देव भट्ट</li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-md  border-left">
+                  <div class="ftco-footer-widget pt-md-5 mb-4">
+                      <h2 class="ftco-heading-2">संचालक:</h2>
+                      <ul>
+                          <li>कर्णदेव भट्ट</li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-md  border-left">
+                  <div class="ftco-footer-widget pt-md-5 mb-4">
+                      <h2 class="ftco-heading-2">फारवेष्ट टाईम्स नेपाली दैनिक</h2>
+                      <div class="block-23 mb-3">
+                          <ul>
+                              <li></i><span class="text">भीमदत्त नगरपालिका–६  <br>कञ्चनपुर,  जि.प्र.का </span></li>
+                              <li></i><span class="text">दर्ता नं: १८ ⁄०५५ ⁄ ०५६</span></li>
+                              <li></i><span class="text">सूचना विभाग दर्ता नंः २२७५/०७७/०७८</span></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
       </div>
-     
-    </div>
-  </div>
-</footer>
+      <div class="row ftco-no-pb">
+          <div class="col-md-12 text-center">
+              <p class="py-4">
+                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> farwesttimesdaily.com सर्वाधिकार सुरक्षित
+              </p>
+              </div>
+          </div>
+      </div>
+  </footer>
 <a href="#" class="btn-scroll-top">
   <i class="las la-angle-up"></i>
 </a>

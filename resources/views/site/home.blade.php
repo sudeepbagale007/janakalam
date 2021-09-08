@@ -250,13 +250,11 @@
                   <div class="big__img">
                       @if($news->list[0]->image)
                     <figure>
-                      <?php dd($news->list[0]->data_type) ?>
                       <img src="{{ getImage($news->list[0]->image) }}" class="w-100" alt="{{ $news->list[0]->title }}" title="{{ $news->list[0]->title }}">
                     </figure>
                     @endif
                     <h2 class="news__title--lg">{{ str_limit($news->list[0]->title,100) }}</h2>
                     <p>{!! str_limit(strip_tags($news->list[0]->description),200) !!}</p>
-
                   </div>
                 </a>
               </div>

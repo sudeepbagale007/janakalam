@@ -467,3 +467,11 @@ text-decoration: underline;
   margin-top: 10px;
   background-color: rgba(0, 0, 0, 0.06);
 }
+
+footer{
+  color: #ccc;
+}
+
+footer h2{
+  color:  #ccc !important;
+}
