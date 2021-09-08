@@ -58,7 +58,12 @@
     
     @if($item->show_image == 1 && $item->image != '')
       <figure style="flex:3">
+        @if($item->data_type=1)
         <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" style="border-radius: 10px; height: 100%; object-fit:cover; object-position: center" title="{{ $item->title }}">
+        @else
+        <?php $image_path = $item->description ?>
+        <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" style="border-radius: 10px; height: 100%; object-fit:cover; object-position: center" title="{{ $item->title }}">
+        @endif
       </figure>
       @endif
       
@@ -252,7 +257,6 @@
                     @endif
                     <h2 class="news__title--lg">{{ str_limit($news->list[0]->title,100) }}</h2>
                     <p>{!! str_limit(strip_tags($news->list[0]->description),200) !!}</p>
-
                   </div>
                 </a>
               </div>

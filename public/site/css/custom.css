@@ -475,3 +475,10 @@
     width: 200px;
   }
 }
+footer {
+  color: #ccc;
+}
+
+footer h2 {
+  color: #ccc !important;
+}

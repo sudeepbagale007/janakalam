@@ -355,10 +355,10 @@
 									</div>
 							</div>
 						</div>
-						<div class="post__share__plugin">
+						{{-- <div class="post__share__plugin">
 							<div id="fb-root"></div>
 							<div class="fb-comments" data-href="{{Request::url()}}" data-numposts="5" data-width="100%"></div>
-						</div>
+						</div> --}}
 						
 						
 						<div class="post__related post__mt-1">

@@ -238,4 +238,9 @@ class BasicController extends Controller {
         session()->flash('answer', 'तपइको अमूल्य मत को लागी धन्याबाद');
         return back();
 	}
+
+	public function updateCommentInteraction(Request $request){
+
+
+	}
 }
