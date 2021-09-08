@@ -152,7 +152,7 @@
 							</div>
 						</div>
 
-						<div class="response_section" x-data={first:true,second:false,third:false,firstReply:false,secondReply:false}>
+						<div class="response_section" x-data={first:true,second:false,third:false}>
 							<div class="response_heading">
 								<h1>प्रतिक्रिया</h1>
 								<?php $comment_count = count($post_comments); ?>
@@ -161,12 +161,12 @@
 								</span>
 							</div>
 							<div class="d-flex flex-row text-muted response_menu my-4" style="font-size: 20px; cursor:pointer">
-								<div x-on:click="first=true; second=false; third=false; firstReply=false; secondReply=false" x-bind:class="first==true?'menu_active':'text-muted'">भर्खरै</div>
-								<div class="ml-4" x-on:click="first=false; second=true; third=false; firstReply=false; secondReply=false" x-bind:class="second==true?'menu_active':'text-muted'">लोकप्रिय</div>
-								<div class="ml-4" x-on:click="first=false; second=false; third=true; firstReply=false; secondReply=false" x-bind:class="third==true?'menu_active':'text-muted'">प्रतिक्रिया</div>
+								<div x-on:click="first=true; second=false; third=false;" x-bind:class="first==true?'menu_active':'text-muted'">भर्खरै</div>
+								<div class="ml-4" x-on:click="first=false; second=true; third=false;" x-bind:class="second==true?'menu_active':'text-muted'">लोकप्रिय</div>
+								<div class="ml-4" x-on:click="first=false; second=false; third=true;" x-bind:class="third==true?'menu_active':'text-muted'">प्रतिक्रिया</div>
 							</div>
 							<div class="response_content" x-show="first">
-								@foreach ($post_comments as $post_comment )
+								@foreach ($post_comments as $key=>$post_comment )
 								<div class="response_content_warp">
 									<div class="response_image">
 										<img src="https://www.onlinekhabar.com/wp-content/themes/onlinekhabar-2018/img/userIcon.png">
@@ -205,11 +205,11 @@
 												<i class="fas fa-flag"></i>
 												<a href="" class="pl-3">Report</a>
 											</span>
-											<span class="reply_button mt-3" x-on:click="firstReply=true" style="cursor: pointer">जवाफ दिनुहोस्</span>
+											<span class="reply_button mt-3" x-on:click="$refs.latest{{$key}}.style.display='block'" style="cursor: pointer">जवाफ दिनुहोस्</span>
 										</div>
 									</div>
-									<div class="response_reply" x-show="firstReply" style="display: none">
-										<span class="comment_close" style="cursor: pointer" x-on:click="firstReply=false">
+									<div class="response_reply" style="display: none" x-ref="latest{{$key}}">
+										<span class="comment_close" style="cursor: pointer" x-on:click="$refs.latest{{$key}}.style.display='none'">
 											<i class="fas fa-times"></i>
 										</span>
 										<form class="reply_form" action="{{route('addComment')}}" method="POST">{{ csrf_field() }}
@@ -225,7 +225,7 @@
 												<div class="comment_form_row">
 													<label>इमेल *</label>
 													<input type="email" class="form-input" name="email">
-													@error('name')
+													@error('email')
 													<div class="text-danger error">{{ $message }}</div>
 													@enderror
 												</div>
@@ -245,7 +245,7 @@
 							</div>
 
 							<div class="response_content" x-show="second">
-								@foreach ($post_comments as $post_comment )
+								@foreach ($post_comments as $index=>$post_comment )
 								<div class="response_content_warp">
 									<div class="response_image">
 										<img src="https://www.onlinekhabar.com/wp-content/themes/onlinekhabar-2018/img/userIcon.png">
@@ -284,11 +284,11 @@
 												<i class="fas fa-flag"></i>
 												<a href="" class="pl-3">Report</a>
 											</span>
-											<span class="reply_button mt-4" x-on:click="secondReply=true" style="cursor:pointer">जवाफ दिनुहोस्</span>
+											<span class="reply_button mt-4" x-on:click="$refs.favorite{{$index}}.style.display='block'" style="cursor:pointer">जवाफ दिनुहोस्</span>
 										</div>
 									</div>
-									<div class="response_reply" x-show="secondReply">
-										<span class="comment_close" style="cursor:pointer" x-on:click="secondReply=false">
+									<div class="response_reply" style="display: none" x-ref="favorite{{$index}}">
+										<span class="comment_close" style="cursor:pointer" x-on:click="$refs.favorite{{$index}}.style.display='none'">
 											<i class="fas fa-times"></i>
 										</span>
 										<form class="reply_form" action="{{route('addComment')}}" method="POST">{{ csrf_field() }}
@@ -304,7 +304,7 @@
 												<div class="comment_form_row">
 													<label>इमेल *</label>
 													<input type="email" class="form-input" name="email">
-													@error('name')
+													@error('email')
 													<div class="text-danger error">{{ $message }}</div>
 													@enderror
 												</div>
