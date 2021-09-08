@@ -201,11 +201,11 @@
 													<a href="">Dislikes</a>
 												</span>
 											</div>
-											<span class="report_comment">
+											<span class="report_comment mr-4">
 												<i class="fas fa-flag"></i>
-												<a href="">Report</a>
+												<a href="" class="pl-3">Report</a>
 											</span>
-											<span class="reply_button" x-on:click="firstReply=true" style="cursor: pointer">जवाफ दिनुहोस्</span>
+											<span class="reply_button mt-3" x-on:click="firstReply=true" style="cursor: pointer">जवाफ दिनुहोस्</span>
 										</div>
 									</div>
 									<div class="response_reply" x-show="firstReply" style="display: none">
@@ -280,11 +280,11 @@
 													<a href="">Dislikes</a>
 												</span>
 											</div>
-											<span class="report_comment">
+											<span class="report_comment mr-4">
 												<i class="fas fa-flag"></i>
-												<a href="">Report</a>
+												<a href="" class="pl-3">Report</a>
 											</span>
-											<span class="reply_button" x-on:click="secondReply=true" style="cursor:pointer">जवाफ दिनुहोस्</span>
+											<span class="reply_button mt-4" x-on:click="secondReply=true" style="cursor:pointer">जवाफ दिनुहोस्</span>
 										</div>
 									</div>
 									<div class="response_reply" x-show="secondReply">

@@ -207,16 +207,18 @@
 
       <div class="pt-4">
         <div class="d-flex justify-content-center">
-          <div clas="d-flex flex-column">
-            <input type="text" placeholder="Enter Email Address" name="user_email" class="form-control" style="width:500px"/>
+          <div>
+            <input type="text" placeholder="Enter Email Address" name="user_email" class="form-control janamat_email"/>
               @error('user_email')
                 <div class="text-danger error">{{ $message }}</div>
               @enderror
-              <div>
-                <button type="submit" class="btn btn-primary px-4 py-2 mt-4"  style="font-size:20px">Submit</button>
-              </div>
           </div> 
-        </div>   
+        </div>  
+        
+        <div style="width: 150px" class="mx-auto">
+          <button type="submit" class="btn btn-primary px-4 py-2 mt-4"  style="font-size:20px">Submit</button>
+        </div>
+        
       </div>
   </form>
   </section>
