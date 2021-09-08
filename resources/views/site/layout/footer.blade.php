@@ -27,9 +27,9 @@
                       <h2 class="ftco-heading-2">फारवेष्ट टाईम्स नेपाली दैनिक</h2>
                       <div class="block-23 mb-3">
                           <ul>
-                              <li></i><span class="text">भीमदत्त नगरपालिका–६  <br>कञ्चनपुर,  जि.प्र.का </span></li>
-                              <li></i><span class="text">दर्ता नं: १८ ⁄०५५ ⁄ ०५६</span></li>
-                              <li></i><span class="text">सूचना विभाग दर्ता नंः २२७५/०७७/०७८</span></li>
+                              <li><span class="text">भीमदत्त नगरपालिका–६ कञ्चनपुर,  जि.प्र.का </span></li>
+                              <li><span class="text">दर्ता नं: १८ ⁄०५५ ⁄ ०५६</span></li>
+                              <li><span class="text">सूचना विभाग दर्ता नंः २२७५/०७७/०७८</span></li>
                           </ul>
                       </div>
                   </div>
