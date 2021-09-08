@@ -37,8 +37,8 @@
       <div class="row ftco-no-pb">
             <div class="col-md">
                 <div class="py-4">
-                    <a href="{{route('about')}}"> हाम्रोबारे </a>
-                    <a href="{{route('about-group')}}"> हाम्रो-समूह </a>
+                    <a href="{{route('about')}}"> हाम्रोबारे </a> 
+                    <a class="ml-3" href="{{route('about-group')}}"> हाम्रो-समूह </a>
                 </div>
             </div>
             <div class="col-md">
