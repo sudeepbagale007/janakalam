@@ -187,6 +187,13 @@ class HomeController extends Controller {
         return view('site.about', $result);
     }
 
+    public function aboutGroup(){
+        $result = array(
+            'page_header' => 'सम्पर्क',
+        );
+        return view('site.our-group', $result);
+    }
+
 
     public function postContactUs(Request $request){
         if (!empty($request->all())) {

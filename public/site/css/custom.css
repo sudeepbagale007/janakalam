@@ -480,5 +480,10 @@ footer {
 }
 
 footer h2 {
-  color: #ccc !important;
+  color:#ccc !important;
+}
+
+footer a{
+  color: #ccc;
+
 }

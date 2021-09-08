@@ -38,6 +38,8 @@ Route::get('/c', function() {
 	Route::get('contact-us', 'HomeController@contactUs')->name('contact');
 	Route::get('unicode', 'HomeController@unicode')->name('unicode');
 	Route::get('about', 'HomeController@about')->name('about');
+	Route::get('about-group', 'HomeController@aboutGroup')->name('about-group');
+
 	Route::post('contact-us', 'HomeController@postContactUs')->name('post.contact');
 	Route::get('category/{slug}', 'HomeController@categoryList' )->name('category.list');
 	Route::get('trend/{slug}', 'HomeController@trendingList' )->name('trending.list');
