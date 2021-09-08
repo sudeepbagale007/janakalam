@@ -240,6 +240,8 @@ class BasicController extends Controller {
 	}
 
 	public function updateCommentInteraction(Request $request){
+		$comment_id = $request->comment_id;
+		$cmt_interaction = $request->selected_interaction;
 
 
 	}

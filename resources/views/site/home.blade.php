@@ -252,7 +252,17 @@
                   <div class="big__img">
                       @if($news->list[0]->image)
                     <figure>
+                      @if ($news->list[0]->data_type == 0)
+                      @php $html=$news->list[0]->description; 
+                          $doc=new DOMDocument();
+                          $doc->loadHTML($html);
+                          $xpath=new DOMXPath($doc);
+                          $src=$xpath->evaluate("string(//img/@src)");
+                      @endphp
+                      <img src="{{$src}}" class="w-100" alt="{{ $news->list[0]->title }}" title="{{ $news->list[0]->title }}">
+                      @else
                       <img src="{{ getImage($news->list[0]->image) }}" class="w-100" alt="{{ $news->list[0]->title }}" title="{{ $news->list[0]->title }}">
+                      @endif
                     </figure>
                     @endif
                     <h2 class="news__title--lg">{{ str_limit($news->list[0]->title,100) }}</h2>
@@ -266,13 +276,21 @@
             @if($kl >= 1 && $kl <=2)
             <div class="col__span1">
               <div class="news__md">
-                  @if($item->image)
                 <figure>
                   <a href="{{ route('post.detail',$item->slug) }}" title="title">
-                    <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
+                    @if ($item->data_type == 0)
+                      @php $html=$item->description; 
+                          $doc=new DOMDocument();
+                          $doc->loadHTML($html);
+                          $xpath=new DOMXPath($doc);
+                          $src=$xpath->evaluate("string(//img/@src)");
+                      @endphp
+                      <img src="{{ $src }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
+                      @else
+                      <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
+                    @endif
                   </a>
                 </figure>
-                @endif
                 <div class="news__infos__md">
                   <h3>
                   <a href="{{ route('post.detail',$item->slug) }}"> {!! str_limit($item->title,70) !!}</a>
@@ -293,13 +311,21 @@
             @if($kl >= 3 && $kl <=6)
             <div class="col__span1">
               <div class="news__md">
-                   @if($item->image)
                 <figure>
                   <a href="{{ route('post.detail',$item->slug) }}" title="title">
-                    <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
+                    @if ($item->data_type == 0)
+                      @php $html=$item->description; 
+                          $doc=new DOMDocument();
+                          $doc->loadHTML($html);
+                          $xpath=new DOMXPath($doc);
+                          $src=$xpath->evaluate("string(//img/@src)");
+                      @endphp
+                      <img src="{{ $src }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
+                      @else
+                      <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
+                    @endif
                   </a>
                 </figure>
-                @endif
                 <div class="news__infos__md">
                   <h3>
                   <a href="{{ route('post.detail',$item->slug) }}"> {!! str_limit($item->title,70) !!}</a>

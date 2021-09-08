@@ -185,10 +185,10 @@
 											</span>
 											<div class="like_warp">
 												<span class="icon_comment">
-													<a href="">
+													<a  class="interaction" id="like_id" data-cmt-id="like" data-comment_id="{{$post_comment->id}}" data-interaction_id="1" data-cmt-status="false">
 														<i class="fas fa-thumbs-up"></i>
 													</a>
-													<span class="react_number">0</span>
+													<span class="react_number" id="like_score">0</span>
 													<a href="">Likes</a>
 												</span>
 											</div>
@@ -446,6 +446,32 @@
 					setTimeout(function(){
 						$("#emoji-alert").fadeOut(2000);
 					}, 2000);
+				},
+         	});	
+		}
+	});
+</script>
+
+<script>
+	$('.interaction').on('click',function(){
+		var selected_interaction=$(this).attr("data-cmt-id");
+		var comment_id=$(this).attr("data-comment_id");
+		var interaction_id=$(this).attr("data-interaction_id");
+		var interclicked=$('#like_id').attr("data-cmt-status");
+
+		if(interclicked=="false"){
+			$.ajax({
+				url: "/updateinteraction",
+				type:"POST",
+				data:{
+					"_token": "{{ csrf_token() }}",
+					selected_interaction:selected_interaction,
+					comment_id:comment_id,
+					interaction_id:interaction_id
+				},
+				success:function(response){      
+					(response.data.like!=null)?$('#like_score').text(response.data.like):$('#like_score').text(0);
+					$("#like_id").attr('interaction_id',response.data.id);
 				},
          	});	
 		}
