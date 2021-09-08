@@ -52,10 +52,11 @@
                                 <td>
                                     <div>
                                         @foreach($selected_answer as $row)
-                                            @php $option=substr($row->selected_answer,0,6); 
-                                                 $number=substr($row->selected_answer,6)+1;
+                                            @php 
+                                            $answer=explode(',',$item->answers);    
+                                            $index=substr($row->selected_answer,6);
                                             @endphp
-                                            <li>{{$option}} {{$number}}: {{$row->total}}</li>
+                                            <li>{{$answer[$index]}}: {{$row->total}}</li>
                                         @endforeach    
                                     </div>
                                 </td>

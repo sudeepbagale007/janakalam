@@ -63,13 +63,20 @@ class AdminJanamatController extends Controller
     public function viewUserAnswer(Request $request,$id)
     {
 
-        $janamat = PublicOpinion::select('question','answers')->where('id',$request->id)->first();
+        $janamat = PublicOpinion::select('id','question','answers')->where('id',$request->id)->first();
+
         $user_answers = PublicOpinion::select('*')
         ->leftJoin('tbl_users_opinions','tbl_users_opinions.janamat_id','tbl_public_opinions.id')
         ->where('tbl_users_opinions.janamat_id',$request->id)
         ->get();
 
-        return view('admin.janamat.user_answer',compact('user_answers','janamat'));
+        $selected_answer=DB::table('tbl_users_opinions')
+        ->where('janamat_id',$janamat->id)
+        ->select('selected_answer', DB::raw('count(*) as total'))
+        ->groupBy('selected_answer')
+        ->get();  
+
+        return view('admin.janamat.user_answer',compact('user_answers','janamat','selected_answer'));
 
     }
 }
