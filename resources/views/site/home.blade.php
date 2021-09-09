@@ -90,7 +90,7 @@
         @endif
       </div>
       <div class="head__desc">
-        {!! str_limit(strip_tags($item->description),300) !!}
+        {!! str_limit(strip_tags($item->description),100) !!}
       </div>
     </div>
      </div>
@@ -190,7 +190,7 @@
     <form action="{{route('save-janamat-answer')}}" method="POST">@csrf
       @foreach($janamat as $index=>$row)
         <div class="pt-4">
-          <p class="d-flex justify-content-center text-danger" style="font-size: 30px">{{$count++}}. {{strip_tags($row->question)}}</p>
+          <p class="d-flex justify-content-center text-danger" style="font-size: 30px">{{$count++}}. {!! strip_tags($row->question) !!}</p>
           <div class="d-flex justify-content-center">
             <div class="d-flex flex-column">
               @php $ans=explode(',',$row->answers); @endphp

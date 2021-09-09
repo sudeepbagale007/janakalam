@@ -94,6 +94,9 @@
             <span>{!! getTodayNepaliDate() !!} </span>
           </div>
         </div>
+        <div class="col* col-sm-1 col-md-1 col-lg-1 logo__right">
+          <img src="{{asset('site/images/23-years-exce.gif')}}" style="max-height: 60px">
+        </div>
         <div class="col* col-sm-6 col-md-8 col-lg-8 logo__right">
           @if(!empty($advertisement['topheaderad_1']))
           <a href="{{ $advertisement['topheaderad_1']->url }}" title="{{ $advertisement['topheaderad_1']->title }}" target="_blank">
@@ -101,9 +104,7 @@
           </a>
           @endif
         </div>
-        <div class="col* col-sm-1 col-md-1 col-lg-1 logo__right">
-          <img src="{{asset('site/images/23-years-exce.gif')}}" style="max-height: 60px">
-        </div>
+        
       </div>
     </div>
   </div>
