@@ -18,7 +18,6 @@
     </div>
 @endif
 
-
 <section class="live__video section__top">
   @if(!empty($videoPosts))
   <div class="container">
@@ -58,12 +57,7 @@
     
     @if($item->show_image == 1 && $item->image != '')
       <figure style="flex:3">
-        @if($item->data_type=1)
         <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" style="border-radius: 10px; height: 100%; object-fit:cover; object-position: center" title="{{ $item->title }}">
-        @else
-        <?php $image_path = $item->description ?>
-        <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" style="border-radius: 10px; height: 100%; object-fit:cover; object-position: center" title="{{ $item->title }}">
-        @endif
       </figure>
       @endif
       
@@ -85,7 +79,7 @@
           </div>
         </div>
         @if($item->sub_heading != '')
-        <div class="breaking__shortInfos">{!! str_limit($item->sub_heading,50) !!}
+        <div class="breaking__shortInfos">{!! str_limit($item->sub_heading,100) !!}
         </div>
         @endif
       </div>
@@ -185,53 +179,51 @@
 </section> --}}
 <?php $count=1 ?>
 @if(count($janamat)>0)
-
   <section class="janamat_section py-5">
     <div class="container">
-    <h1 class="d-flex justify-content-center font-weight-bold" style="font-size:40px">जनमत</h1>
-    <form action="{{route('save-janamat-answer')}}" method="POST">@csrf
-      @foreach($janamat as $index=>$row)
-        <div class="pt-4">
-          <p class="d-flex justify-content-center text-danger" style="font-size: 30px">{{$count++}}. {!! strip_tags($row->question) !!}</p>
-          <div class="d-flex justify-content-center">
-            <div class="d-flex flex-column">
-              @php $ans=explode(',',$row->answers); @endphp
-              @foreach($ans as $key=>$info)
-                <div class="form-check mt-2">
-                  <input class="form-check-input" type="radio" name="answer[{{$index}}]" value="option{{$key}}"  style="height: 25px">
-                  <label class="form-check-label ml-4" style="font-size: 20px">
-                    {{$info}}
-                  </label>
+        <h1 class="d-flex justify-content-center font-weight-bold" style="font-size:40px">जनमत</h1>
+        <form action="{{route('save-janamat-answer')}}" method="POST">@csrf
+          @foreach($janamat as $index=>$row)
+            <div class="pt-4">
+              <p class="d-flex justify-content-center text-danger" style="font-size: 30px">{{$count++}}. {!! strip_tags($row->question) !!}</p>
+              <div class="d-flex justify-content-center">
+                <div class="d-flex flex-column">
+                  @php $ans=explode(',',$row->answers); @endphp
+                  @foreach($ans as $key=>$info)
+                    <div class="form-check mt-2">
+                      <input class="form-check-input" type="radio" name="answer[{{$index}}]" value="option{{$key}}"  style="height: 25px">
+                      <label class="form-check-label ml-4" style="font-size: 20px">
+                        {{$info}}
+                      </label>
+                    </div>
+                  @endforeach
+                  <input type="hidden" name="janamat_id[]" value="{{$row->id}}"/>
                 </div>
-              @endforeach
-              <input type="hidden" name="janamat_id[]" value="{{$row->id}}"/>
+              </div>
             </div>
+          @endforeach  
+    
+          @if(session()->has('error_opinion'))<div class="text-danger error text-center pt-2">* {{session()->get('error_opinion')}}</div>@endif
+    
+          <div class="pt-4">
+            <div class="d-flex justify-content-center">
+              <div>
+                <input type="text" placeholder="Enter Email Address" name="user_email" class="form-control janamat_email"/>
+                  @error('user_email')
+                    <div class="text-danger error">{{ $message }}</div>
+                  @enderror
+              </div> 
+            </div>  
+            
+            <div style="width: 150px" class="mx-auto justify-content-center">
+              <button type="submit" class="btn btn-primary px-4 py-2 mt-4"  style="font-size:20px">Submit</button>
+            </div>
+            
           </div>
-        </div>
-      @endforeach  
-
-      @if(session()->has('error_opinion'))<div class="text-danger error text-center pt-2">* {{session()->get('error_opinion')}}</div>@endif
-
-      <div class="pt-4">
-        <div class="d-flex justify-content-center">
-          <div>
-            <input type="text" placeholder="Enter Email Address" name="user_email" class="form-control janamat_email"/>
-              @error('user_email')
-                <div class="text-danger error">{{ $message }}</div>
-              @enderror
-          </div> 
-        </div>  
-        
-        <div style="width: 150px" class="mx-auto">
-          <button type="submit" class="btn btn-primary px-4 py-2 mt-4"  style="font-size:20px">Submit</button>
-        </div>
-        
-      </div>
-  </form>
+      </form>
     </div>
   </section>
-@endif  
-
+@endif 
 <section class="news__col section__top py-5 bg_p_dim">
   <div class="container">
     @if(!empty($news))
@@ -255,21 +247,12 @@
                   <div class="big__img">
                       @if($news->list[0]->image)
                     <figure>
-                      @if ($news->list[0]->data_type == 0)
-                      @php $html=$news->list[0]->description; 
-                          $doc=new DOMDocument();
-                          $doc->loadHTML($html);
-                          $xpath=new DOMXPath($doc);
-                          $src=$xpath->evaluate("string(//img/@src)");
-                      @endphp
-                      <img src="{{$src}}" class="w-100" alt="{{ $news->list[0]->title }}" title="{{ $news->list[0]->title }}">
-                      @else
                       <img src="{{ getImage($news->list[0]->image) }}" class="w-100" alt="{{ $news->list[0]->title }}" title="{{ $news->list[0]->title }}">
-                      @endif
                     </figure>
                     @endif
                     <h2 class="news__title--lg">{{ str_limit($news->list[0]->title,100) }}</h2>
                     <p>{!! str_limit(strip_tags($news->list[0]->description),200) !!}</p>
+
                   </div>
                 </a>
               </div>
@@ -279,21 +262,13 @@
             @if($kl >= 1 && $kl <=2)
             <div class="col__span1">
               <div class="news__md">
+                  @if($item->image)
                 <figure>
                   <a href="{{ route('post.detail',$item->slug) }}" title="title">
-                    @if ($item->data_type == 0)
-                      @php $html=$item->description; 
-                          $doc=new DOMDocument();
-                          $doc->loadHTML($html);
-                          $xpath=new DOMXPath($doc);
-                          $src=$xpath->evaluate("string(//img/@src)");
-                      @endphp
-                      <img src="{{ $src }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
-                      @else
-                      <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
-                    @endif
+                    <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
                   </a>
                 </figure>
+                @endif
                 <div class="news__infos__md">
                   <h3>
                   <a href="{{ route('post.detail',$item->slug) }}"> {!! str_limit($item->title,70) !!}</a>
@@ -314,21 +289,13 @@
             @if($kl >= 3 && $kl <=6)
             <div class="col__span1">
               <div class="news__md">
+                   @if($item->image)
                 <figure>
                   <a href="{{ route('post.detail',$item->slug) }}" title="title">
-                    @if ($item->data_type == 0)
-                      @php $html=$item->description; 
-                          $doc=new DOMDocument();
-                          $doc->loadHTML($html);
-                          $xpath=new DOMXPath($doc);
-                          $src=$xpath->evaluate("string(//img/@src)");
-                      @endphp
-                      <img src="{{ $src }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
-                      @else
-                      <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
-                    @endif
+                    <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
                   </a>
                 </figure>
+                @endif
                 <div class="news__infos__md">
                   <h3>
                   <a href="{{ route('post.detail',$item->slug) }}"> {!! str_limit($item->title,70) !!}</a>
@@ -351,8 +318,6 @@
     @endif
   </div>
 </section>
-
-
 <section class="international__col section__top">
   <div class="container">
     @if(!empty($finance))

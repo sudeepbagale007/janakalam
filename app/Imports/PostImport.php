@@ -9,6 +9,8 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use DB;
+use DOMDocument;
+use DOMXPath;
 
 class PostImport implements ToCollection,WithHeadingRow
 {
@@ -25,14 +27,21 @@ class PostImport implements ToCollection,WithHeadingRow
             $ran=rand(10,100);
             $final_slug=time().'-'.$slugValue.'-'.$ran;
             
+            $html=$row['post_content']; 
+                $doc=new DOMDocument();
+                $doc->loadHTML($html);
+                $xpath=new DOMXPath($doc);
+            $src=$xpath->evaluate("string(//img/@src)");
+                
+
             $insert_data[]=[
                 'published_date'=>$row['post_date'],
                 'description'=>$row['post_content'],
                 'title'=>$row['post_title'],
                 'updated_at'=>$row['post_modified'],
-                'data_type'=>'0',
                 'slug'=>$final_slug,
-                'show_image'=>'1'
+                'show_image'=>'1',
+                'image'=>$src,
             ];
         }
 
