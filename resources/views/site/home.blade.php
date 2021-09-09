@@ -185,7 +185,9 @@
 </section> --}}
 <?php $count=1 ?>
 @if(count($janamat)>0)
+
   <section class="janamat_section py-5">
+    <div class="container">
     <h1 class="d-flex justify-content-center font-weight-bold" style="font-size:40px">जनमत</h1>
     <form action="{{route('save-janamat-answer')}}" method="POST">@csrf
       @foreach($janamat as $index=>$row)
@@ -226,6 +228,7 @@
         
       </div>
   </form>
+    </div>
   </section>
 @endif  
 
