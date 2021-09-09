@@ -16,7 +16,8 @@ class PostExport implements FromCollection,WithHeadings
         return Post::select('post_date','post_content','post_title','post_modified')
         ->where('post_status','publish')
         ->where('post_type','post')
-        ->limit('10')
+        ->where('post_content','!=','')
+        ->limit('10000')
         ->get();
     }
 

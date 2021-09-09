@@ -29,6 +29,8 @@ class PostImport implements ToCollection,WithHeadingRow
             
             $html=$row['post_content']; 
                 $doc=new DOMDocument();
+                libxml_use_internal_errors(true);
+
                 $doc->loadHTML($html);
                 $xpath=new DOMXPath($doc);
             $src=$xpath->evaluate("string(//img/@src)");

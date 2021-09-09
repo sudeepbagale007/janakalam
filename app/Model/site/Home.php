@@ -56,7 +56,7 @@ class Home extends Model {
                 ->join('rel_post_category AS PC','PC.post_id','=','P.id')
                 ->where('PC.category_id', $data->id)
                 ->where('P.status', 1)
-                ->select('P.title', 'P.image', 'P.published_date', 'P.description','P.slug','P.author_name','P.author_id','P.show_image','P.short_text','P.interviewer_name','P.data_type')
+                ->select('P.title', 'P.image', 'P.published_date', 'P.description','P.slug','P.author_name','P.author_id','P.show_image','P.short_text','P.interviewer_name')
                 ->orderBy('P.published_date', 'DESC')
                 ->limit($limit)
                 ->get();
