@@ -189,7 +189,7 @@ class HomeController extends Controller {
 
     public function aboutGroup(){
         $result = array(
-            'page_header' => 'सम्पर्क',
+            'page_header' => 'हाम्रो-समूह',
         );
         return view('site.our-group', $result);
     }

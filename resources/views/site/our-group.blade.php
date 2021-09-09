@@ -13,6 +13,9 @@
 			<div class="row">
 				<div class="col* col-md-8 col-lg-8 col-xl-9">
 					@include('site.components.pagedetail-sub-head-ads')
+					<div class="detail__post__infos">
+						<h2 class="detail__post__title">हाम्रो-समूह</h2>
+					</div>
 					<div class="single__detail">
 						<div class="textwidget custom-html-widget">
 						<p>यो साइट विगत २३ वर्षदेखी प्रकाशन हुँदै आएको फारवेष्ट टाईम्स नेपाली राष्ट्रिय दैनिकको आधिकारिक न्यूज पोर्टल हो www.farwesttimesdaily.com विश्वभर छरिएका नेपालीलाई समसामयिक विषयमा राष्ट्रिय अन्तरराष्ट्रिय घटनाको जानकारी गराउनु हाम्रो उद्देश्य हो। सातै प्रदेशका समाचारलाई प्रमुख महत्व दिई निष्पक्ष र स्वतन्त्र समाचार दिनु हाम्रो मुख्य लक्ष्य हो ।</p>
