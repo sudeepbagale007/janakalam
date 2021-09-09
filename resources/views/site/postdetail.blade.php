@@ -458,7 +458,6 @@
 		var comment_id=$(this).attr("data-comment_id");
 		var interaction_id=$(this).attr("data-interaction_id");
 		var interclicked=$('#like_id').attr("data-cmt-status");
-
 		if(interclicked=="false"){
 			$.ajax({
 				url: "/updateinteraction",
@@ -469,9 +468,9 @@
 					comment_id:comment_id,
 					interaction_id:interaction_id
 				},
-				success:function(response){      
-					(response.data.like!=null)?$('#like_score').text(response.data.like):$('#like_score').text(0);
-					$("#like_id").attr('interaction_id',response.data.id);
+				success:function(response){     
+					(response.response.comment_like!=null)?$('#like_score').text(response.response.comment_like):$('#like_score').text(0);
+					$("#like_id").attr('interaction_id',response.response.id);
 				},
          	});	
 		}

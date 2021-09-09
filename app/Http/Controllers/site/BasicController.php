@@ -8,6 +8,7 @@ use App\Model\site\Home;
 use Illuminate\Http\Request;
 use App\Model\site\PostReaction;
 use App\Model\site\UserAnswer;
+use DB;
 
 
 class BasicController extends Controller {
@@ -242,5 +243,26 @@ class BasicController extends Controller {
 	public function updateCommentInteraction(Request $request){
 		$comment_id = $request->comment_id;
 		$cmt_interaction = $request->selected_interaction;
+
+		if(isset($cmt_interaction)){
+			$table_data=DB::table('tbl_post_comments')
+						->where('id',$comment_id)
+						->first();
+
+			DB::table('tbl_post_comments')
+				->where('id',$comment_id)
+				->update([
+					'comment_like'=>($cmt_interaction=='like')?intval($table_data->comment_like)+1:$table_data->comment_like,
+					'comment_dislike'=>($cmt_interaction=='dislike')?intval($table_data->comment_dislike)+1:$table_data->comment_dislike,
+				]);			
+		}
+
+		$table_data=DB::table('tbl_post_comments')
+					->where('id',$comment_id)
+					->first();
+
+		return response()->json(['response'=>$table_data]);
+
+
 	}
 }
