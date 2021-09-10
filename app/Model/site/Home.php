@@ -181,7 +181,7 @@ class Home extends Model {
             ->where('P.status', '1')
             ->select('P.title','P.slug', 'P.image','P.published_date','P.description')
             ->orderBy('P.published_date','desc')
-            ->limit(8)
+            ->limit(6)
             ->get();
         return $data;
     }

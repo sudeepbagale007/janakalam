@@ -52,7 +52,7 @@
 								<div class="top__detail__flex">
 									<div class="media">
 										<figure class="mr-2">
-											<img src="{{ getImage($sitedetail->logo) }}" alt="{{ $detail->title }}" title="{{ $detail->title }}">
+											<img src="{{asset('site/images/glob.jpg')}}" alt="{{ $detail->title }}" title="{{ $detail->title }}" style="max-height: 50px">
 										</figure>
 										<div class="author__Details d-flex flex-row mt-4">
 											<h4 class="ml-4">{{ authorName($detail->author_name,$detail->author_id) }}</h4>
@@ -155,18 +155,19 @@
 						<div class="response_section" x-data={first:true,second:false,third:false}>
 							<div class="response_heading">
 								<h1>प्रतिक्रिया</h1>
-								<?php $comment_count = count($post_comments); ?>
+								<?php $comment_count = count($post_latest_cmts); ?>
 								<span>
 									<a href="#">{{$comment_count}}</a>
 								</span>
 							</div>
+							
 							<div class="d-flex flex-row text-muted response_menu my-4" style="font-size: 20px; cursor:pointer">
 								<div x-on:click="first=true; second=false; third=false;" x-bind:class="first==true?'menu_active':'text-muted'">भर्खरै</div>
 								<div class="ml-4" x-on:click="first=false; second=true; third=false;" x-bind:class="second==true?'menu_active':'text-muted'">लोकप्रिय</div>
 								<div class="ml-4" x-on:click="first=false; second=false; third=true;" x-bind:class="third==true?'menu_active':'text-muted'">प्रतिक्रिया</div>
 							</div>
 							<div class="response_content" x-show="first">
-								@foreach ($post_comments as $key=>$post_comment )
+								@foreach ($post_latest_cmts as $key=>$post_comment )
 								<div class="response_content_warp">
 									<div class="response_image">
 										<img src="https://www.onlinekhabar.com/wp-content/themes/onlinekhabar-2018/img/userIcon.png">
@@ -194,17 +195,22 @@
 											</div>
 											<div class="dislike_warp">
 												<span class="icon_comment">
-													<a href="" class="interaction" id="dislike_id" data-cmt-id="dislike" data-comment_id="{{$post_comment->id}}">
+													<a  class="interaction" id="dislike_id" data-cmt-id="dislike" data-comment_id="{{$post_comment->id}}">
 														<i class="fas fa-thumbs-down"></i>
 													</a>
 													<span id="dislike_score" class="react_number">{{$post_comment->comment_dislike}}</span>
 													<span>Dislikes</span>
 												</span>
 											</div>
-											<span class="report_comment mr-4">
-												<i class="fas fa-flag"></i>
-												<a href="" class="pl-3">Report</a>
-											</span>
+											<div class="report_warp mr-4">
+												<span class="icon_comment report_comment">
+													<a  class="interaction" id="report_id" data-cmt-id="report" data-comment_id="{{$post_comment->id}}">
+														<i class="fas fa-flag"></i>
+													</a>
+													<span>Report</span>
+												</span>
+											</div>
+
 											<span class="reply_button mt-3" x-on:click="$refs.latest{{$key}}.style.display='block'" style="cursor: pointer">जवाफ दिनुहोस्</span>
 										</div>
 									</div>
@@ -245,7 +251,7 @@
 							</div>
 
 							<div class="response_content" x-show="second">
-								@foreach ($post_comments as $index=>$post_comment )
+								@foreach ($most_liked_cmt as $index=>$post_comment )
 								<div class="response_content_warp">
 									<div class="response_image">
 										<img src="https://www.onlinekhabar.com/wp-content/themes/onlinekhabar-2018/img/userIcon.png">
@@ -264,26 +270,30 @@
 											</span>
 											<div class="like_warp">
 												<span class="icon_comment">
-													<a href="">
+													<a  class="interaction" id="like_id" data-cmt-id="like" data-comment_id="{{$post_comment->id}}"  data-cmt-status="false">
 														<i class="fas fa-thumbs-up"></i>
 													</a>
-													<span class="react_number">0</span>
-													<a href="">Likes</a>
+													<span class="react_number" id="like_score">{{$post_comment->comment_like}}</span>
+													<span>Likes</span>
 												</span>
 											</div>
 											<div class="dislike_warp">
 												<span class="icon_comment">
-													<a href="">
+													<a  class="interaction" id="dislike_id" data-cmt-id="dislike" data-comment_id="{{$post_comment->id}}">
 														<i class="fas fa-thumbs-down"></i>
 													</a>
-													<span class="react_number">0</span>
-													<a href="">Dislikes</a>
+													<span id="dislike_score" class="react_number">{{$post_comment->comment_dislike}}</span>
+													<span>Dislikes</span>
 												</span>
 											</div>
-											<span class="report_comment mr-4">
-												<i class="fas fa-flag"></i>
-												<a href="" class="pl-3">Report</a>
-											</span>
+											<div class="report_warp mr-4">
+												<span class="icon_comment report_comment">
+													<a  class="interaction" id="report_id" data-cmt-id="report" data-comment_id="{{$post_comment->id}}">
+														<i class="fas fa-flag"></i>
+													</a>
+													<span>Report</span>
+												</span>
+											</div>
 											<span class="reply_button mt-4" x-on:click="$refs.favorite{{$index}}.style.display='block'" style="cursor:pointer">जवाफ दिनुहोस्</span>
 										</div>
 									</div>
@@ -370,7 +380,7 @@
 							<div class="row no-gutters">
 								@if(count($categorypostlist)>0)
 								@foreach($categorypostlist as $kl =>$item)
-								<div class="col* col-sm-6 col-md-4 col-lg-3 news__list1">
+								<div class="col* col-sm-6 col-md-4 col-lg-4 news__list1">
 									<div class="news__md--1">
 										<figure>
 											<a href="{{ route('post.detail',$item->slug) }}">
@@ -454,6 +464,7 @@
 
 <script>
 	$('.interaction').on('click',function(){
+		var interclicked=$('#like_id').attr("data-cmt-status");
 		var selected_interaction=$(this).attr("data-cmt-id");
 		var comment_id=$(this).attr("data-comment_id");
 		var interclicked=$('#like_id').attr("data-cmt-status");
@@ -468,7 +479,8 @@
 				},
 				success:function(response){     
 					(response.response.comment_like!=null)?$('#like_score').text(response.response.comment_like):$('#like_score').text(0);
-					(response.response.comment_like!=null)?$('#dislike_score').text(response.response.comment_like):$('#dislike_score').text(0);
+					(response.response.comment_dislike!=null)?$('#dislike_score').text(response.response.comment_dislike):$('#dislike_score').text(0);
+					$("#like_id").attr('data-cmt-status',"true");
 
 				},
          	});	

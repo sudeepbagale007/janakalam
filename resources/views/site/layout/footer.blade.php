@@ -24,11 +24,10 @@
               </div>
               <div class="col-md  border-left">
                   <div class="ftco-footer-widget pt-md-5 mb-4">
-                      <h2 class="ftco-heading-2">फारवेष्ट टाईम्स नेपाली दैनिक</h2>
+                      <h2 class="ftco-heading-2">प्रधान सम्पादक:</h2>
                       <div class="block-23 mb-3">
                           <ul>
-                              <li><span class="text">भीमदत्त नगरपालिका–६ कञ्चनपुर,  जि.प्र.का </span></li>
-                              <li><span class="text">दर्ता नं: १८ ⁄०५५ ⁄ ०५६</span></li>
+                              <li><span class="text">सुधीर नेपाल </span></li>
                           </ul>
                       </div>
                   </div>

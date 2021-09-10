@@ -83,9 +83,9 @@
         </div>
         @endif
       </div>
-      <div class="head__desc">
+      {{-- <div class="head__desc">
         {!! str_limit(strip_tags($item->description),100) !!}
-      </div>
+      </div> --}}
     </div>
      </div>
     @endforeach
@@ -196,7 +196,7 @@
     </div>
     @endif
   </div>
-</section>
+</section> --}}
 {!! getHomeAdvertisement('hp2') !!}
 {{-- <section class="promotional__col section__top ">
   <div class="container">
@@ -261,60 +261,43 @@
           <div class="news__title">
             <h2>{{ $news->title }}</h2>
           </div>
-          
           <div class="read__more">
             <a href="{{ route('category.list',$news->slug) }}" class="btn btn-1">सबै</a>
           </div>
         </div>
-        <div class="top__news__bar">
-          <div class="four__cols--grid">
-            <div class="col1 col__span3 row__span2">
-              @if(!empty($news->list[0]))
-              <div class="single__news">
-                <a href="{{ route('post.detail',$news->list[0]->slug) }}" class="news__link" title="news">
-                  <div class="big__img">
-                      @if($news->list[0]->image)
-                    <figure>
-                      <img src="{{ getImage($news->list[0]->image) }}" class="w-100" alt="{{ $news->list[0]->title }}" title="{{ $news->list[0]->title }}">
-                    </figure>
-                    @endif
-                    <h2 class="news__title--lg">{{ str_limit($news->list[0]->title,100) }}</h2>
-                    <p>{!! str_limit(strip_tags($news->list[0]->description),200) !!}</p>
-
+        @if(!empty($news->list[0]))
+        <div class="single__news">
+          <h2 class="news__title--lg">{{ str_limit($news->list[0]->title,100) }}</h2>
+          <div class="row">
+            <a href="{{ route('post.detail',$news->list[0]->slug) }}" class="news__link" title="news">
+              <div class="container">
+              <div class="row">
+                <div class="col* col-md-1 col-sm-1 col-lg-7">
+                  @if($news->list[0]->image)
+                  <figure>
+                    <img src="{{ getImage($news->list[0]->image) }}" class="w-100" alt="{{ $news->list[0]->title }}" title="{{ $news->list[0]->title }}">
+                  </figure>
+                  @endif
+                </div>
+                
+                <div class="col* col-md-1 col-sm-1 col-lg-5">
+                  <div class="post__time--1 py-3">
+                    <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($news->list[0]->published_date)->diffForHumans()) !!}</span>
                   </div>
-                </a>
-              </div>
-              @endif
-            </div>
-            @foreach($news->list as $kl => $item)
-            @if($kl >= 1 && $kl <=2)
-            <div class="col__span1">
-              <div class="news__md">
-                  @if($item->image)
-                <figure>
-                  <a href="{{ route('post.detail',$item->slug) }}" title="title">
-                    <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
-                  </a>
-                </figure>
-                @endif
-                <div class="news__infos__md">
-                  <h3>
-                  <a href="{{ route('post.detail',$item->slug) }}"> {!! str_limit($item->title,70) !!}</a>
-                  </h3>
-                  <div class="post__time--1">
-                    <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->published_date)->diffForHumans()) !!}</span>
-                  </div>
+                  <p>
+                    {!! str_limit(strip_tags($news->list[0]->description),500) !!}
+                  </p>
                 </div>
               </div>
-            </div>
-            @endif
-            @endforeach
+              </div>
+            </a>
           </div>
         </div>
+        @endif
         <div class="btm__news__bar">
-          <div class="four__cols--grid">
+          <div class="three__cols--grid">
             @foreach($news->list as $kl => $item)
-            @if($kl >= 3 && $kl <=6)
+            @if($kl >= 1 && $kl <=6)
             <div class="col__span1">
               <div class="news__md">
                    @if($item->image)
@@ -335,6 +318,7 @@
               </div>
             </div>
             @endif
+
             @endforeach
           </div>
         </div>

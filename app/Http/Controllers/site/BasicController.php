@@ -254,6 +254,8 @@ class BasicController extends Controller {
 				->update([
 					'comment_like'=>($cmt_interaction=='like')?intval($table_data->comment_like)+1:$table_data->comment_like,
 					'comment_dislike'=>($cmt_interaction=='dislike')?intval($table_data->comment_dislike)+1:$table_data->comment_dislike,
+					'comment_report'=>($cmt_interaction=='report')?intval($table_data->comment_report)+1:$table_data->comment_report,
+
 				]);			
 		}
 

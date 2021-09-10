@@ -82,7 +82,8 @@ class HomeController extends Controller {
     public function postDetail($slug){
         $detail = Home::getPostDetail($slug);
         $post_reaction = PostReaction::where('post_id',$detail->id)->first();
-        $post_comments = PostComments::where('post_id',$detail->id)->get();
+        $post_latest_cmts  = PostComments::where('post_id',$detail->id)->orderBy('id','desc')->get();
+        $most_liked_cmt = PostComments::where('post_id',$detail->id)->orderBy('comment_like','desc')->get();
         $previous = DB::table('tbl_posts')->where('id', '<', $detail->id)->orderBy('id','desc')->first();
         $next = DB::table('tbl_posts')->where('id', '>', $detail->id)->orderBy('id')->first();
 
@@ -102,9 +103,10 @@ class HomeController extends Controller {
                 // 'topads'                => $topads,
                 'bottomads'             => $bottomads,
                 'post_reaction'         => $post_reaction,
-                'post_comments'          =>  $post_comments,
+                'post_latest_cmts'      => $post_latest_cmts,
                 'previous'              =>$previous,
-                'next'                  =>$next
+                'next'                  =>$next,
+                'most_liked_cmt'        =>$most_liked_cmt
             );
             // return $result;
             return view('site.postdetail', $result);

@@ -22,7 +22,7 @@ class PostCommentsController extends Controller
         $comment->comment=$request->comment;
         $comment->post_id=$request->post_id;
         $comment->save();
-        session()->flash('comment', 'Comment Added  Successfully ');
+        session()->flash('comment', 'तपइको अमूल्य प्रतिक्रिया  को लागी धन्याबाद');
         return back();
 
     }

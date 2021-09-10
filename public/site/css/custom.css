@@ -330,6 +330,7 @@
 
 .response_comment a:hover {
   color: #0e5dae;
+  cursor: pointer;
 }
 
 .reply_button {
@@ -495,4 +496,14 @@ footer a {
   .break-title {
     font-size: 3rem;
   }
+}
+.facbookBar a {
+  background: #9cc3d5ff;
+  height: 4.9rem;
+  display: inline-block;
+  width: 4rem;
+  text-align: center;
+  line-height: 4.9rem;
+  font-size: 2.5rem;
+  color: #012c71;
 }
