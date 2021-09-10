@@ -71,6 +71,16 @@ Route::get('/c', function() {
 
 	Route::post('updateinteraction','BasicController@updateCommentInteraction')->name('updateinteraction');
 
+	Route::get('importCategoryView', 'FileExportController@importCategoryView');
+	Route::post('importcategory', 'FileExportController@importCategory')->name('importcategory');
+	Route::get('exportcategory', 'FileExportController@exportCategory')->name('exportcategory');
+
+
+	Route::get('importCategoryRelView', 'FileExportController@importCategoryRelView');
+	Route::post('importcategoryrel', 'FileExportController@exportCategoryRel')->name('importcategoryrel');
+	Route::get('exportcategoryrel', 'FileExportController@importCategoryRel')->name('exportcategoryrel');
+
+
 });
 
 
