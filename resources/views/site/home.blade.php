@@ -44,9 +44,9 @@
   </div>
   @endif
 </section>
-<section class="breakingNews section__top">
-  <div class="container">
-    
+{{-- <section class="breakingNews section__top">
+    <div class="container">
+      
       <div class="breakings">
           
     @if(!empty($breakingnews))
@@ -90,11 +90,39 @@
      </div>
     @endforeach
     @endif
-    
-   
     </div>
   </div>
+</section> --}}
+
+
+<section class="breakingNews section__top">
+  <div class="container">
+    <div class="breakings">
+      @if(!empty($breakingnews))
+        @foreach($breakingnews as $k => $item)
+        <div class="py-5">
+            <a class="d-flex justify-content-center font-weight-bold break-title" href="{{ route('post.detail',$item->slug) }}" >{!! $item->title !!}</a>
+            <div class="d-flex flex-row justify-content-center my-5">
+              <div class="px-3">
+                <span>{{ authorName($item->author_name,$item->author_id) }}</span>
+              </div>  
+              <div class="px-3">
+                <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->published_date)->diffForHumans()) !!}</span>
+              </div>  
+            </div> 
+            @if($item->show_image == 1 && $item->image != '')
+              <img src="{{ getImage($item->image) }}" class="img-fluid w-100" title="{{ $item->title }}" alt="{{ $item->title }}"/>
+            @endif  
+            {{-- <div class="pt-5 text-muted" style="font-size: 25px">
+              {!! str_limit(strip_tags($item->description),300) !!}
+            </div> --}}
+          </div>  
+        @endforeach
+      @endif    
+    </div>
+  </div>    
 </section>
+
 <section class="main__news section__top py-5 bg_p_dim text-left">
   <div class="container">
     @if(!empty($latestHome))
@@ -191,8 +219,8 @@
                   @php $ans=explode(',',$row->answers); @endphp
                   @foreach($ans as $key=>$info)
                     <div class="form-check mt-2">
-                      <input class="form-check-input" type="radio" name="answer[{{$index}}]" value="option{{$key}}"  style="height: 25px">
-                      <label class="form-check-label ml-4" style="font-size: 20px">
+                      <input class="form-check-input" type="radio" name="answer[{{$index}}]" value="option{{$key}}"  style="height: 25px" id="{{$index}}-{{$key}}">
+                      <label class="form-check-label ml-4" style="font-size: 20px" for="{{$index}}-{{$key}}">
                         {{$info}}
                       </label>
                     </div>

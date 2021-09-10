@@ -480,9 +480,19 @@ footer {
 }
 
 footer h2 {
-  color:#ccc !important;
+  color: #ccc !important;
 }
 
-footer a{
+footer a {
   color: #ccc;
+}
+
+.break-title {
+  font-size: 4rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .break-title {
+    font-size: 3rem;
+  }
 }
