@@ -7,6 +7,8 @@ use App\Exports\CategoryRelationExport;
 use App\Http\Controllers\Controller;
 
 use App\Exports\PostExport;
+use App\Imports\CategoryImport;
+use App\Imports\CategoryRelationImport;
 use Illuminate\Http\Request;
 use App\Imports\PostImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -41,7 +43,9 @@ class FileExportController extends Controller
     }
 
     public function importCategory(){
-
+        Excel::import(new CategoryImport,request()->file('file'));
+        session()->flash('success','Category added Successful');
+        return redirect()->back();
     }
 
 
@@ -56,7 +60,8 @@ class FileExportController extends Controller
     }
 
     public function importCategoryRel(){
-        return Excel::download(new CategoryRelationExport, 'categoryrelation.xlsx');
-
+        Excel::import(new CategoryRelationImport,request()->file('file'));
+        session()->flash('success','CategoryRelation added Successful');
+        return redirect()->back();
     }
 }
