@@ -487,3 +487,16 @@ footer h2 {
 footer a{
   color: #ccc;
 }
+
+.facbookBar a{
+  
+    background: #ffffffea;
+    height: 4.9rem;
+    display: inline-block;
+    width: 4rem;
+    text-align: center;
+    line-height: 4.9rem;
+    font-size: 2.5rem;
+    color: #012c71;
+};
+

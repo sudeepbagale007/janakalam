@@ -160,6 +160,11 @@
                   <i class="lab la-youtube"></i>
                 </a>
               </div>
+              <div class="facbookBar" >
+                <a  href="https://www.facebook.com/Farwest-Times-Daily-News-103938428145090">
+                  <i class="fab fa-facebook-square"></i>
+                </a>
+              </div>
             </div>
           </div>
         </nav>

@@ -52,7 +52,7 @@
 								<div class="top__detail__flex">
 									<div class="media">
 										<figure class="mr-2">
-											<img src="{{ getImage($sitedetail->logo) }}" alt="{{ $detail->title }}" title="{{ $detail->title }}">
+											<img src="{{asset('site/images/glob.jpg')}}" alt="{{ $detail->title }}" title="{{ $detail->title }}" style="max-height: 50px">
 										</figure>
 										<div class="author__Details d-flex flex-row mt-4">
 											<h4 class="ml-4">{{ authorName($detail->author_name,$detail->author_id) }}</h4>
