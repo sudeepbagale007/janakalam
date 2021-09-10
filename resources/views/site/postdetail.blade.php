@@ -185,20 +185,20 @@
 											</span>
 											<div class="like_warp">
 												<span class="icon_comment">
-													<a  class="interaction" id="like_id" data-cmt-id="like" data-comment_id="{{$post_comment->id}}" data-interaction_id="1" data-cmt-status="false">
+													<a  class="interaction" id="like_id" data-cmt-id="like" data-comment_id="{{$post_comment->id}}"  data-cmt-status="false">
 														<i class="fas fa-thumbs-up"></i>
 													</a>
-													<span class="react_number" id="like_score">0</span>
-													<a href="">Likes</a>
+													<span class="react_number" id="like_score">{{$post_comment->comment_like}}</span>
+													<span>Likes</span>
 												</span>
 											</div>
 											<div class="dislike_warp">
 												<span class="icon_comment">
-													<a href="">
+													<a href="" class="interaction" id="dislike_id" data-cmt-id="dislike" data-comment_id="{{$post_comment->id}}">
 														<i class="fas fa-thumbs-down"></i>
 													</a>
-													<span class="react_number">0</span>
-													<a href="">Dislikes</a>
+													<span id="dislike_score" class="react_number">{{$post_comment->comment_dislike}}</span>
+													<span>Dislikes</span>
 												</span>
 											</div>
 											<span class="report_comment mr-4">
@@ -456,7 +456,6 @@
 	$('.interaction').on('click',function(){
 		var selected_interaction=$(this).attr("data-cmt-id");
 		var comment_id=$(this).attr("data-comment_id");
-		var interaction_id=$(this).attr("data-interaction_id");
 		var interclicked=$('#like_id').attr("data-cmt-status");
 		if(interclicked=="false"){
 			$.ajax({
@@ -466,11 +465,11 @@
 					"_token": "{{ csrf_token() }}",
 					selected_interaction:selected_interaction,
 					comment_id:comment_id,
-					interaction_id:interaction_id
 				},
 				success:function(response){     
 					(response.response.comment_like!=null)?$('#like_score').text(response.response.comment_like):$('#like_score').text(0);
-					$("#like_id").attr('interaction_id',response.response.id);
+					(response.response.comment_like!=null)?$('#dislike_score').text(response.response.comment_like):$('#dislike_score').text(0);
+
 				},
          	});	
 		}
