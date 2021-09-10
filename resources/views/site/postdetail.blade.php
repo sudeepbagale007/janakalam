@@ -380,7 +380,7 @@
 							<div class="row no-gutters">
 								@if(count($categorypostlist)>0)
 								@foreach($categorypostlist as $kl =>$item)
-								<div class="col* col-sm-6 col-md-4 col-lg-3 news__list1">
+								<div class="col* col-sm-6 col-md-4 col-lg-4 news__list1">
 									<div class="news__md--1">
 										<figure>
 											<a href="{{ route('post.detail',$item->slug) }}">
