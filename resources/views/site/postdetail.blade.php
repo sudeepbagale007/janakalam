@@ -160,6 +160,7 @@
 									<a href="#">{{$comment_count}}</a>
 								</span>
 							</div>
+							
 							<div class="d-flex flex-row text-muted response_menu my-4" style="font-size: 20px; cursor:pointer">
 								<div x-on:click="first=true; second=false; third=false;" x-bind:class="first==true?'menu_active':'text-muted'">भर्खरै</div>
 								<div class="ml-4" x-on:click="first=false; second=true; third=false;" x-bind:class="second==true?'menu_active':'text-muted'">लोकप्रिय</div>
