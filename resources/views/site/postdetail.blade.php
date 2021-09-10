@@ -155,7 +155,7 @@
 						<div class="response_section" x-data={first:true,second:false,third:false}>
 							<div class="response_heading">
 								<h1>प्रतिक्रिया</h1>
-								<?php $comment_count = count($post_comments); ?>
+								<?php $comment_count = count($post_latest_cmts); ?>
 								<span>
 									<a href="#">{{$comment_count}}</a>
 								</span>
@@ -167,7 +167,7 @@
 								<div class="ml-4" x-on:click="first=false; second=false; third=true;" x-bind:class="third==true?'menu_active':'text-muted'">प्रतिक्रिया</div>
 							</div>
 							<div class="response_content" x-show="first">
-								@foreach ($post_comments as $key=>$post_comment )
+								@foreach ($post_latest_cmts as $key=>$post_comment )
 								<div class="response_content_warp">
 									<div class="response_image">
 										<img src="https://www.onlinekhabar.com/wp-content/themes/onlinekhabar-2018/img/userIcon.png">
@@ -251,7 +251,7 @@
 							</div>
 
 							<div class="response_content" x-show="second">
-								@foreach ($post_comments as $index=>$post_comment )
+								@foreach ($most_liked_cmt as $index=>$post_comment )
 								<div class="response_content_warp">
 									<div class="response_image">
 										<img src="https://www.onlinekhabar.com/wp-content/themes/onlinekhabar-2018/img/userIcon.png">
@@ -270,26 +270,30 @@
 											</span>
 											<div class="like_warp">
 												<span class="icon_comment">
-													<a href="">
+													<a  class="interaction" id="like_id" data-cmt-id="like" data-comment_id="{{$post_comment->id}}"  data-cmt-status="false">
 														<i class="fas fa-thumbs-up"></i>
 													</a>
-													<span class="react_number">0</span>
-													<a href="">Likes</a>
+													<span class="react_number" id="like_score">{{$post_comment->comment_like}}</span>
+													<span>Likes</span>
 												</span>
 											</div>
 											<div class="dislike_warp">
 												<span class="icon_comment">
-													<a href="">
+													<a  class="interaction" id="dislike_id" data-cmt-id="dislike" data-comment_id="{{$post_comment->id}}">
 														<i class="fas fa-thumbs-down"></i>
 													</a>
-													<span class="react_number">0</span>
-													<a href="">Dislikes</a>
+													<span id="dislike_score" class="react_number">{{$post_comment->comment_dislike}}</span>
+													<span>Dislikes</span>
 												</span>
 											</div>
-											<span class="report_comment mr-4">
-												<i class="fas fa-flag"></i>
-												<a href="" class="pl-3">Report</a>
-											</span>
+											<div class="report_warp mr-4">
+												<span class="icon_comment report_comment">
+													<a  class="interaction" id="report_id" data-cmt-id="report" data-comment_id="{{$post_comment->id}}">
+														<i class="fas fa-flag"></i>
+													</a>
+													<span>Report</span>
+												</span>
+											</div>
 											<span class="reply_button mt-4" x-on:click="$refs.favorite{{$index}}.style.display='block'" style="cursor:pointer">जवाफ दिनुहोस्</span>
 										</div>
 									</div>
