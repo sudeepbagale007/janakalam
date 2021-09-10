@@ -13,7 +13,7 @@ class PostExport implements FromCollection,WithHeadings
     */
     public function collection()
     {
-        return Post::select('post_date','post_content','post_title','post_modified')
+        return Post::select('ID','post_date','post_content','post_title','post_modified')
         ->where('post_status','publish')
         ->where('post_type','post')
         ->where('post_content','!=','')
@@ -23,6 +23,7 @@ class PostExport implements FromCollection,WithHeadings
 
     public function headings() :array{
         return[
+            'id',
             'post_date',
             'post_content',
             'post_title',

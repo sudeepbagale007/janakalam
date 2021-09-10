@@ -37,6 +37,7 @@ class PostImport implements ToCollection,WithHeadingRow
                 
 
             $insert_data[]=[
+                'id'=>$row['id'],
                 'published_date'=>$row['post_date'],
                 'description'=>$row['post_content'],
                 'title'=>$row['post_title'],
