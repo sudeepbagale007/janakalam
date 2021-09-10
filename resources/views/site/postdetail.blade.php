@@ -194,17 +194,22 @@
 											</div>
 											<div class="dislike_warp">
 												<span class="icon_comment">
-													<a href="" class="interaction" id="dislike_id" data-cmt-id="dislike" data-comment_id="{{$post_comment->id}}">
+													<a  class="interaction" id="dislike_id" data-cmt-id="dislike" data-comment_id="{{$post_comment->id}}">
 														<i class="fas fa-thumbs-down"></i>
 													</a>
 													<span id="dislike_score" class="react_number">{{$post_comment->comment_dislike}}</span>
 													<span>Dislikes</span>
 												</span>
 											</div>
-											<span class="report_comment mr-4">
-												<i class="fas fa-flag"></i>
-												<a href="" class="pl-3">Report</a>
-											</span>
+											<div class="report_warp mr-4">
+												<span class="icon_comment report_comment">
+													<a  class="interaction" id="report_id" data-cmt-id="report" data-comment_id="{{$post_comment->id}}">
+														<i class="fas fa-flag"></i>
+													</a>
+													<span>Report</span>
+												</span>
+											</div>
+
 											<span class="reply_button mt-3" x-on:click="$refs.latest{{$key}}.style.display='block'" style="cursor: pointer">जवाफ दिनुहोस्</span>
 										</div>
 									</div>
@@ -454,6 +459,7 @@
 
 <script>
 	$('.interaction').on('click',function(){
+		var interclicked=$('#like_id').attr("data-cmt-status");
 		var selected_interaction=$(this).attr("data-cmt-id");
 		var comment_id=$(this).attr("data-comment_id");
 		var interclicked=$('#like_id').attr("data-cmt-status");
@@ -468,7 +474,8 @@
 				},
 				success:function(response){     
 					(response.response.comment_like!=null)?$('#like_score').text(response.response.comment_like):$('#like_score').text(0);
-					(response.response.comment_like!=null)?$('#dislike_score').text(response.response.comment_like):$('#dislike_score').text(0);
+					(response.response.comment_dislike!=null)?$('#dislike_score').text(response.response.comment_dislike):$('#dislike_score').text(0);
+					$("#like_id").attr('data-cmt-status',"true");
 
 				},
          	});	

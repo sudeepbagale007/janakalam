@@ -330,6 +330,7 @@
 
 .response_comment a:hover {
   color: #0e5dae;
+  cursor: pointer;
 }
 
 .reply_button {
