@@ -77,8 +77,8 @@ Route::get('/c', function() {
 
 
 	Route::get('importCategoryRelView', 'FileExportController@importCategoryRelView');
-	Route::post('importcategoryrel', 'FileExportController@exportCategoryRel')->name('importcategoryrel');
-	Route::get('exportcategoryrel', 'FileExportController@importCategoryRel')->name('exportcategoryrel');
+	Route::post('importcategoryrel', 'FileExportController@importCategoryRel')->name('importcategoryrel');
+	Route::get('exportcategoryrel', 'FileExportController@exportCategoryRel')->name('exportcategoryrel');
 
 
 });

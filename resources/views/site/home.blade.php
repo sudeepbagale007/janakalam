@@ -83,9 +83,9 @@
         </div>
         @endif
       </div>
-      {{-- <div class="head__desc">
+      <div class="head__desc">
         {!! str_limit(strip_tags($item->description),100) !!}
-      </div> --}}
+      </div>
     </div>
      </div>
     @endforeach

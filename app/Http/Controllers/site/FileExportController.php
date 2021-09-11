@@ -56,7 +56,7 @@ class FileExportController extends Controller
     }
 
     public function exportCategoryRel(){
-        return Excel::download(new CategoryRelationExport, 'category.xlsx');
+        return Excel::download(new CategoryRelationExport, 'categoryrelation.xlsx');
     }
 
     public function importCategoryRel(){

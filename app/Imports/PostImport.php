@@ -52,22 +52,9 @@ class PostImport implements ToCollection,WithHeadingRow
         if(!empty($insert_data))
         {
            foreach($insert_data as $info){
-               $rows[]=DB::table('tbl_posts')->insertGetId($info);
+               $rows[]=DB::table('tbl_posts')->insert($info);
            }        
         }
 
-        foreach($rows as $id){
-            if(is_int($id)){
-                $new_ids[]=$id;
-            }
-        }
-       
-        foreach($new_ids as  $datas){   
-                     DB::table('rel_post_category')->insert([
-                    'post_id' => $datas,
-                    'category_id'=>'2',
-        
-            ]);
-        }
     }
 }
