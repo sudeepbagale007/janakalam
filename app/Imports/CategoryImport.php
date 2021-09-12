@@ -22,6 +22,7 @@ class CategoryImport implements ToCollection,WithHeadingRow
                     'slug'=>$row['category_slug'],
                     'template_id'=>$ran,
                     'status'=>1,
+                    'parent_id'=>0,
                   
                 ];
             }
