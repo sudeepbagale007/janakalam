@@ -12,14 +12,56 @@ use App\Imports\CategoryRelationImport;
 use Illuminate\Http\Request;
 use App\Imports\PostImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Http;
+use DB;
 
 class FileExportController extends Controller
 {
 
     public function importExportView()
     {
-       return view('import');
-    }
+        $info=DB::table('wp_posts')
+                   ->where('post_type','post')
+                   ->where('post_status','publish')
+                   ->whereNull('wp_slug')
+                   ->limit(100)
+                   ->get();
+      
+        $cc=new \GuzzleHttp\Client();
+
+        foreach($info as $row){
+
+            $abc=$cc->get($row->guid);
+
+            $string= htmlspecialchars_decode($abc->getBody()->getContents());
+    
+            $doc = new \DOMDocument();
+                    
+            $doc->loadHTML($string,LIBXML_NOERROR);
+            $xpath = new \DOMXPath( $doc );
+    
+    
+            $nodes=$xpath->query('/html/head/meta[@name="twitter:url"]/@content');
+    
+    
+            if($nodes->length==1)
+            {
+                for( $i = 0; $i < $nodes->length; $i++ ) {
+                    $data= $nodes->item( $i )->value . PHP_EOL;
+    
+                    $slug=substr($data,30);
+    
+                    DB::table('wp_posts')
+                        ->where('ID',$row->ID)
+                        ->update([
+                            'wp_slug'=>$slug
+                        ]);
+                }
+            }
+        }
+
+        echo "Done";
+}
     
     public function export() 
     {

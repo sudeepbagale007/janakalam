@@ -14,25 +14,22 @@ class CategoryImport implements ToCollection,WithHeadingRow
     */
     public function collection(Collection $collection)
     {
-            foreach($collection as $row){
-                $ran=rand(1,4);
-                $insert_data[]=[
-                    'id'=>$row['category_id'],
-                    'title'=>$row['category_name'],
-                    'slug'=>$row['category_slug'],
-                    'template_id'=>$ran,
-                    'status'=>1,
-                  
-                ];
-            }
-    
-    
-            if(!empty($insert_data))
-            {
-               foreach($insert_data as $info){
-                   $rows[]=DB::table('tbl_category')->insertGetId($info);
-               }        
-            }
-            
+        foreach($collection as $row){
+            $ran=rand(1,4);
+            $insert_data[]=[
+                'id'=>$row['category_id'],
+                'title'=>$row['category_name'],
+                'slug'=>$row['category_slug'],
+                'template_id'=>$ran,
+                'status'=>1,
+                
+            ];
+        }
+        if(!empty($insert_data))
+        {
+            foreach($insert_data as $info){
+                $rows[]=DB::table('tbl_category')->insertGetId($info);
+            }        
+        }      
     }
 }
