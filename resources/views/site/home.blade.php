@@ -101,13 +101,13 @@
       @if(!empty($breakingnews))
         @foreach($breakingnews as $k => $item)
         <div class="py-5">
-            <a class="d-flex justify-content-center font-weight-bold break-title" href="{{ route('post.detail',$item->slug) }}" >{!! $item->title !!}</a>
+            <a class="d-flex justify-content-center font-weight-bold break-title text-center" href="{{ route('post.detail',$item->slug) }}" >{!! $item->title !!}</a>
             <div class="d-flex flex-row justify-content-center my-5">
               <div class="px-3">
                 <span>{{ authorName($item->author_name,$item->author_id) }}</span>
               </div>  
               <div class="px-3">
-                <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->published_date)->diffForHumans()) !!}</span>
+                <i class="las la-clock"></i> <span>{!! changeFullDateTimeToNepaliFormat($item->published_date) !!}</span>
               </div>  
             </div> 
             @if($item->show_image == 1 && $item->image != '')
@@ -197,7 +197,6 @@
     @endif
   </div>
 </section> --}}
-{!! getHomeAdvertisement('hp2') !!}
 {{-- <section class="promotional__col section__top ">
   <div class="container">
     <a href="#" title="promotional-img">
@@ -252,6 +251,8 @@
     </div>
   </section>
 @endif 
+{!! getHomeAdvertisement('hp2') !!}
+
 <section class="news__col section__top py-5 bg_p_dim">
   <div class="container">
     @if(!empty($news))
