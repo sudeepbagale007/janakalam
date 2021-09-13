@@ -32,7 +32,7 @@ Route::get('/c', function() {
 
 	Route::get('/', 'HomeController@index')->name('index');
 	Route::get('pages/{slug}', 'HomeController@pagesDetail' )->name('page.detail');
-	Route::get('{Slug}', 'HomeController@postDetail' )->name('post.detail');
+	Route::get('detail/{Slug}', 'HomeController@postDetail' )->name('post.detail');
 	Route::get('faq', 'HomeController@faqData')->name('faq');
 	Route::get('video', 'HomeController@videoData')->name('video');
 	Route::get('contact-us', 'HomeController@contactUs')->name('contact');

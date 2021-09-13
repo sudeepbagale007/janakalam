@@ -20,47 +20,46 @@ class FileExportController extends Controller
 
     public function importExportView()
     {
-        $info=DB::table('wp_posts')
-                   ->where('post_type','post')
-                   ->where('post_status','publish')
-                   ->whereNull('wp_slug')
-                   ->limit(100)
-                   ->get();
+        // $info=DB::table('tbl_posts')
+        //            ->where('slug_status',0)
+        //            ->limit(100)
+        //            ->get();
       
-        $cc=new \GuzzleHttp\Client();
+        // $cc=new \GuzzleHttp\Client();
 
-        foreach($info as $row){
+        // foreach($info as $row){
 
-            $abc=$cc->get($row->guid);
+        //     $abc=$cc->get($row->guid);
 
-            $string= htmlspecialchars_decode($abc->getBody()->getContents());
+        //     $string= htmlspecialchars_decode($abc->getBody()->getContents());
     
-            $doc = new \DOMDocument();
+        //     $doc = new \DOMDocument();
                     
-            $doc->loadHTML($string,LIBXML_NOERROR);
-            $xpath = new \DOMXPath( $doc );
+        //     $doc->loadHTML($string,LIBXML_NOERROR);
+        //     $xpath = new \DOMXPath( $doc );
     
     
-            $nodes=$xpath->query('/html/head/meta[@name="twitter:url"]/@content');
+        //     $nodes=$xpath->query('/html/head/meta[@name="twitter:url"]/@content');
     
     
-            if($nodes->length==1)
-            {
-                for( $i = 0; $i < $nodes->length; $i++ ) {
-                    $data= $nodes->item( $i )->value . PHP_EOL;
+        //     if($nodes->length==1)
+        //     {
+        //         for( $i = 0; $i < $nodes->length; $i++ ) {
+        //             $data= $nodes->item( $i )->value . PHP_EOL;
     
-                    $slug=substr($data,30);
+        //             $slug=substr($data,30);
     
-                    DB::table('wp_posts')
-                        ->where('ID',$row->ID)
-                        ->update([
-                            'wp_slug'=>$slug
-                        ]);
-                }
-            }
-        }
+        //             DB::table('tbl_posts')
+        //                 ->where('id',$row->id)
+        //                 ->update([
+        //                     'slug'=>$slug
+        //                 ]);
+        //         }
+        //     }
+        // }
 
-        echo "Done";
+        // echo "Done";
+        return view('import');
 }
     
     public function export() 

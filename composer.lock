@@ -2769,25 +2769,25 @@
         },
         {
             "name": "spatie/laravel-sluggable",
-            "version": "2.2.2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-sluggable.git",
-                "reference": "b711700bacdf5382d8f4ed896b38e22102d27821"
+                "reference": "04f6921a36d90acb01df433bc374a5f9c2a76734"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-sluggable/zipball/b711700bacdf5382d8f4ed896b38e22102d27821",
-                "reference": "b711700bacdf5382d8f4ed896b38e22102d27821",
+                "url": "https://api.github.com/repos/spatie/laravel-sluggable/zipball/04f6921a36d90acb01df433bc374a5f9c2a76734",
+                "reference": "04f6921a36d90acb01df433bc374a5f9c2a76734",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
-                "illuminate/support": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
-                "php": "^7.2"
+                "illuminate/database": "^6.0",
+                "illuminate/support": "^6.0",
+                "php": "^7.4"
             },
             "require-dev": {
-                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0|^4.0|^5.0"
+                "orchestra/testbench": "^4.0"
             },
             "type": "library",
             "autoload": {
@@ -2815,15 +2815,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-sluggable/issues",
-                "source": "https://github.com/spatie/laravel-sluggable/tree/2.2.2"
+                "source": "https://github.com/spatie/laravel-sluggable/tree/master"
             },
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                }
-            ],
-            "time": "2020-04-06T14:31:18+00:00"
+            "time": "2019-12-06T10:02:18+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

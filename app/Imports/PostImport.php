@@ -21,11 +21,11 @@ class PostImport implements ToCollection,WithHeadingRow
     */
     public function collection(Collection $rows)
     {
-        $num =1;
+        // $num =1;
         foreach($rows as $row){
-            $slugValue=$num++;
-            $ran=rand(10,100);
-            $final_slug=time().'-'.$slugValue.'-'.$ran;
+            // $slugValue=$num++;
+            // $ran=rand(10,100);
+            // $final_slug=time().'-'.$slugValue.'-'.$ran;
             
             $html=$row['post_content']; 
                 $doc=new DOMDocument();
@@ -33,7 +33,10 @@ class PostImport implements ToCollection,WithHeadingRow
 
                 $doc->loadHTML($html);
                 $xpath=new DOMXPath($doc);
-            $src=$xpath->evaluate("string(//img/@src)");
+                $src=$xpath->evaluate("string(//img/@src)");
+
+                // dd($src);
+
                 
 
             $insert_data[]=[
@@ -42,7 +45,7 @@ class PostImport implements ToCollection,WithHeadingRow
                 'description'=>$row['post_content'],
                 'title'=>$row['post_title'],
                 'updated_at'=>$row['post_modified'],
-                'slug'=>$final_slug,
+                'slug'=>0,
                 'show_image'=>'1',
                 'image'=>$src,
                 'guid'=>$row['guid'],
