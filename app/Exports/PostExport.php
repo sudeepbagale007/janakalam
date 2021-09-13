@@ -36,7 +36,7 @@ class PostExport implements FromCollection,WithHeadings
         // return $data;
 
         
-        return Post::select('ID','post_date','post_content','post_title','post_modified')
+        return Post::select('ID','post_date','post_content','post_title','post_modified','guid')
         ->where('post_status','publish')
         ->where('post_type','post')
         ->where('post_content','!=','')
@@ -50,7 +50,8 @@ class PostExport implements FromCollection,WithHeadings
             'post_date',
             'post_content',
             'post_title',
-            'post_modified'
+            'post_modified',
+            'guid'
         ];
     }
 

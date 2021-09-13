@@ -45,6 +45,7 @@ class PostImport implements ToCollection,WithHeadingRow
                 'slug'=>$final_slug,
                 'show_image'=>'1',
                 'image'=>$src,
+                'guid'=>$row['guid'],
             ];
         }
 
