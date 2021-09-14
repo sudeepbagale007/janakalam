@@ -20,45 +20,7 @@ class FileExportController extends Controller
 
     public function importExportView()
     {
-        // $info=DB::table('tbl_posts')
-        //            ->where('slug_status',0)
-        //            ->limit(100)
-        //            ->get();
-      
-        // $cc=new \GuzzleHttp\Client();
-
-        // foreach($info as $row){
-
-        //     $abc=$cc->get($row->guid);
-
-        //     $string= htmlspecialchars_decode($abc->getBody()->getContents());
-    
-        //     $doc = new \DOMDocument();
-                    
-        //     $doc->loadHTML($string,LIBXML_NOERROR);
-        //     $xpath = new \DOMXPath( $doc );
-    
-    
-        //     $nodes=$xpath->query('/html/head/meta[@name="twitter:url"]/@content');
-    
-    
-        //     if($nodes->length==1)
-        //     {
-        //         for( $i = 0; $i < $nodes->length; $i++ ) {
-        //             $data= $nodes->item( $i )->value . PHP_EOL;
-    
-        //             $slug=substr($data,30);
-    
-        //             DB::table('tbl_posts')
-        //                 ->where('id',$row->id)
-        //                 ->update([
-        //                     'slug'=>$slug
-        //                 ]);
-        //         }
-        //     }
-        // }
-
-        // echo "Done";
+        
         return view('import');
 }
     
@@ -104,5 +66,49 @@ class FileExportController extends Controller
         Excel::import(new CategoryRelationImport,request()->file('file'));
         session()->flash('success','CategoryRelation added Successful');
         return redirect()->back();
+    }
+
+
+    public function updateSlug()
+    {
+        $info=DB::table('tbl_posts')
+                   ->where('slug',0)
+                   ->limit(1)
+                   ->get();
+      
+        $cc=new \GuzzleHttp\Client();
+
+        foreach($info as $row){
+
+            $abc=$cc->get($row->guid);
+
+            $string= htmlspecialchars_decode($abc->getBody()->getContents());
+    
+            $doc = new \DOMDocument();
+                    
+            $doc->loadHTML($string,LIBXML_NOERROR);
+            $xpath = new \DOMXPath( $doc );
+    
+    
+            $nodes=$xpath->query('/html/head/meta[@name="twitter:url"]/@content');
+    
+    
+            if($nodes->length==1)
+            {
+                for( $i = 0; $i < $nodes->length; $i++ ) {
+                    $data= $nodes->item( $i )->value . PHP_EOL;
+    
+                    $slug=substr($data,30);
+    
+                    DB::table('tbl_posts')
+                        ->where('id',$row->id)
+                        ->update([
+                            'slug'=>$slug
+                        ]);
+                }
+            }
+        }
+
+        echo "Done";
     }
 }
