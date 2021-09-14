@@ -68,10 +68,11 @@
 }
 
 .topbar marquee li::after {
-  content: -;
+  
 }
 .topbar {
   background: rgba(1, 44, 113, 0.1);
+  overflow: hidden;
 }
 .topbar ul {
   margin-bottom: 0;
