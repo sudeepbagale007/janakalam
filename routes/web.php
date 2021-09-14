@@ -29,6 +29,16 @@ Route::get('/c', function() {
     Artisan::call('config:clear');
     return "All cleared";
 });
+/* MANAGING WORDPRESS REDIRECTIONS */
+
+	Route::get('/{year}/{month}/{day}/{id}',function($year,$month,$day,$id){
+		return redirect('detail/'.$id);
+	})->where('year', '[0-9]+')
+		->where('month', '[0-9]+')
+		->where('day', '[0-9]+')
+		->where('id', '[0-9]+');
+
+/* END WORDPRESS REDIRECTIONS */
 
 	Route::get('/', 'HomeController@index')->name('index');
 	Route::get('pages/{slug}', 'HomeController@pagesDetail' )->name('page.detail');

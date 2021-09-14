@@ -82,12 +82,14 @@
 							</div>
 
 							<div class="prv_next_news">
+								@if($previous)
 								<div>
 									<h3>< अघिल्लो समाचार </h3>
 									<div>
 									<a href="{{ route('post.detail',$previous->slug) }}">{{$previous->title}} </a>
 									</div>
 								</div>
+								@endif
 								@if($next)
 								<div>
 								 <h3>	पछिल्लो समाचार > </h3>

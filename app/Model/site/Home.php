@@ -153,6 +153,7 @@ class Home extends Model {
     }
 
     public static function getPostDetail($slug){
+        // dd($slug);
          $data = DB::table('tbl_posts')
                 ->select('id','title','description','image','short_text','sub_heading','show_image', 'fb_image','published_date','video_url','author_name', 'author_id')
                 ->where('slug', $slug)
