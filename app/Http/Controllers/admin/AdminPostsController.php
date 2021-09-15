@@ -81,12 +81,12 @@ class AdminPostsController extends Controller {
                     $q->where('category_id', $category);
                 });
             }
-            $list = $query->select('id', 'title', 'slug', 'published_date', 'status','viewcount','show_image')
+            $list = $query->select('id', 'title', 'slug', 'published_date', 'status','viewcount','show_image','created_by','updated_by')
                 ->orderBy('published_date', 'desc')
                 ->paginate(PAGES);
         } else {
             $list = AdminPosts::with('category')
-                ->select('id', 'title', 'slug', 'published_date', 'status','viewcount','show_image')
+                ->select('id', 'title', 'slug', 'published_date', 'status','viewcount','show_image','created_by','updated_by')
                 ->orderBy($this->sort_by, $this->sort_order)
                 ->paginate(PAGES);
         }
