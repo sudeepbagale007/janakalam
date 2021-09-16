@@ -196,7 +196,7 @@
     </div>
     @endif
   </div>
-</section> --}}
+</section> 
 {{-- <section class="promotional__col section__top ">
   <div class="container">
     <a href="#" title="promotional-img">

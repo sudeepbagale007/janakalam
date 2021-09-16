@@ -10,7 +10,7 @@
                   <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
                       <h2 class="ftco-heading-2">प्रकाशक तथा सम्पादक:</h2>
                       <ul>
-                          <li>कर्ण देव भट्ट</li>
+                          <li>संगम प्रसाद देबकोटा</li>
                       </ul>
                   </div>
               </div>
@@ -18,7 +18,7 @@
                   <div class="ftco-footer-widget pt-md-5 mb-4">
                       <h2 class="ftco-heading-2">संचालक:</h2>
                       <ul>
-                          <li>कर्णदेव भट्ट</li>
+                          <li>संगम प्रसाद देबकोटा</li>
                       </ul>
                   </div>
               </div>
@@ -27,29 +27,29 @@
                       <h2 class="ftco-heading-2">प्रधान सम्पादक:</h2>
                       <div class="block-23 mb-3">
                           <ul>
-                              <li><span class="text">सुधीर नेपाल </span></li>
+                              <li><span class="text">संगम प्रसाद देबकोटा </span></li>
                           </ul>
                       </div>
                   </div>
               </div>
       </div>
       <div class="row ftco-no-pb">
-            <div class="col-md">
+            {{-- <div class="col-md">
                 <div class="py-4">
                     <a href="{{route('about')}}"> हाम्रोबारे </a> 
                     <a class="ml-3" href="{{route('about-group')}}"> हाम्रो-समूह </a>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-md">
                 <p class="py-4">
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> farwesttimesdaily.com सर्वाधिकार सुरक्षित
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> janakalam.com
                 </p>
             </div>
-            <div class="col-md text-lg-right">
+            {{-- <div class="col-md text-lg-right">
                 <p class="py-4">
                     सूचना विभाग दर्ता नंः २२७५/०७७/०७८
                 </p>
-            </div>
+            </div> --}}
         </div>
       </div>
   </footer>
