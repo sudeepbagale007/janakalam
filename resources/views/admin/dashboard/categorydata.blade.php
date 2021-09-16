@@ -25,7 +25,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $count = 1; $totalviews =0; ?>
+                            <?php /*$count = 1; $totalviews =0; ?>
                             @if(!empty($list))
                             @foreach ($list as $item)
                             <?php
@@ -33,8 +33,30 @@
                                 foreach ($item->totalpost as $kl => $val) {
                                     $totalviews+=$val->viewcount;
                                 }
-                            }
+                            }*/
                             ?>
+
+@if(!empty($list))
+@foreach($list as $k => $item)
+        <?php
+        $totalviews =0;$count = 1;
+        if (!empty($item->totalpost)) {
+            foreach ($item->totalpost as $kl => $val) {
+                $totalviews+=$val->viewcount;
+            }
+        }
+    ?>
+
+                            @if(!empty($list))
+                            @foreach($list as $k => $item)
+                                    <?php
+                                    $totalviews =0;$count = 1;
+                                    if (!empty($item->totalpost)) {
+                                        foreach ($item->totalpost as $kl => $val) {
+                                            $totalviews+=$val->viewcount;
+                                        }
+                                    }
+                                ?>
                             <tr>
                                 <td>{{ $count++ }}</td>
                                 <td>{{ $item->title}}</td>

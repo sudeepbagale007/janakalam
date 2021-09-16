@@ -10,7 +10,10 @@ class AdminPostsCommentsController extends Controller
 {
     public function index(FacadesRequest $request){
        
-        $post_comments = DB::table('tbl_post_comments')->select('*')->get();
+        $post_comments = DB::table('tbl_post_comments')
+        ->select('*','tbl_post_comments.created_at as c_date')
+        ->leftJoin('tbl_posts','tbl_post_comments.post_id','tbl_posts.id')
+        ->get();
         return view('admin.comments.postcomments',compact('post_comments'));
 
     }
