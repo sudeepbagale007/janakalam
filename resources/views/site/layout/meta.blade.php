@@ -52,6 +52,7 @@
 <!--Bootstrap CSS-->
 <link rel="stylesheet" type="text/css" href="{{ asset('site/css/style.css', $secure = null) }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('site/css/custom.css', $secure = null) }}">
+
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 @stack('vi_style')

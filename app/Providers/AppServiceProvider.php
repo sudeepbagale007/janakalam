@@ -9,6 +9,8 @@ use Harimayco\Menu\Facades\Menu;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
+use Request;
+
 class AppServiceProvider extends ServiceProvider {
     /**
      * Bootstrap any application services.

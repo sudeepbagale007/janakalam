@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller {
-
 	public function index(){
         $breakingnews = Home::getBreakingNewsList();
         $latestHome = Home::getAllLatestPostListHome($limit=9);
@@ -79,7 +78,7 @@ class HomeController extends Controller {
         }
     }
 
-    public function postDetail($slug){
+    public static function postDetail($slug){
         $detail = Home::getPostDetail($slug);
         $post_reaction = PostReaction::where('post_id',$detail->id)->first();
         $post_latest_cmts  = PostComments::where('post_id',$detail->id)->orderBy('id','desc')->get();
@@ -88,6 +87,7 @@ class HomeController extends Controller {
         $next = DB::table('tbl_posts')->where('id', '>', $detail->id)->orderBy('id')->first();
 
         if (!empty($detail)) {
+
             Home::updatePostsViewCount($detail->id);
             $category = Home::getPostCategoryList($detail->id);
             if(!empty($category)){
@@ -108,7 +108,7 @@ class HomeController extends Controller {
                 'next'                  =>$next,
                 'most_liked_cmt'        =>$most_liked_cmt
             );
-            // return $result;
+         
             return view('site.postdetail', $result);
         } else{
             return view('errors.404');
@@ -319,5 +319,8 @@ class HomeController extends Controller {
             return view('errors.404');
         }
     }
+
+    
     
 }
+

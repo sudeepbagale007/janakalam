@@ -148,7 +148,8 @@
 
 <script>
   function currentTime() {
-    let date = new Date(); 
+    let date1 = new Date().toLocaleString("en-US", {timeZone: "Asia/Kathmandu"});
+    let date=new Date(date1);
     let hh = date.getHours();
     let mm = date.getMinutes();
     let ss = date.getSeconds();
