@@ -1,25 +1,38 @@
 <header style="border-top: 2px solid #0e5dae;" >
   <div class="topbar">
-      <div class="container">
-          <div class="row">
-              <div class='col-sm-10 d-flex align-items-center'>
-                  <div class="marquewrapper d-flex" style="gap: 10px">
-                      <span>Highlights: </span>
-                      <marquee scrollamount='5' onmouseover="this.stop();" onmouseout="this.start();">
-                          <ul style="list-style:none; display:flex; gap: 15px;">
-                              @foreach($latest as $item)
-                              <li class="d-flex flex-row">
-                                  <a href="{{ route('post.detail',$item->slug) }}" class="text-muted" style="color: red !important;">
-                                    {{$item->title}}</a>
-                                  <span class="px-2 text-muted">|</span>  
-                              </li>
-                              @endforeach
-                          </ul>
-                      </marquee>
-                  </div>
-              </div>
+    {{-- <div class="container">
+      <div class="row">
+        <div class='col-sm-10 d-flex align-items-center'>
+          <div class="marquewrapper d-flex" style="gap: 10px">
+            <span>Highlights: </span>
+            <marquee scrollamount='5' onmouseover="this.stop();" onmouseout="this.start();">
+                <ul style="list-style:none; display:flex; gap: 15px;">
+                    @foreach($latest as $item)
+                    <li class="d-flex flex-row">
+                        <a href="{{ route('post.detail',$item->slug) }}" class="text-muted" style="color: red !important;">
+                          {{$item->title}}</a>
+                        <span class="px-2 text-muted">|</span>  
+                    </li>
+                    @endforeach
+                </ul>
+            </marquee>   
           </div>
+        </div>
       </div>
+    </div> --}}
+    <div class="simple-marquee-container">
+      <div class="marquee-sibling">
+        Highlights:
+      </div>
+      <div class="marquee">
+        <ul class="marquee-content-items">
+          @foreach($latest as $item)
+            <li><a href="{{ route('post.detail',$item->slug) }}" style="color: red !important;">
+              {{$item->title}}</a></li>
+          @endforeach
+        </ul>
+      </div>
+    </div>
   </div>
 <div class="logo__header">
   <div class="container">
@@ -172,4 +185,14 @@
   }
 
   currentTime();
+</script>
+
+<script>
+
+  $(document).ready(function(){
+    $('.simple-marquee-container').SimpleMarquee({
+      duration:100000
+    });
+  })
+
 </script>

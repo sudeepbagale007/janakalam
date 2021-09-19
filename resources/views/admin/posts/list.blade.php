@@ -54,6 +54,8 @@
                         <th class="text-center">Published Date</th>
                         <th class="text-center">Total Views</th>
                         <th class="text-center">Status</th>
+                        <th class="text-center">Created By</th>
+                        <th class="text-center">Updated By</th>
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -77,7 +79,12 @@
                         <td class="text-center">{!! getYesNo($item->show_image) !!}</td>
                         <td class="text-center">{{ $item->published_date }}</td>
                         <td class="text-center">{{ $item->viewcount }}</td>
+                        <?php $created_by = DB::table('tbl_admin_users')->where('id',$item->created_by)->first();  ?>
+                        <?php $updated_by = DB::table('tbl_admin_users')->where('id',$item->updated_by)->first();  ?>
+
                         <td class="text-center">{!! getStatus($item->status) !!}</td>
+                        <td class="text-center">@if($created_by){{$created_by->name}}@endif</td>
+                        <td class="text-center">@if($updated_by){{$updated_by->name}}@endif</td>
                         <td class="text-center">
                             <a href="{{ route('posts.edit', $item->id) }}"> {!! EDIT_ICON !!}</a>&nbsp;|
                             <a href="{{ route('posts.delete', $item->id) }}" class="resetbtn">{!! DELETE_ICON !!} </a>

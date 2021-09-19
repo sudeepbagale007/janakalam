@@ -70,6 +70,8 @@ class RolesMiddleware {
             'AdminUIComponentController',
             'AdminProfileController',
             'AdminJanamatController',
+            'AdminPostsCommentsController',
+
         ];
 
         /*
