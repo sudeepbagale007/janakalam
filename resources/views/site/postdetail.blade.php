@@ -500,24 +500,23 @@
 
 <script>
 	$(document).ready(function(){
-		var myUrl='<?php echo url()->current();?>';
-		var url = encodeURIComponent(myUrl);
-		var domain = "https://api.sharedcount.com/v1.0/"; 
-    	var apikey = "f7b66509f0380648e52c34e850b565364dd40a9a" ;
+		var myUrl='https://farwesttimesdaily.com/detail/1632052470-b-34';
+		var url = (myUrl);
+		var domain="https://graph.facebook.com/v4.0/";
 		$.ajax({
 			data:{
-				url : url,
-        		apikey : apikey
+				id:url,
+				fields:'engagement',
+				access_token:'614113549948514|92dcd350aa49aa71718bf757aec79afe'
 			},
 			url:domain,
-			cache: true,
-        	dataType: "json",
-			type:"GET",
+			dataType: "json",
+            type:"GET",
 			success:function(response){
-				$('.share-count').text(response.Facebook.share_count);				
-			}	
+				$('.share-count').text(response.engagement.share_count);   
+			}
 		})
-	});
+	})
 </script>
 
 <script type="text/javascript" src="{{ asset('site/js/rv-jquery-fontsize-2.0.3.js')}}"></script>
