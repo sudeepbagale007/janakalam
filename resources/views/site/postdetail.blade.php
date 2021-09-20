@@ -61,8 +61,12 @@
 									</div>
             						<div class="post__share d-flex">
                                         <label class="post__title__label">शेयर गर्नुहोस :</label>
-                                        <div class="addthis_inline_share_toolbox_j83u"></div>
-                                  </div>
+										<div class="d-flex flex-column share-count-main">
+											<span class="share-count" style="font-size: 26px; font-weight:bold">0</span>
+											<span class="share-text" style="font-size: 15px; font-weight:bold">Shares</span>
+										</div>	
+                                        <div class="addthis_inline_share_toolbox ml-2"></div>
+                                  	</div>
 								</div>
 							</div>
 							
@@ -110,8 +114,12 @@
 									</div>
             						<div class="post__share d-flex">
                                         <label class="post__title__label">शेयर गर्नुहोस :</label>
-                                        <div class="addthis_inline_share_toolbox_j83u"></div>
-                                  </div>
+										<div class="d-flex flex-column share-count-main">
+											<span class="share-count" style="font-size: 26px; font-weight:bold">0</span>
+											<span class="share-text" style="font-size: 15px; font-weight:bold">Shares</span>
+										</div>	
+                                        <div class="addthis_inline_share_toolbox ml-2"></div>
+                                  	</div>
 								</div>
 							</div>
 						</div>
@@ -490,9 +498,32 @@
 	});
 </script>
 
+<script>
+	$(document).ready(function(){
+		var myUrl='<?php echo url()->current();?>';
+		var url = encodeURIComponent(myUrl);
+		var domain = "https://api.sharedcount.com/v1.0/"; 
+    	var apikey = "f7b66509f0380648e52c34e850b565364dd40a9a" ;
+		$.ajax({
+			data:{
+				url : url,
+        		apikey : apikey
+			},
+			url:domain,
+			cache: true,
+        	dataType: "json",
+			type:"GET",
+			success:function(response){
+				$('.share-count').text(response.Facebook.share_count);				
+			}	
+		})
+	});
+</script>
+
 <script type="text/javascript" src="{{ asset('site/js/rv-jquery-fontsize-2.0.3.js')}}"></script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0" nonce="77BXNwxQ"></script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f252f920a246dd4"></script>
+{{-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f252f920a246dd4"></script> --}}
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6146ff37d1b337ad"></script>
 <script type="text/javascript" src="{{ asset('site/js/detail.js')}}"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 {{-- @endpush
