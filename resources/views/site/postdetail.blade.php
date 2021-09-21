@@ -62,7 +62,7 @@
             						<div class="post__share d-flex">
                                         <label class="post__title__label">शेयर गर्नुहोस :</label>
 										<div class="d-flex flex-column share-count-main">
-											<span class="share-count" style="font-size: 26px; font-weight:bold">0</span>
+											<span class="share-count" id="share-value" style="font-size: 26px; font-weight:bold">{{$share_count}}</span>
 											<span class="share-text" style="font-size: 15px; font-weight:bold">Shares</span>
 										</div>	
                                         <div class="addthis_inline_share_toolbox ml-2"></div>
@@ -115,7 +115,7 @@
             						<div class="post__share d-flex">
                                         <label class="post__title__label">शेयर गर्नुहोस :</label>
 										<div class="d-flex flex-column share-count-main">
-											<span class="share-count" style="font-size: 26px; font-weight:bold">0</span>
+											<span class="share-count" style="font-size: 26px; font-weight:bold">{{$share_count}}</span>
 											<span class="share-text" style="font-size: 15px; font-weight:bold">Shares</span>
 										</div>	
                                         <div class="addthis_inline_share_toolbox ml-2"></div>
@@ -499,10 +499,17 @@
 </script>
 
 <script>
+	function kFormatter(num) {
+    	return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'K' : Math.sign(num)*Math.abs(num)
+	}
+
 	$(document).ready(function(){
 		var myUrl='https://farwesttimesdaily.com/detail/1632052470-b-34';
 		var url = (myUrl);
 		var domain="https://graph.facebook.com/v4.0/";
+		var old=parseInt($('#share-value').text());
+		var newShare='';
+		var combine='';
 		$.ajax({
 			data:{
 				id:url,
@@ -512,8 +519,10 @@
 			url:domain,
 			dataType: "json",
             type:"GET",
-			success:function(response){
-				$('.share-count').text(response.engagement.share_count);   
+			success:function(response){		 
+				newShare=parseInt(response.engagement.share_count);
+				combine=old+newShare;
+				$('.share-count').text(kFormatter(combine));  
 			}
 		})
 	})

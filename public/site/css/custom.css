@@ -118,7 +118,6 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 50px;
 }
 
 .post_reaction_emo div {
@@ -127,11 +126,11 @@
   height: 80px;
   width: 80px;
   border-radius: 50%;
-  padding-top: 18px;
+  padding-top: 30px;
   transition: all 0.3s ease;
   cursor: pointer;
   padding: 6px;
-  margin: 5px;
+  margin: 20px 2px;
   display: flex;
   justify-content: center;
   position: relative;

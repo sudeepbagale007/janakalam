@@ -86,6 +86,8 @@ class HomeController extends Controller {
         $previous = DB::table('tbl_posts')->where('id', '<', $detail->id)->orderBy('id','desc')->first();
         $next = DB::table('tbl_posts')->where('id', '>', $detail->id)->orderBy('id')->first();
 
+        $share_count=DB::table('tbl_posts')->where('id',$detail->id)->pluck('share_count')->first();
+
         if (!empty($detail)) {
 
             Home::updatePostsViewCount($detail->id);
@@ -106,7 +108,8 @@ class HomeController extends Controller {
                 'post_latest_cmts'      => $post_latest_cmts,
                 'previous'              =>$previous,
                 'next'                  =>$next,
-                'most_liked_cmt'        =>$most_liked_cmt
+                'most_liked_cmt'        =>$most_liked_cmt,
+                'share_count'           =>$share_count
             );
          
             return view('site.postdetail', $result);
