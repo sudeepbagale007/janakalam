@@ -118,7 +118,6 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 50px;
 }
 
 .post_reaction_emo div {
@@ -127,11 +126,11 @@
   height: 80px;
   width: 80px;
   border-radius: 50%;
-  padding-top: 18px;
+  padding-top: 30px;
   transition: all 0.3s ease;
   cursor: pointer;
   padding: 6px;
-  margin: 5px;
+  margin: 20px 2px;
   display: flex;
   justify-content: center;
   position: relative;
@@ -522,4 +521,18 @@ footer a {
   line-height: 4.9rem;
   font-size: 2.5rem;
   color: #012c71;
+}
+
+@media only screen and (min-width: 768px) {
+  .share-count-main {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    align-items: center;
+    border-right: 1px solid grey;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .share-text {
+    padding-left: 20px;
+  }
 }
