@@ -18,7 +18,7 @@ class AdminPostsController extends Controller {
 
     private $title = 'Posts';
     private $sort_by = 'published_date';
-    private $sort_order = 'desc';
+    private $sort_order = 'asc';
     private $index_link = 'posts.index';
     private $list_page = 'admin.posts.list';
     private $create_form = 'admin.posts.add';
@@ -34,7 +34,7 @@ class AdminPostsController extends Controller {
         $this->categorylist = AdminCategory::where('parent_id',0)
                                 // ->where('status',1)
                                 ->select('id','title')
-                                ->orderBy('title', 'asc')
+                                ->orderBy('title', 'desc')
                                 ->get();
 
         $this->authorlist = AdminAuthor::select('id','name')
@@ -74,7 +74,7 @@ class AdminPostsController extends Controller {
                 $query->where('title', 'like', '%' . $title . '%');
             }
             if ($date != '') {
-                $query->where('published_date', $date);
+                $query->whereDate('published_date', $date);
             }
             if ($category != '') {
                 $query->whereHas('category', function ($q) use ($category) {

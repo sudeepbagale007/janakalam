@@ -34,6 +34,8 @@ class HomeController extends Controller {
         $entertainment = Home::getHomePostListDescription($type='entertainment',$limit=4);
         $videoPosts = AdminVideoPost::where('status','1')->where('show_on_homepage','1')->get();
         $albums = Album::where('status','1')->limit(8)->get();
+        $health = Home::getHomePostListDescription($type='health',$limit=6);
+        $religious = Home::getHomePostListDescription($type='religious-culture',$limit=7);
 
         $janamat=DB::table('tbl_public_opinions')
                     ->get();
@@ -56,7 +58,9 @@ class HomeController extends Controller {
             'entertainment'     => $entertainment,
             'videoPosts'        => $videoPosts,
             'opinion'           =>$opinion,
-            'janamat'           =>$janamat
+            'janamat'           =>$janamat,
+            'health'            =>$health,
+            'religious'         =>$religious,
         );
 
         return view('site.home', $result);

@@ -12,7 +12,7 @@ class AdminCategoryController extends Controller {
 
     private $title = 'Category';
     private $sort_by = 'title';
-    private $sort_order = 'asc';
+    private $sort_order = 'desc';
     private $index_link = 'category.index';
     private $list_page = 'admin.category.list';
     private $create_form = 'admin.category.add';

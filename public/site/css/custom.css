@@ -373,11 +373,27 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .post_reaction_emo {
     justify-content: flex-start;
   }
+} */
+
+@media only screen  and (max-width: 767px){
+.post_reaction_emo {
+    flex-wrap: wrap;
+    justify-content: center;
 }
+}
+
+@media only screen  and (max-width: 767px){
+  .emoji {
+    text-align: center;
+    position: relative;
+    margin-bottom: 38px;
+}
+  }
+  
 
 .prv_next_news {
   display: flex;

@@ -718,6 +718,97 @@
   </div>
 </section>
 {!! getHomeAdvertisement('hp6') !!}
+<section class="literture__col section__top">
+  <div class="container">
+    
+    @if(!empty($health))
+    <div class="row">
+      <div class="col* col-md-12 col-lg-8">
+        <div class="title__headFlex">
+          <div class="news__title">
+            <h2>{{ $health->title }} </h2>
+          </div>
+          
+          <div class="read__more">
+            <a href="{{ route('category.list',$health->slug) }}" class="btn btn-1">सबै</a>
+          </div>
+        </div>
+        <div class="four__cols--grid">
+          @if(!empty($health->list[0]))
+          <div class="col__span2">
+            <div class="featureImg bigImg">
+              <div class="mainBigImg featureBgImg itemAfter" 
+              @if($health->list[0]->image)
+              style="background: url({{ getImage($health->list[0]->image) }});background-size: cover;background-repeat: no-repeat;background-position: center;"
+              @endif
+              >
+                <div class="featureOverlay"></div>
+                
+                <div class="featureBgInfos">
+                  <h3><a href="{{ route('post.detail',$health->list[0]->slug) }}">{{ str_limit($health->list[0]->title,100) }}</a></h3>
+                  <p>{!! str_limit(strip_tags($health->list[0]->description),200) !!}</p>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          @endif
+          <div class="col__span2">
+            <div class="news__list">
+              @foreach($health->list as $kl => $item)
+              @if($kl >= 1 && $kl <=5)
+              <div class="news__blockList">
+                <div class="news__flex news__img--md">
+                  <figure>
+                    <a href="{{ route('post.detail',$item->slug) }}" title="{{ $item->title }}">
+                      <img src="{{ getImage($item->image) }}" class="w-100 h-100" alt="{{ $item->title }}" title{{ $item->title }}>
+                    </a>
+                  </figure>
+                  
+                  <div class="news__infos">
+                    <h3 class="news__title--sm"><a href="{{ route('post.detail',$item->slug) }}">{!! str_limit($item->title,70) !!}</a></h3>
+                    <div class="post__time--1">
+                      <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->published_date)->diffForHumans()) !!}</span>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              @endif
+              @endforeach
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col* col-md-12 col-lg-4">
+        @if(!empty($religious))
+        <div class="side__col">
+          <h3>धर्म संस्कृत</h3>
+        </div>
+        <div class="trending__box thought__list">
+          <ul class="list-unstyled">
+            @foreach($religious->list as $item)
+            <li>
+              <div class="media">
+                  @if($item->image)
+                <figure class="avatar mr-2">
+                  <img src="{{ getImage($item->image) }}" class="rounded-circle w-100" alt="{{ $item->title }}" title{{ $item->title }}>
+                </figure>
+                @endif
+                <div class="media__latest--infos">
+                  <a href="{{ route('post.detail',$item->slug) }}" title="{{ $item->title }}">{{ str_limit($item->title,100) }}</a>
+                </div>
+              </div>
+            </li>
+            @endforeach
+          </ul>
+        </div>
+        @endif
+      </div>
+    </div>
+    @endif
+  </div>
+</section>
 <section class="technology__col section__top py-5 bg_p_dim">
   <div class="container">
     @if(!empty($technology))
