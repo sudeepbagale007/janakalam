@@ -64,10 +64,9 @@
                                 <td class="text-center">0</td>
                             @endif    
                             <td class="text-center">@if($janamat_count)<a href="{{route('user-answer',$item->id)}}">{{$janamat_count}} @else 0 @endif</a></td>
-                            <td class="text-center">Active</td>
+                            <td class="text-center">@if($item->status == 1) Published @else Unpublished @endif </td>
                             <td class="text-center">
                                 <a href="{{ route('janamat.edit', $item->id) }}"> {!! EDIT_ICON !!}</a>&nbsp;|
-                                <a href="{{ route('janamat.delete', $item->id) }}" class="resetbtn">{!! DELETE_ICON !!} </a>
                             </td>
                             <td class="text-center">{{ $item->created_at }}</td>
                         </tr>

@@ -41,17 +41,22 @@ class AdminJanamatController extends Controller
             'question'=>'required',
         ]);
 
+
         $answer=implode(',',$request->answers);
 
         $store_janamat = PublicOpinion::updateOrCreate(
         [
             'id'=> $request->id,
         ]
+
         ,[
             'answers'=>$answer,
-            'question'=>$request->question
+            'question'=>$request->question,
+            'status'=>$request->status
 
         ]);
+
+        // dd($store_janamat);
         session()->flash('success', 'Janamat Created Successfully ');
         return redirect(route('janamat.index'));
     }

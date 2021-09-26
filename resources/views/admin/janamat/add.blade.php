@@ -44,7 +44,19 @@
                             @enderror
                         </div>
                     </template>  
-                </div>      
+                </div>  
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" for="status">Status <span class="text-danger">*</span></label>
+                        <br>
+                        <label class="radio-inline">
+                            <input type="radio" name="status" value="1" @if($id)  @if($data->status == 1) checked   @endif @else checked @endif> Publish
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="status" value="0" @if($id) @if($data->status == 0) checked  @endif @endif> Unpublish
+                        </label>
+                    </div>
+                </div>    
                 <div class="form-group">
                     <button type="submit" class="btn btn-success" style="margin-top:20px">Submit</button>
                 </div>
