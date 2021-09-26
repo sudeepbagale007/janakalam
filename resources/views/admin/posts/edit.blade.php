@@ -94,6 +94,18 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
+                            <label class="control-label" for="stick_news">Stick  News<span class="text-danger">*</span></label>
+                            <br>
+                            <label class="radio-inline">
+                                <input type="radio" name="stick_news" value="1" @if($record->stick_news == 1) {{ 'checked' }} @endif> Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="stick_news" value="0" @if($record->stick_news == 0) {{ 'checked' }} @endif> No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
                             <label class="control-label" for="show_image">Show Featured Image <span class="text-danger">*</span></label>
                             <br>
                             <label class="radio-inline">

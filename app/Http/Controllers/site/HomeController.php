@@ -37,8 +37,9 @@ class HomeController extends Controller {
         $health = Home::getHomePostListDescription($type='health',$limit=6);
         $religious = Home::getHomePostListDescription($type='religious-culture',$limit=7);
 
-        $janamat=DB::table('tbl_public_opinions')
+        $janamat=DB::table('tbl_public_opinions')->where('status','1')
                     ->get();
+        $stick_news = DB::table('tbl_posts')->where('stick_news','1')->get();          
 
         $result = array(
             'page_header'       => 'Home',
@@ -61,6 +62,7 @@ class HomeController extends Controller {
             'janamat'           =>$janamat,
             'health'            =>$health,
             'religious'         =>$religious,
+            'stick_news'        =>$stick_news
         );
 
         return view('site.home', $result);

@@ -93,7 +93,33 @@
     </div>
   </div>
 </section> --}}
-
+<section class="breakingNews section__top">
+  <div class="container">
+    <div class="breakings">
+      @if(!empty($stick_news))
+        @foreach($stick_news as $k => $item)
+        <div class="py-5">
+            <a class="d-flex justify-content-center font-weight-bold break-title text-center" href="{{ route('post.detail',$item->slug) }}" >{!! $item->title !!}</a>
+            <div class="d-flex flex-row justify-content-center my-5">
+              <div class="px-3">
+                <span>{{ authorName($item->author_name,$item->author_id) }}</span>
+              </div>  
+              <div class="px-3">
+                <i class="las la-clock"></i> <span>{!! changeFullDateTimeToNepaliFormat($item->published_date) !!}</span>
+              </div>  
+            </div> 
+            @if($item->show_image == 1 && $item->image != '')
+              <img src="{{ getImage($item->image) }}" class="img-fluid w-100" title="{{ $item->title }}" alt="{{ $item->title }}"/>
+            @endif  
+            {{-- <div class="pt-5 text-muted" style="font-size: 25px">
+              {!! str_limit(strip_tags($item->description),300) !!}
+            </div> --}}
+          </div>  
+        @endforeach
+      @endif    
+    </div>
+  </div>    
+</section>
 
 <section class="breakingNews section__top">
   <div class="container">

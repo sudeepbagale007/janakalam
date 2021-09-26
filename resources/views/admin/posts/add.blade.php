@@ -85,6 +85,18 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
+                            <label class="control-label" for="stick_news">Stick News <span class="text-danger">*</span></label>
+                            <br>
+                            <label class="radio-inline">
+                                <input type="radio" name="stick_news" value="1"> Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="stick_news" value="0" checked> No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
                             <label class="control-label" for="show_image">Show Featured Image <span class="text-danger">*</span></label>
                             <br>
                             <label class="radio-inline">

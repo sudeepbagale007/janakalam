@@ -147,6 +147,8 @@ class AdminPostsController extends Controller {
         $crud->published_date = $request->published_date;
         // $crud->slug = postSlug($request->title);
         $crud->breaking_news = $request->breaking_news;
+        $crud->stick_news = $request->stick_news;
+
         $crud->show_image = $request->show_image;
         $crud->interviewer_name = $request->interviewer_name;
         $crud->author_name = $request->author_name;
@@ -259,6 +261,8 @@ class AdminPostsController extends Controller {
         $crud->fb_image = $request->fb_image;
         $crud->published_date = $request->published_date;
         $crud->breaking_news = $request->breaking_news;
+        $crud->stick_news = $request->stick_news;
+
         $crud->show_image = $request->show_image;
         $crud->interviewer_name = $request->interviewer_name;
         $crud->author_name = $request->author_name;
