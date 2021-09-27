@@ -98,6 +98,11 @@
     <div class="breakings">
       @if(!empty($stick_news))
         @foreach($stick_news as $k => $item)
+        <div class="news_head_category">
+          <h2 style="background-color: #efefef;height:38px;">
+            <span>Hello</span>
+          </h2>
+        </div>
         <div class="py-5">
             <a class="d-flex justify-content-center font-weight-bold break-title text-center" href="{{ route('post.detail',$item->slug) }}" >{!! $item->title !!}</a>
             <div class="d-flex flex-row justify-content-center my-5">
@@ -126,6 +131,11 @@
     <div class="breakings">
       @if(!empty($breakingnews))
         @foreach($breakingnews as $k => $item)
+        <div class="news_head_category">
+          <h2 style="background-color: #efefef;height:38px;">
+            <span>{{$item->news_bereaking_category}}</span>
+          </h2>
+        </div>
         <div class="py-5">
             <a class="d-flex justify-content-center font-weight-bold break-title text-center" href="{{ route('post.detail',$item->slug) }}" >{!! $item->title !!}</a>
             <div class="d-flex flex-row justify-content-center my-5">

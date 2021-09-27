@@ -12,7 +12,7 @@ class Home extends Model {
         $data = DB::table('tbl_posts')
                 ->where('breaking_news',1)
                 ->where('status', 1)
-                ->select('title', 'image', 'published_date', 'description','slug','sub_heading','author_name','author_id','show_image','short_text')
+                ->select('title', 'image', 'published_date', 'description','slug','sub_heading','author_name','author_id','show_image','short_text','news_bereaking_category')
                 ->orderBy('published_date', 'DESC')
                 ->limit($limit)
                 ->get();

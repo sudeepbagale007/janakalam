@@ -83,6 +83,15 @@
                             </label>
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Select Breaking News Category</label>
+                            <select class="form-control select2" name="news_bereaking_category" id="breaking_category">
+                                <option>Samachar</option>
+                                <option>Finance</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="stick_news">Stick News <span class="text-danger">*</span></label>
@@ -95,6 +104,9 @@
                             </label>
                         </div>
                     </div>
+                </div>
+
+                <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="show_image">Show Featured Image <span class="text-danger">*</span></label>
