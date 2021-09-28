@@ -87,8 +87,8 @@
                         <div class="form-group">
                             <label>Select Breaking News Category</label>
                             <select class="form-control select2" name="news_bereaking_category" id="breaking_category">
-                                <option>Samachar</option>
-                                <option>Finance</option>
+                                <option>Select Breaking New Category</option>
+                                <option id="selected_category">Finance</option>
                             </select>
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                                             <input type="checkbox" name="category[]" value="{{ $cat->id }}"> {{ $cat->title }}
                                             <ul>
                                                 @foreach($cat->childlist as $child)
-                                                    <li><input type="checkbox" name="category[]" value="{{ $child->id }}"> {{ $child->title }}</li>
+                                                    <li><input type="checkbox" name="category[]" class="chkbox" value="{{ $child->id }}"> {{ $child->title }}</li>
                                                 @endforeach
                                             </ul>
                                         </li>
@@ -215,6 +215,16 @@
             alert("You must check at least one checkbox.");
             return false;
         }
+    });
+</script>
+<script>
+    $(document).ready(function()){
+        $('.chkbox').click(function(){
+            var selected_chkbox =" ";
+            $('.chkbox:checked').each(function(){
+                selected_chkbox+=$(this).val();
+            });
+        });
     });
 </script>
 @endpush
