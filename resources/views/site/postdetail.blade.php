@@ -52,7 +52,7 @@
 								<div class="top__detail__flex">
 									<div class="media">
 										<figure class="mr-2">
-											<img src="{{asset('site/images/glob.jpg')}}" alt="{{ $detail->title }}" title="{{ $detail->title }}" style="max-height: 50px">
+											<img src="{{asset('site/images/glob.jpg')}}" alt="{{ $detail->title }}" title="{{ $detail->title }}" style="max-height: 35px">
 										</figure>
 										<div class="author__Details d-flex flex-row mt-4">
 											<h4 class="ml-4">{{ authorName($detail->author_name,$detail->author_id) }}</h4>
@@ -61,12 +61,13 @@
 									</div>
             						<div class="post__share d-flex">
                                         <label class="post__title__label">शेयर गर्नुहोस :</label>
-										<div class="d-flex flex-column share-count-main">
-											<span class="share-count" id="share-value" style="font-size: 26px; font-weight:bold">{{$share_count}}</span>
+                                        <!--<div class="addthis_inline_share_toolbox_j83u"></div>-->
+                                        <div class="d-flex flex-column share-count-main">
+											<span class="share-count" id="share-value" style="font-size: 26px; font-weight:bold">0</span>
 											<span class="share-text" style="font-size: 15px; font-weight:bold">Shares</span>
 										</div>	
                                         <div class="addthis_inline_share_toolbox ml-2"></div>
-                                  	</div>
+                                  </div>
 								</div>
 							</div>
 							
@@ -78,27 +79,25 @@
 								@endif
 
 							<div id="rvfs-controllers" class="fontsize-controllers group"></div>
+							
 							<style>
 								.detail__infos__event img{
 									object-fit: contain;
 									height: unset;
 								}
 							</style>
-							
 							<div id="detail__content" class="detail__infos__event">
 								{!! $detail->description  !!}
 								
 							</div>
 
 							<div class="prv_next_news">
-								@if($previous)
 								<div>
 									<h3>< अघिल्लो समाचार </h3>
 									<div>
 									<a href="{{ route('post.detail',$previous->slug) }}">{{$previous->title}} </a>
 									</div>
 								</div>
-								@endif
 								@if($next)
 								<div>
 								 <h3>	पछिल्लो समाचार > </h3>
@@ -119,12 +118,13 @@
 									</div>
             						<div class="post__share d-flex">
                                         <label class="post__title__label">शेयर गर्नुहोस :</label>
-										<div class="d-flex flex-column share-count-main">
-											<span class="share-count" style="font-size: 26px; font-weight:bold">{{$share_count}}</span>
+                                        <!--<div class="addthis_inline_share_toolbox_j83u"></div>-->
+                                        <div class="d-flex flex-column share-count-main">
+											<span class="share-count" style="font-size: 26px; font-weight:bold">0</span>
 											<span class="share-text" style="font-size: 15px; font-weight:bold">Shares</span>
 										</div>	
                                         <div class="addthis_inline_share_toolbox ml-2"></div>
-                                  	</div>
+                                  </div>
 								</div>
 							</div>
 						</div>
@@ -144,11 +144,6 @@
 									<img class="emoji_reaction" id="laugh_img" src="{{asset('site/images/laugh.png')}}">
 									<span class="emo_title">उत्साहित</span>
 								</div>
-								<div class="emoji" id="sad_id" data-id="sad" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
-									<span class="reaction_score" id="sad_score" >@if(isset($post_reaction->sad)) {{$post_reaction->sad}}@else 0 @endif</span>
-									<img class="emoji_reaction" src="{{asset('site/images/sad.png')}}">
-									<span class="emo_title">दुःखी</span>
-								</div>
 								<div class="emoji" id="happy_id" data-id="happy" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
 									<span class="reaction_score" id="happy_score">@if(isset($post_reaction->happy)) {{$post_reaction->happy}}@else 0 @endif</span>
 									<img class="emoji_reaction" src="{{asset('site/images/happy.png')}}">
@@ -158,6 +153,11 @@
 									<span class="reaction_score" id="confused_score">@if(isset($post_reaction->confused)) {{$post_reaction->confused}}@else 0 @endif</span>
 									<img class="emoji_reaction" src="{{asset('site/images/confused.png')}}">
 									<span class="emo_title">अचम्मित</span>
+								</div>
+								<div class="emoji" id="sad_id" data-id="sad" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
+									<span class="reaction_score" id="sad_score" >@if(isset($post_reaction->sad)) {{$post_reaction->sad}}@else 0 @endif</span>
+									<img class="emoji_reaction" src="{{asset('site/images/sad.png')}}">
+									<span class="emo_title">दुःखी</span>
 								</div>
 								<div class="emoji" id="angry_id" data-id="angry" data-post_id="{{$detail->id}}" data-reaction_id="@if(isset($post_reaction->id)){{$post_reaction->id}}  @endif">
 									<span class="reaction_score" id="angry_score">@if(isset($post_reaction->angry)) {{$post_reaction->angry}}@else 0 @endif</span>
@@ -504,43 +504,17 @@
 </script>
 
 <script>
-	function kFormatter(num) {
-    	return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'K' : Math.sign(num)*Math.abs(num)
+    function kFormatter(num) {
+    	return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'K' : Math.sign(num)*Math.abs(num);
 	}
-
-	function setCookie(cname, cvalue) {
-		const d = new Date();
-		d.setTime(d.getTime() + 1 * 60 * 1000);
-		let expires = "expires="+ d.toUTCString();
-		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-	}
-
-	function getCookie(cname) {
-		let name = cname + "=";
-		let ca = document.cookie.split(';');
-		for(let i = 0; i < ca.length; i++) {
-			let c = ca[i];
-				while (c.charAt(0) == ' ') {
-				c = c.substring(1);
-			}
-			if (c.indexOf(name) == 0) {
-				return c.substring(name.length, c.length);
-			}
-		}
-		return "";
-	}
-
+	
 	$(document).ready(function(){
-		var myUrl='https://farwesttimesdaily.com/detail/1633225282-aaiiel-ii-l-66';
-		var url = (myUrl);
+		var url='<?php echo url()->current();?>';
 		var domain="https://graph.facebook.com/v4.0/";
-		var old=parseInt($('#share-value').text());
+		var old=parseInt('<?php echo $share_count;?>');
+		var new_share_count_db='<?php echo $new_share_count;?>';
 		var newShare='';
-		var combine='';
 		var postID='<?php echo $detail->id;?>';
-
-		var abc="share_count"+postID;
-
 		$.ajax({
 			data:{
 				id:url,
@@ -552,22 +526,30 @@
             type:"GET",
 			success:function(response){		 
 				newShare=parseInt(response.engagement.share_count);
-				combine=old+newShare;
-
-				if(getCookie("share_count")==''){
-					setCookie("share_count"+postID,0);
-				}
-
-				if(combine!=getCookie("share_count")){
-					setCookie("share_count"+postID,combine);
-				}	
-
-				$('.share-count').text(kFormatter(getCookie("share_count"+postID)));  
+				if(new_share_count_db!=newShare && newShare>new_share_count_db){
+					$.ajax({
+						data:{
+							post_id:postID,
+							share_count:newShare
+						},
+						url:'https://farwesttimesdaily.com/sharecount',
+						type:"GET",
+						success:function(res){
+							if(res.success=='done'){
+								$('.share-count').text(kFormatter(res.total)); 
+							}
+						}
+					})
+				}else{
+					let total=old+parseInt(new_share_count_db);
+					$('.share-count').text(kFormatter(total));
+				}				
 			},
 			error:function(response){
 				let code=response.responseJSON.error.code;
-				if(code==613){	
-					$('.share-count').text(kFormatter(getCookie("share_count"+postID)));  
+				if(code==613){
+					let total=old+parseInt(new_share_count_db);
+					$('.share-count').text(kFormatter(total)); 
 				}
 			}
 		})
@@ -576,7 +558,7 @@
 
 <script type="text/javascript" src="{{ asset('site/js/rv-jquery-fontsize-2.0.3.js')}}"></script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0" nonce="77BXNwxQ"></script>
-{{-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f252f920a246dd4"></script> --}}
+<!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f252f920a246dd4"></script>-->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6146ff37d1b337ad"></script>
 <script type="text/javascript" src="{{ asset('site/js/detail.js')}}"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

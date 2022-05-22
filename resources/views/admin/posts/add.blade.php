@@ -83,15 +83,6 @@
                             </label>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Select Breaking News Category</label>
-                            <select class="form-control select2" name="news_bereaking_category" id="breaking_category">
-                                <option>Select Breaking New Category</option>
-                                <option id="selected_category">Finance</option>
-                            </select>
-                        </div>
-                    </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="stick_news">Stick News <span class="text-danger">*</span></label>
@@ -104,9 +95,19 @@
                             </label>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
+                    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" for="stick_news">Pin News <span class="text-danger">*</span></label>
+                            <br>
+                            <label class="radio-inline">
+                                <input type="radio" name="pin" value="1"> Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="pin" value="0" checked> No
+                            </label>
+                        </div>
+                    </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="show_image">Show Featured Image <span class="text-danger">*</span></label>
@@ -151,7 +152,7 @@
                                             <input type="checkbox" name="category[]" value="{{ $cat->id }}"> {{ $cat->title }}
                                             <ul>
                                                 @foreach($cat->childlist as $child)
-                                                    <li><input type="checkbox" name="category[]" class="chkbox" value="{{ $child->id }}"> {{ $child->title }}</li>
+                                                    <li><input type="checkbox" name="category[]" value="{{ $child->id }}"> {{ $child->title }}</li>
                                                 @endforeach
                                             </ul>
                                         </li>
@@ -215,16 +216,6 @@
             alert("You must check at least one checkbox.");
             return false;
         }
-    });
-</script>
-<script>
-    $(document).ready(function()){
-        $('.chkbox').click(function(){
-            var selected_chkbox =" ";
-            $('.chkbox:checked').each(function(){
-                selected_chkbox+=$(this).val();
-            });
-        });
     });
 </script>
 @endpush

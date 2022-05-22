@@ -11,9 +11,7 @@
 |
 */
 
-use App\Http\Controllers\site\BasicController;
-// use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\Route;
+
 
 Route::group(['namespace' => 'site'], function (){
 	Route::get('album', 'HomeController@albumData')->name('album');
@@ -29,6 +27,7 @@ Route::get('/c', function() {
     Artisan::call('config:clear');
     return "All cleared";
 });
+
 /* MANAGING WORDPRESS REDIRECTIONS */
 
 	Route::get('/{year}/{month}/{day}/{id}',function($year,$month,$day,$id){
@@ -70,26 +69,15 @@ Route::get('/c', function() {
 	
 	// Route::get('investment', 'InvestmentController@investment')->name('investment');
 	Route::get('todayshareprice', 'BasicController@todaySharePrice')->name('todayshareprice');
-
 	Route::any('updatereaction','BasicController@updateReaction')->name('updatereaction');
 
 	Route::post('add-post-comment','PostCommentsController@addPostComment')->name('addComment');
 	Route::post('save-janamat-answer','BasicController@saveUseranswer')->name('save-janamat-answer');
-	Route::get('export', 'FileExportController@export')->name('export');
-	Route::get('importExportView', 'FileExportController@importExportView');
-	Route::post('import', 'FileExportController@import')->name('import');
-
+	
 	Route::post('updateinteraction','BasicController@updateCommentInteraction')->name('updateinteraction');
-
-	Route::get('importCategoryView', 'FileExportController@importCategoryView');
-	Route::post('importcategory', 'FileExportController@importCategory')->name('importcategory');
-	Route::get('exportcategory', 'FileExportController@exportCategory')->name('exportcategory');
+	Route::get('/sharecount', 'HomeController@shareCount');
 
 
-	Route::get('importCategoryRelView', 'FileExportController@importCategoryRelView');
-	Route::post('importcategoryrel', 'FileExportController@importCategoryRel')->name('importcategoryrel');
-	Route::get('exportcategoryrel', 'FileExportController@exportCategoryRel')->name('exportcategoryrel');
-	Route::get('updateslug','FileExportController@updateSlug')->name('updateslug');
 });
 
 
@@ -208,10 +196,14 @@ Route::group(['prefix' => 'u-admin', 'namespace' => 'admin', 'middleware'   => [
 	Route::get('/album/gallery/Edit/{albumId}/{id}','AlbumController@albumGalleryEdit')->name('albumGalleryEdit');
 	Route::post('/album/gallery/update/{id}','AlbumController@albumGalleryUpdate')->name('albumGalleryUpdate');
 	Route::Post('album/galleryStore/{id}','AlbumController@galleryStore')->name('galleryStore');
-
+	
+	//janamat
 	Route::resource('janamat', 'AdminJanamatController');
 	Route::get('janamat/delete/{id}', ['as' => 'janamat.delete', 'uses' => 'AdminJanamatController@destroy']);
 	Route::get('user-answer/{id}','AdminJanamatController@viewUserAnswer')->name('user-answer');
-	Route::resource('comments', 'AdminPostsCommentsController');
+    Route::resource('comments', 'AdminPostsCommentsController');
+
+
+
 
 });

@@ -12,11 +12,13 @@ use App\Model\site\Home;
 use App\Model\site\PostComments;
 use App\Model\site\PostReaction;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller {
+
 	public function index(){
         $breakingnews = Home::getBreakingNewsList();
         $latestHome = Home::getAllLatestPostListHome($limit=9);
@@ -34,13 +36,15 @@ class HomeController extends Controller {
         $entertainment = Home::getHomePostListDescription($type='entertainment',$limit=4);
         $videoPosts = AdminVideoPost::where('status','1')->where('show_on_homepage','1')->get();
         $albums = Album::where('status','1')->limit(8)->get();
-        $health = Home::getHomePostListDescription($type='health',$limit=6);
-        $religious = Home::getHomePostListDescription($type='religious-culture',$limit=7);
+        $janamat=DB::table('tbl_public_opinions')->where('status','1')->get();
+        $stick_news = DB::table('tbl_posts')->where('stick_news','1')->get();
         $windowpopup = Home::getAdvertisementList($type='pop1',$limit=1);
-        
-        $janamat=DB::table('tbl_public_opinions')->where('status','1')
-                    ->get();
-        $stick_news = DB::table('tbl_posts')->where('stick_news','1')->get();          
+        $mahadebeshan = Home::getHomePostListDescription($type='mahadebeshan-bishesh',$limit=11);
+        $pin_news = DB::table('tbl_posts')->where('pin','1')->get();
+        $local_level_elections = Home::getHomePostListDescription($type='local-level-elections-bishesh',$limit=11);
+
+
+
 
         $result = array(
             'page_header'       => 'Home',
@@ -61,10 +65,11 @@ class HomeController extends Controller {
             'videoPosts'        => $videoPosts,
             'opinion'           =>$opinion,
             'janamat'           =>$janamat,
-            'health'            =>$health,
-            'religious'         =>$religious,
             'stick_news'        =>$stick_news,
-            'windowpopup'       =>$windowpopup
+            'windowpopup'     =>$windowpopup,
+            'mahadebeshan'      =>$mahadebeshan,
+            'pin_news'          =>$pin_news,
+            'local_level_elections'=>$local_level_elections,
         );
 
         return view('site.home', $result);
@@ -86,18 +91,17 @@ class HomeController extends Controller {
         }
     }
 
-    public static function postDetail($slug){
+    public function postDetail($slug){
         $detail = Home::getPostDetail($slug);
         $post_reaction = PostReaction::where('post_id',$detail->id)->first();
         $post_latest_cmts  = PostComments::where('post_id',$detail->id)->orderBy('id','desc')->get();
         $most_liked_cmt = PostComments::where('post_id',$detail->id)->orderBy('comment_like','desc')->get();
         $previous = DB::table('tbl_posts')->where('id', '<', $detail->id)->orderBy('id','desc')->first();
         $next = DB::table('tbl_posts')->where('id', '>', $detail->id)->orderBy('id')->first();
-
         $share_count=DB::table('tbl_posts')->where('id',$detail->id)->pluck('share_count')->first();
+        $new_share_count=DB::table('tbl_posts')->where('id',$detail->id)->pluck('new_share_count')->first();
 
         if (!empty($detail)) {
-
             Home::updatePostsViewCount($detail->id);
             $category = Home::getPostCategoryList($detail->id);
             if(!empty($category)){
@@ -114,12 +118,13 @@ class HomeController extends Controller {
                 'bottomads'             => $bottomads,
                 'post_reaction'         => $post_reaction,
                 'post_latest_cmts'      => $post_latest_cmts,
-                'previous'              =>$previous,
+                'previous'             =>$previous,
                 'next'                  =>$next,
                 'most_liked_cmt'        =>$most_liked_cmt,
-                'share_count'           =>$share_count
+                'share_count'           =>$share_count,
+                'new_share_count'       =>$new_share_count
             );
-         
+            // return $result;
             return view('site.postdetail', $result);
         } else{
             return view('errors.404');
@@ -199,7 +204,7 @@ class HomeController extends Controller {
         );
         return view('site.about', $result);
     }
-
+    
     public function aboutGroup(){
         $result = array(
             'page_header' => 'हाम्रो-समूह',
@@ -330,8 +335,24 @@ class HomeController extends Controller {
             return view('errors.404');
         }
     }
-
     
+    public function shareCount(Request $request){
+        $post_id=$request->get('post_id');
+        $share_count=$request->get('share_count');
+
+        $data=DB::table('tbl_posts')
+                ->where('id',$post_id)
+                ->update([
+                'new_share_count'=>$share_count
+        ]);
+
+        $info=DB::table('tbl_posts')
+        ->where('id',$post_id)
+        ->first();
+        
+        $total=$info->share_count+$info->new_share_count;
+
+        return response()->json(['success'=>'done','total'=>$total]);
+    }
     
 }
-

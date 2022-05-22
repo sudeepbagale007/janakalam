@@ -12,7 +12,7 @@ class Home extends Model {
         $data = DB::table('tbl_posts')
                 ->where('breaking_news',1)
                 ->where('status', 1)
-                ->select('title', 'image', 'published_date', 'description','slug','sub_heading','author_name','author_id','show_image','short_text','news_bereaking_category')
+                ->select('title', 'image', 'published_date', 'description','slug','sub_heading','author_name','author_id','show_image','short_text')
                 ->orderBy('published_date', 'DESC')
                 ->limit($limit)
                 ->get();
@@ -153,7 +153,6 @@ class Home extends Model {
     }
 
     public static function getPostDetail($slug){
-        // dd($slug);
          $data = DB::table('tbl_posts')
                 ->select('id','title','description','image','short_text','sub_heading','show_image', 'fb_image','published_date','video_url','author_name', 'author_id')
                 ->where('slug', $slug)
@@ -280,7 +279,6 @@ class Home extends Model {
 
         return $data;
     }
-
 
     public static function getTrendingDataById($id){
         $data = DB::table('tbl_tags')

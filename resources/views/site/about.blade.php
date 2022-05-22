@@ -26,15 +26,12 @@
 						<div><strong>प्रकाशक तथा सम्पादक</strong><br />
 						कर्ण देव भट्ट</p>
 						</div>
+						<div><strong>कार्यकारी सम्पादक</strong><br />
+						बरुण पनेरु</p>
+						</div>
 						<div><strong>Farwesttimesdaily.com</strong></p></div>
-						<div class="row">
-						<div class="col-md-6"><strong>संचालक</strong><br />
-						कर्णदेव भट्ट
-						</div>
-						<div class="col-md-6"><strong>प्रधान सम्पादक</strong><br />
-						सुधीर नेपाल
-						</div>
-						</div>
+						
+						
 					</div>
 				</div>
 				<div class="col* col-md-4 col-lg-4 col-xl-3">

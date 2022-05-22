@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="slug">Slug <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="slug" name="slug" value="{{ $record->slug }}" >
+                    <input type="text" class="form-control" id="slug" name="slug" value="{{ $record->slug }}" readonly >
                     <p class="pull-right"><u><a href="{{ route('post.detail',$record->slug) }}" target="_blank">View Post</a></u></p>
                     @error('title')
                         <div class="text-danger error">{{ $message }}</div>
@@ -92,7 +92,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="stick_news">Stick  News<span class="text-danger">*</span></label>
                             <br>
@@ -101,6 +101,19 @@
                             </label>
                             <label class="radio-inline">
                                 <input type="radio" name="stick_news" value="0" @if($record->stick_news == 0) {{ 'checked' }} @endif> No
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" for="stick_news">Pin  News<span class="text-danger">*</span></label>
+                            <br>
+                            <label class="radio-inline">
+                                <input type="radio" name="pin" value="1" @if($record->pin == 1) {{ 'checked' }} @endif> Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="pin" value="0" @if($record->pin == 0) {{ 'checked' }} @endif> No
                             </label>
                         </div>
                     </div>

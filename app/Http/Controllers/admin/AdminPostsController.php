@@ -18,7 +18,7 @@ class AdminPostsController extends Controller {
 
     private $title = 'Posts';
     private $sort_by = 'id';
-    private $sort_order = 'asc';
+    private $sort_order = 'desc';
     private $index_link = 'posts.index';
     private $list_page = 'admin.posts.list';
     private $create_form = 'admin.posts.add';
@@ -81,8 +81,8 @@ class AdminPostsController extends Controller {
                     $q->where('category_id', $category);
                 });
             }
-            $list = $query->select('id', 'title', 'slug', 'published_date', 'status','viewcount','show_image','created_by','updated_by','created_at')
-                ->orderBy('created_at', 'desc')
+            $list = $query->select('id', 'title', 'slug', 'published_date', 'status','viewcount','show_image','created_by','updated_by')
+                ->orderBy('id', 'desc')
                 ->paginate(PAGES);
         } else {
             $list = AdminPosts::with('category')
@@ -134,7 +134,7 @@ class AdminPostsController extends Controller {
             'category'          => 'required',
         ]);
         $user_id = AdminLoginController::id();
-        if($request->status==0){
+         if($request->status==0){
                 $published_date = null;
         }
         else{   
@@ -154,6 +154,7 @@ class AdminPostsController extends Controller {
         // $crud->slug = postSlug($request->title);
         $crud->breaking_news = $request->breaking_news;
         $crud->stick_news = $request->stick_news;
+        $crud->pin = $request->pin;
 
         $crud->show_image = $request->show_image;
         $crud->interviewer_name = $request->interviewer_name;
@@ -166,19 +167,12 @@ class AdminPostsController extends Controller {
         $crud->meta_description = $request->meta_description;
         $crud->status = $request->status;
         $crud->save();
-        if($crud){
+         if($crud){
             $slugValue=AdminPosts::find($crud->id);
             $ran=rand(10,100);
-            $slugValue->slug=time().'-'.$slugValue->slug.'-'.$ran;
+            $slugValue->slug=date('Y').'-'.date('m').'-'.date('d').'-'.$crud->id;
             $slugValue->save();
         }
-
-        // if($crud){
-        //     $slugValue=AdminPosts::find($crud->id);
-        //     $ran=rand(10,100);
-        //     $slugValue->slug=date('Y').'-'.date('m').'-'.date('d').'-'.$crud->id;
-        //     $slugValue->save();
-        // }
         $crud->category()->sync($request->category);
         
 
@@ -260,9 +254,8 @@ class AdminPostsController extends Controller {
             'slug'              => 'required',
             'description'       => 'required',
         ]);
-
-        // dd($request->published_date);
-        if($request->status==1){
+        
+         if($request->status==1){
             if($request->published_date == null){
                 $published_date = date('Y-m-d H:i');
             }
@@ -288,6 +281,7 @@ class AdminPostsController extends Controller {
         $crud->published_date = $published_date;
         $crud->breaking_news = $request->breaking_news;
         $crud->stick_news = $request->stick_news;
+        $crud->pin = $request->pin;
 
         $crud->show_image = $request->show_image;
         $crud->interviewer_name = $request->interviewer_name;

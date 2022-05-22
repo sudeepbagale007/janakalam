@@ -12,8 +12,6 @@
 @section('main-content')
 {{-- main news --}}
 
-
-
 @if(session('answer'))
   <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 2000)" class="container alert alert-success my-4" role="alert">
     {{session('answer')}}
@@ -24,14 +22,11 @@
     @foreach ($windowpopup as $windowpopup)
     <div class="modal fade mt-5" style="display: flex; justify-content: center; align-items: center;" id="roadblockModal" tabindex="-1" role="dialog" aria-labelledby="roadblockModal" aria-hidden="true">
       <div class="modal-dialog modal-lg">
-  
           <div class="modal-content mt-5">
-  
                 <button type="button" class="close btn btn-danger pull-left" data-dismiss="modal" value="Skip" aria-label="Close" aria-hidden="true"
-                style="background: #ec0813;position:absolute;top:-36px;padding:10px;color:white;opacity:1">
+                style="background: #EC0813;position:absolute;top:-36px;padding:10px;color:white;opacity:1">
                     <span style="font-size:18px">SKIP</span>
                   </button>
-  
               <div class="modal-body p-sm-5">
                   <a href="{{ $windowpopup->image}}" target="_blank">
                       <img class="img-responsive" src="{{ $windowpopup->image}}" style="display: block;margin-left: auto;margin-right: auto;">
@@ -41,7 +36,6 @@
       </div>
     </div>    
     @endforeach
- 
 @endif
 
 <section class="live__video section__top">
@@ -70,65 +64,89 @@
   </div>
   @endif
 </section>
-{{-- <section class="breakingNews section__top">
-    <div class="container">
-      
-      <div class="breakings">
-          
-    @if(!empty($breakingnews))
-    @foreach($breakingnews as $k => $item)
+<!--<section class="breakingNews section__top">-->
+<!--  <div class="container">-->
     
-    <div class="item"  style="display: flex; box-shadow: 0px 10px 30px rgba(0,0,0,0.1); padding: 30px; border-radius: 10px; gap: 30px; margin-bottom :30px">
+<!--      <div class="breakings">-->
+          
+<!--    @if(!empty($breakingnews))-->
+<!--    @foreach($breakingnews as $k => $item)-->
+    
+<!--    <div class="item"  style="display: flex; box-shadow: 0px 10px 30px rgba(0,0,0,0.1); padding: 30px; border-radius: 10px; gap: 30px; margin-bottom :30px">-->
         
     
-    @if($item->show_image == 1 && $item->image != '')
-      <figure style="flex:3">
-        <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" style="border-radius: 10px; height: 100%; object-fit:cover; object-position: center" title="{{ $item->title }}">
-      </figure>
-      @endif
+<!--    @if($item->show_image == 1 && $item->image != '')-->
+<!--      <figure style="flex:3">-->
+<!--        <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" style="border-radius: 10px; height: 100%; object-fit:cover; object-position: center" title="{{ $item->title }}">-->
+<!--      </figure>-->
+<!--      @endif-->
       
-    <div class="breaking_news text-left" style="flex:5; margin:0; border: 0" >
-      <div class="breaking__col">
-          @if($item->short_text != '')
-        <div class="top__title">
-          <span class="theme__badge">{!! str_limit($item->short_text,50) !!} </span>
-        </div>
-        @endif
-        <a href="{{ route('post.detail',$item->slug) }}" title="News" class="breaking__title">{!! $item->title !!}</a>
-        <div class="post__infos__flex justify-content-start text-muted" style="gap: 15px">
-          <div class="post__author post__label">
-            <span>{{ authorName($item->author_name,$item->author_id) }}</span>
-          </div>
+<!--    <div class="breaking_news text-left" style="flex:5; margin:0; border: 0" >-->
+<!--      <div class="breaking__col">-->
+<!--          @if($item->short_text != '')-->
+<!--        <div class="top__title">-->
+<!--          <span class="theme__badge">{!! str_limit($item->short_text,50) !!} </span>-->
+<!--        </div>-->
+<!--        @endif-->
+<!--        <a href="{{ route('post.detail',$item->slug) }}" title="News" class="breaking__title">{!! $item->title !!}</a>-->
+<!--        <div class="post__infos__flex justify-content-start text-muted" style="gap: 15px">-->
+<!--          <div class="post__author post__label">-->
+<!--            <span>{{ authorName($item->author_name,$item->author_id) }}</span>-->
+<!--          </div>-->
           
-          <div class="post__time post__label">
-            <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->published_date)->diffForHumans()) !!}</span>
-          </div>
-        </div>
-        @if($item->sub_heading != '')
-        <div class="breaking__shortInfos">{!! str_limit($item->sub_heading,100) !!}
-        </div>
-        @endif
-      </div>
-      <div class="head__desc">
-        {!! str_limit(strip_tags($item->description),100) !!}
-      </div>
-    </div>
-     </div>
-    @endforeach
-    @endif
-    </div>
-  </div>
-</section> --}}
+<!--          <div class="post__time post__label">-->
+<!--            <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->published_date)->diffForHumans()) !!}</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        @if($item->sub_heading != '')-->
+<!--        <div class="breaking__shortInfos">{!! str_limit($item->sub_heading,100) !!}-->
+<!--        </div>-->
+<!--        @endif-->
+<!--      </div>-->
+      <!--<div class="head__desc">-->
+      <!--  {!! str_limit(strip_tags($item->description),100) !!}-->
+      <!--</div>-->
+<!--    </div>-->
+<!--     </div>-->
+<!--    @endforeach-->
+<!--    @endif-->
+    
+   
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+<!--<section class="breakingNews section__top">-->
+<!--  <div class="container">-->
+<!--    <div class="breakings">-->
+<!--      @if(!empty($stick_news))-->
+<!--        @foreach($stick_news as $k => $item)-->
+<!--        <div class="py-5">-->
+<!--            <a class="d-flex justify-content-center font-weight-bold break-title text-center" href="{{ route('post.detail',$item->slug) }}" >{!! $item->title !!}</a>-->
+<!--            <div class="d-flex flex-row justify-content-center my-5">-->
+<!--              <div class="px-3">-->
+<!--                <span>{{ authorName($item->author_name,$item->author_id) }}</span>-->
+<!--              </div>  -->
+<!--              <div class="px-3">-->
+<!--                <i class="las la-clock"></i> <span>{!! changeFullDateTimeToNepaliFormat($item->published_date) !!}</span>-->
+<!--              </div>  -->
+<!--            </div> -->
+<!--            @if($item->show_image == 1 && $item->image != '')-->
+<!--              <img src="{{ getImage($item->image) }}" class="img-fluid w-100" title="{{ $item->title }}" alt="{{ $item->title }}"/>-->
+<!--            @endif  -->
+<!--          </div>  -->
+<!--        @endforeach-->
+<!--      @endif    -->
+<!--    </div>-->
+<!--  </div>    -->
+<!--</section>-->
+
+
 <section class="breakingNews section__top">
   <div class="container">
     <div class="breakings">
-      @if(!empty($stick_news))
-        @foreach($stick_news as $k => $item)
-        <div class="news_head_category">
-          <h2 style="background-color: #efefef;height:38px;">
-            <span>Hello</span>
-          </h2>
-        </div>
+      @if(!empty($pin_news))
+        @foreach($pin_news as $k => $item)
         <div class="py-5">
             <a class="d-flex justify-content-center font-weight-bold break-title text-center" href="{{ route('post.detail',$item->slug) }}" >{!! $item->title !!}</a>
             <div class="d-flex flex-row justify-content-center my-5">
@@ -142,9 +160,6 @@
             @if($item->show_image == 1 && $item->image != '')
               <img src="{{ getImage($item->image) }}" class="img-fluid w-100" title="{{ $item->title }}" alt="{{ $item->title }}"/>
             @endif  
-            {{-- <div class="pt-5 text-muted" style="font-size: 25px">
-              {!! str_limit(strip_tags($item->description),300) !!}
-            </div> --}}
           </div>  
         @endforeach
       @endif    
@@ -157,11 +172,6 @@
     <div class="breakings">
       @if(!empty($breakingnews))
         @foreach($breakingnews as $k => $item)
-        <div class="news_head_category">
-          <h2 style="background-color: #efefef;height:38px;">
-            <span>{{$item->news_bereaking_category}}</span>
-          </h2>
-        </div>
         <div class="py-5">
             <a class="d-flex justify-content-center font-weight-bold break-title text-center" href="{{ route('post.detail',$item->slug) }}" >{!! $item->title !!}</a>
             <div class="d-flex flex-row justify-content-center my-5">
@@ -175,9 +185,6 @@
             @if($item->show_image == 1 && $item->image != '')
               <img src="{{ getImage($item->image) }}" class="img-fluid w-100" title="{{ $item->title }}" alt="{{ $item->title }}"/>
             @endif  
-            {{-- <div class="pt-5 text-muted" style="font-size: 25px">
-              {!! str_limit(strip_tags($item->description),300) !!}
-            </div> --}}
           </div>  
         @endforeach
       @endif    
@@ -185,80 +192,97 @@
   </div>    
 </section>
 
-<section class="main__news section__top py-5 bg_p_dim text-left">
-  <div class="container">
-    @if(!empty($latestHome))
-    <div class="three__cols--grid">
-      <div class="col__span1">
-        <div class="news__list">
-          @foreach($latestHome as $kl => $item)
-          @if($kl >= 1 && $kl <=4)
-          <div class="news__blockList">
-            <div class="news__flex news__img--md d-flex text-left">
-                @if($item->image)
-              <figure style="flex:2">
-                <a href="{{ route('post.detail',$item->slug) }}" title="{{ $item->title }}">
-                  <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
-                </a>
-              </figure>
-              @endif
-              <div class="news__infos" style=" flex:4;">
-                <h3 class="news__title--sm"><a href="{{ route('post.detail',$item->slug) }}">{!! str_limit($item->title,52) !!}</a></h3>
-                <div class="post__time--1">
-                  <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->published_date)->diffForHumans()) !!}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          @endif
-          @endforeach
-        </div>
-      </div>
-      @if(!empty($latestHome[0]))
-      <div class="col__span1">
-        <a href="{{ route('post.detail',$latestHome[0]->slug) }}" class="news__link" title="news">
-          <div class="big__img">
-              @if($latestHome[0]->image)
-            <figure>
-              <img src="{{ getImage($latestHome[0]->image) }}" class="w-100" alt="{{ $latestHome[0]->title }}" title="{{ $latestHome[0]->title }}">
-            </figure>
-            @endif
-            <h2 class="news__title--lg">{!! str_limit($latestHome[0]->title,70) !!} </h2>
-            <p>{!! str_limit(strip_tags($latestHome[0]->description),250) !!}</p>
-          </div>
-        </a>
-      </div>
-      @endif
-      <div class="col__span1">
-        <div class="news__list">
-          @foreach($latestHome as $kl => $item)
-          @if($kl > 4)
-          <div class="news__blockList">
-            <div class="news__flex news__img--md">
-                @if($item->image)
-              <figure>
-                <a href="{{ route('post.detail',$item->slug) }}" title="{{ $item->title }}">
-                  <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
-                </a>
-              </figure>
-              @endif
-              <div class="news__infos">
-                <h3 class="news__title--sm"><a href="{{ route('post.detail',$item->slug) }}">{!! str_limit($item->title,52) !!}</a></h3>
-                <div class="post__time--1">
-                  <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->published_date)->diffForHumans()) !!}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          @endif
-          @endforeach
+<!--<div class="container" style="margin-top: 10px">-->
+<!--  <div class="row">-->
+<!--    <div class="col-md-4 col-lg-3 mt-2">-->
+<!--      <img src="{{asset('site/images/dashainads/1.png')}}" class="w-100 ">-->
+<!--    </div>-->
+<!--    <div class="col-md-4 col-lg-3 mt-2">-->
+<!--      <img src="{{asset('site/images/dashainads/2.png')}}" class="w-100 ">-->
+<!--    </div>-->
+<!--    <div class="col-md-4 col-lg-3 mt-2">-->
+<!--      <img src="{{asset('site/images/dashainads/3.png')}}" class="w-100 ">-->
+<!--    </div>-->
+<!--    <div class="col-md-4 col-lg-3 mt-2">-->
+<!--      <img src="{{asset('site/images/dashainads/4.png')}}" class="w-100 ">-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<section class="main__news section__top py-5 bg_p_dim text-left">-->
+<!--  <div class="container">-->
+<!--    @if(!empty($latestHome))-->
+<!--    <div class="three__cols--grid">-->
+<!--      <div class="col__span1">-->
+<!--        <div class="news__list">-->
+<!--          @foreach($latestHome as $kl => $item)-->
+<!--          @if($kl >= 1 && $kl <=4)-->
+<!--          <div class="news__blockList">-->
+<!--            <div class="news__flex news__img--md d-flex text-left">-->
+<!--                @if($item->image)-->
+<!--              <figure style="flex:2">-->
+<!--                <a href="{{ route('post.detail',$item->slug) }}" title="{{ $item->title }}">-->
+<!--                  <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">-->
+<!--                </a>-->
+<!--              </figure>-->
+<!--              @endif-->
+<!--              <div class="news__infos" style=" flex:4;">-->
+<!--                <h3 class="news__title--sm"><a href="{{ route('post.detail',$item->slug) }}">{!! str_limit($item->title,52) !!}</a></h3>-->
+<!--                <div class="post__time--1">-->
+<!--                  <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->published_date)->diffForHumans()) !!}</span>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          @endif-->
+<!--          @endforeach-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      @if(!empty($latestHome[0]))-->
+<!--      <div class="col__span1">-->
+<!--        <a href="{{ route('post.detail',$latestHome[0]->slug) }}" class="news__link" title="news">-->
+<!--          <div class="big__img">-->
+<!--              @if($latestHome[0]->image)-->
+<!--            <figure>-->
+<!--              <img src="{{ getImage($latestHome[0]->image) }}" class="w-100" alt="{{ $latestHome[0]->title }}" title="{{ $latestHome[0]->title }}">-->
+<!--            </figure>-->
+<!--            @endif-->
+<!--            <h2 class="news__title--lg">{!! str_limit($latestHome[0]->title,70) !!} </h2>-->
+<!--            <p>{!! str_limit(strip_tags($latestHome[0]->description),250) !!}</p>-->
+<!--          </div>-->
+<!--        </a>-->
+<!--      </div>-->
+<!--      @endif-->
+<!--      <div class="col__span1">-->
+<!--        <div class="news__list">-->
+<!--          @foreach($latestHome as $kl => $item)-->
+<!--          @if($kl > 4)-->
+<!--          <div class="news__blockList">-->
+<!--            <div class="news__flex news__img--md">-->
+<!--                @if($item->image)-->
+<!--              <figure>-->
+<!--                <a href="{{ route('post.detail',$item->slug) }}" title="{{ $item->title }}">-->
+<!--                  <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">-->
+<!--                </a>-->
+<!--              </figure>-->
+<!--              @endif-->
+<!--              <div class="news__infos">-->
+<!--                <h3 class="news__title--sm"><a href="{{ route('post.detail',$item->slug) }}">{!! str_limit($item->title,52) !!}</a></h3>-->
+<!--                <div class="post__time--1">-->
+<!--                  <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->published_date)->diffForHumans()) !!}</span>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          @endif-->
+<!--          @endforeach-->
           
-        </div>
-      </div>
-    </div>
-    @endif
-  </div>
-</section> 
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    @endif-->
+<!--  </div>-->
+<!--</section>-->
 {{-- <section class="promotional__col section__top ">
   <div class="container">
     <a href="#" title="promotional-img">
@@ -266,23 +290,6 @@
     </a>
   </div>
 </section> --}}
-<div class="container" style="margin-top: 10px">
-  <div class="row">
-    <div class="col-md-4 col-lg-3 mt-2">
-      <img src="{{asset('site/images/dashainads/1.png')}}" class="w-100 ">
-    </div>
-    <div class="col-md-4 col-lg-3 mt-2">
-      <img src="{{asset('site/images/dashainads/2.png')}}" class="w-100 ">
-    </div>
-    <div class="col-md-4 col-lg-3 mt-2">
-      <img src="{{asset('site/images/dashainads/3.png')}}" class="w-100 ">
-    </div>
-    <div class="col-md-4 col-lg-3 mt-2">
-      <img src="{{asset('site/images/dashainads/4.png')}}" class="w-100 ">
-    </div>
-  </div>
-</div>
-  
 <?php $count=1 ?>
 @if(count($janamat)>0)
   <section class="janamat_section py-5">
@@ -291,7 +298,7 @@
         <form action="{{route('save-janamat-answer')}}" method="POST">@csrf
           @foreach($janamat as $index=>$row)
             <div class="pt-4">
-              <p class="d-flex justify-content-center text-danger" style="font-size: 30px">{{$count++}}. {!! strip_tags($row->question) !!}</p>
+              <p class="d-flex justify-content-center text-danger" style="font-size: 30px">{!! strip_tags($row->question) !!}</p>
               <div class="d-flex justify-content-center">
                 <div class="d-flex flex-column">
                   @php $ans=explode(',',$row->answers); @endphp
@@ -330,41 +337,42 @@
     </div>
   </section>
 @endif 
-<div class="container" style="margin-top: 10px">
-  <div class="row">
-    <div class="col-md-4 col-lg-3 mt-2">
-      <img src="{{asset('site/images/dashainads/5.png')}}" class="w-100 ">
-    </div>
-    <div class="col-md-4 col-lg-3 mt-2">
-      <img src="{{asset('site/images/dashainads/6.png')}}" class="w-100 ">
-    </div>
-    <div class="col-md-4 col-lg-3 mt-2">
-      <img src="{{asset('site/images/dashainads/7.png')}}" class="w-100 ">
-    </div>
-    <div class="col-md-4 col-lg-3 mt-2">
-      <img src="{{asset('site/images/dashainads/8.png')}}" class="w-100 ">
-    </div>
-  </div>
-</div>
-{!! getHomeAdvertisement('hp2') !!}
 
+<!--<div class="container" style="margin-top: 10px">-->
+<!--  <div class="row">-->
+<!--    <div class="col-md-4 col-lg-3 mt-2">-->
+<!--      <img src="{{asset('site/images/dashainads/5.png')}}" class="w-100 ">-->
+<!--    </div>-->
+<!--    <div class="col-md-4 col-lg-3 mt-2">-->
+<!--      <img src="{{asset('site/images/dashainads/6.png')}}" class="w-100 ">-->
+<!--    </div>-->
+<!--    <div class="col-md-4 col-lg-3 mt-2">-->
+<!--      <img src="{{asset('site/images/dashainads/7.png')}}" class="w-100 ">-->
+<!--    </div>-->
+<!--    <div class="col-md-4 col-lg-3 mt-2">-->
+<!--      <img src="{{asset('site/images/dashainads/8.png')}}" class="w-100 ">-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+{!! getHomeAdvertisement('hp2') !!}
 
 <section class="international__col section__top">
   <div class="container">
-    @if(!empty($mahadebeshan))
+    @if(!empty($local_level_elections))
     <div class="title__headFlex">
       <div class="news__title">
-        <h2>{{ $mahadebeshan->title }} </h2>
+        <h2>{{ $local_level_elections->title }} </h2>
       </div>
       <div class="read__more">
-        <a href="{{ route('category.list',$mahadebeshan->slug) }}" class="btn btn-1">सबै</a>
+        <a href="{{ route('category.list',$local_level_elections->slug) }}" class="btn btn-1">सबै</a>
       </div>
     </div>
     <div class="row">
       <div class="col* col-md-12 col-lg-8">
         <div class="main__news__bar">
           <div class="three__cols--grid">
-            @foreach($mahadebeshan->list as $kl => $item)
+            @foreach($local_level_elections->list as $kl => $item)
             @if($kl >= 0 && $kl <=5)
             <div class="col__span1">
               <div class="news__md--1">
@@ -390,7 +398,7 @@
       </div>
       <div class="col* col-md-12 col-lg-4">
         <div class="news__list news__list--flex">
-          @foreach($mahadebeshan->list as $kl => $item)
+          @foreach($local_level_elections->list as $kl => $item)
           @if($kl >= 6 && $kl <=10)
           <div class="news__blockList">
             <div class="news__flex news__img--md">
@@ -486,7 +494,6 @@
               </div>
             </div>
             @endif
-
             @endforeach
           </div>
         </div>
@@ -499,16 +506,17 @@
   </div>
 </section>
 
-<div class="container" style="margin-top: 10px">
-  <div class="row">
-    <div class="col-md-4 col-lg-6 mt-2">
-      <img src="{{asset('site/images/dashainads/9.png')}}" class="w-100 ">
-    </div>
-    <div class="col-md-4 col-lg-6 mt-2">
-      <img src="{{asset('site/images/dashainads/10.png')}}" class="w-100 ">
-    </div>
-  </div>
-</div>
+<!--<div class="container" style="margin-top: 10px">-->
+<!--  <div class="row">-->
+<!--    <div class="col-md-4 col-lg-6 mt-2">-->
+<!--      <img src="{{asset('site/images/dashainads/9.png')}}" class="w-100 ">-->
+<!--    </div>-->
+<!--    <div class="col-md-4 col-lg-6 mt-2">-->
+<!--      <img src="{{asset('site/images/dashainads/10.png')}}" class="w-100 ">-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
 <section class="international__col section__top">
   <div class="container">
     @if(!empty($finance))
@@ -867,9 +875,14 @@
       </div>
       <div class="col* col-md-12 col-lg-4">
         @if(!empty($opinion))
-        <div class="side__col">
-          <h3>विचार</h3>
-        </div>
+        <div class="title__headFlex">
+      <div class="news__title">
+        <h2>{{ $opinion->title }} </h2>
+      </div>
+      <div class="read__more">
+        <a href="{{ route('category.list',$opinion->slug) }}" class="btn btn-1">सबै</a>
+      </div>
+    </div>
         <div class="trending__box thought__list">
           <ul class="list-unstyled">
             @foreach($opinion->list as $item)
@@ -882,7 +895,7 @@
                 @endif
                 <div class="media__latest--infos">
                   <a href="{{ route('post.detail',$item->slug) }}" title="{{ $item->title }}">{{ str_limit($item->title,100) }}</a>
-                  <small class="d-block">{{ authorName($item->author_name,$item->author_id) }}</small>
+                  <small class="d-block font-weight-bold text-primary">{{ authorName($item->author_name,$item->author_id) }}</small>
                 </div>
               </div>
             </li>
@@ -896,97 +909,6 @@
   </div>
 </section>
 {!! getHomeAdvertisement('hp6') !!}
-<section class="literture__col section__top">
-  <div class="container">
-    
-    @if(!empty($health))
-    <div class="row">
-      <div class="col* col-md-12 col-lg-8">
-        <div class="title__headFlex">
-          <div class="news__title">
-            <h2>{{ $health->title }} </h2>
-          </div>
-          
-          <div class="read__more">
-            <a href="{{ route('category.list',$health->slug) }}" class="btn btn-1">सबै</a>
-          </div>
-        </div>
-        <div class="four__cols--grid">
-          @if(!empty($health->list[0]))
-          <div class="col__span2">
-            <div class="featureImg bigImg">
-              <div class="mainBigImg featureBgImg itemAfter" 
-              @if($health->list[0]->image)
-              style="background: url({{ getImage($health->list[0]->image) }});background-size: cover;background-repeat: no-repeat;background-position: center;"
-              @endif
-              >
-                <div class="featureOverlay"></div>
-                
-                <div class="featureBgInfos">
-                  <h3><a href="{{ route('post.detail',$health->list[0]->slug) }}">{{ str_limit($health->list[0]->title,100) }}</a></h3>
-                  <p>{!! str_limit(strip_tags($health->list[0]->description),200) !!}</p>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-          @endif
-          <div class="col__span2">
-            <div class="news__list">
-              @foreach($health->list as $kl => $item)
-              @if($kl >= 1 && $kl <=5)
-              <div class="news__blockList">
-                <div class="news__flex news__img--md">
-                  <figure>
-                    <a href="{{ route('post.detail',$item->slug) }}" title="{{ $item->title }}">
-                      <img src="{{ getImage($item->image) }}" class="w-100 h-100" alt="{{ $item->title }}" title{{ $item->title }}>
-                    </a>
-                  </figure>
-                  
-                  <div class="news__infos">
-                    <h3 class="news__title--sm"><a href="{{ route('post.detail',$item->slug) }}">{!! str_limit($item->title,70) !!}</a></h3>
-                    <div class="post__time--1">
-                      <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->published_date)->diffForHumans()) !!}</span>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
-              @endif
-              @endforeach
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col* col-md-12 col-lg-4">
-        @if(!empty($religious))
-        <div class="side__col">
-          <h3>धर्म संस्कृत</h3>
-        </div>
-        <div class="trending__box thought__list">
-          <ul class="list-unstyled">
-            @foreach($religious->list as $item)
-            <li>
-              <div class="media">
-                  @if($item->image)
-                <figure class="avatar mr-2">
-                  <img src="{{ getImage($item->image) }}" class="rounded-circle w-100" alt="{{ $item->title }}" title{{ $item->title }}>
-                </figure>
-                @endif
-                <div class="media__latest--infos">
-                  <a href="{{ route('post.detail',$item->slug) }}" title="{{ $item->title }}">{{ str_limit($item->title,100) }}</a>
-                </div>
-              </div>
-            </li>
-            @endforeach
-          </ul>
-        </div>
-        @endif
-      </div>
-    </div>
-    @endif
-  </div>
-</section>
 <section class="technology__col section__top py-5 bg_p_dim">
   <div class="container">
     @if(!empty($technology))
@@ -1156,56 +1078,62 @@
     @endif
   </div>
 </section>
-<section class="lifestyle__col section__top">
+<!--<section class="lifestyle__col section__top">-->
+<!--  <div class="container">-->
+<!--    @if(!empty($albums))-->
+<!--    <div class="title__headFlex">-->
+<!--      <div class="news__title">-->
+<!--        <h2> फोटो ग्यालेरी </h2>-->
+<!--      </div>-->
+<!--      <div class="read__more">-->
+<!--        <a href="{{ route('album') }}" class="btn btn-1">सबै</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    @if(count($albums)>0)-->
+<!--    <div class="row">-->
+<!--      <div class="col* col-md-12 col-lg-12">-->
+<!--        <div class="main__news__bar">-->
+<!--          <div class="four__cols--grid">-->
+<!--            @foreach($albums as $kl => $item)-->
+<!--            <div class="col__span1">-->
+<!--              <div class="news__md--1">-->
+<!--                  @if($item->image)-->
+<!--                <figure>-->
+<!--                  <a href="{{ route('albumSingle',$item->slug) }}" title="{{ $item->title }}">-->
+<!--                    <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">-->
+<!--                  </a>-->
+<!--                </figure>-->
+<!--                @endif-->
+<!--                <div class="news__infos__md">-->
+<!--                  <h3>-->
+<!--                  <a href="{{ route('albumSingle',$item->slug) }}"> {!! str_limit($item->title,70) !!}</a>-->
+<!--                  </h3>-->
+<!--                  <div class="post__time--1">-->
+<!--                    <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->created_at)->diffForHumans()) !!}</span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            @endforeach-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    @endif-->
+<!--    @endif-->
+<!--  </div>-->
+<!--</section>-->
+
+<section id="banner" style="background-color: #04EAF2">
   <div class="container">
-    @if(!empty($albums))
-    <div class="title__headFlex">
-      <div class="news__title">
-        <h2> फोटो ग्यालेरी </h2>
-      </div>
-      <div class="read__more">
-        <a href="{{ route('album') }}" class="btn btn-1">सबै</a>
-      </div>
-    </div>
-    @if(count($albums)>0)
-    <div class="row">
-      <div class="col* col-md-12 col-lg-12">
-        <div class="main__news__bar">
-          <div class="four__cols--grid">
-            @foreach($albums as $kl => $item)
-            <div class="col__span1">
-              <div class="news__md--1">
-                  @if($item->image)
-                <figure>
-                  <a href="{{ route('albumSingle',$item->slug) }}" title="{{ $item->title }}">
-                    <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title="{{ $item->title }}">
-                  </a>
-                </figure>
-                @endif
-                <div class="news__infos__md">
-                  <h3>
-                  <a href="{{ route('albumSingle',$item->slug) }}"> {!! str_limit($item->title,70) !!}</a>
-                  </h3>
-                  <div class="post__time--1">
-                    <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->created_at)->diffForHumans()) !!}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            @endforeach
-          </div>
-        </div>
-      </div>
-    </div>
-    @endif
-    @endif
+      <img src="{{asset('site/images/banners/farwest_times.png')}}" height="100%" width="100%"/>
   </div>
-</section>
+</section> 
 {{-- axds --}}
+
 {!! getHomeAdvertisement('hp13') !!}
 
 <script>
-  
   $(function(){
         $('#roadblockModal').modal('show');
         $('.modal-backdrop.fade.in').css({
@@ -1214,11 +1142,7 @@
         });
         setTimeout(function(){
             $('#roadblockModal').modal('hide');
-
-         });
-    },10000);
+         },5000);
+    });
 </script>
-
 @endsection
-
-
