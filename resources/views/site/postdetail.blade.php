@@ -508,13 +508,39 @@
     	return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'K' : Math.sign(num)*Math.abs(num)
 	}
 
+	function setCookie(cname, cvalue) {
+		const d = new Date();
+		d.setTime(d.getTime() + 1 * 60 * 1000);
+		let expires = "expires="+ d.toUTCString();
+		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+
+	function getCookie(cname) {
+		let name = cname + "=";
+		let ca = document.cookie.split(';');
+		for(let i = 0; i < ca.length; i++) {
+			let c = ca[i];
+				while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+
 	$(document).ready(function(){
-		var myUrl='https://farwesttimesdaily.com/detail/1632052470-b-34';
+		var myUrl='https://farwesttimesdaily.com/detail/1633225282-aaiiel-ii-l-66';
 		var url = (myUrl);
 		var domain="https://graph.facebook.com/v4.0/";
 		var old=parseInt($('#share-value').text());
 		var newShare='';
 		var combine='';
+		var postID='<?php echo $detail->id;?>';
+
+		var abc="share_count"+postID;
+
 		$.ajax({
 			data:{
 				id:url,
@@ -527,7 +553,22 @@
 			success:function(response){		 
 				newShare=parseInt(response.engagement.share_count);
 				combine=old+newShare;
-				$('.share-count').text(kFormatter(combine));  
+
+				if(getCookie("share_count")==''){
+					setCookie("share_count"+postID,0);
+				}
+
+				if(combine!=getCookie("share_count")){
+					setCookie("share_count"+postID,combine);
+				}	
+
+				$('.share-count').text(kFormatter(getCookie("share_count"+postID)));  
+			},
+			error:function(response){
+				let code=response.responseJSON.error.code;
+				if(code==613){	
+					$('.share-count').text(kFormatter(getCookie("share_count"+postID)));  
+				}
 			}
 		})
 	})

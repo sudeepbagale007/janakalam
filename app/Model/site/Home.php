@@ -281,6 +281,7 @@ class Home extends Model {
         return $data;
     }
 
+
     public static function getTrendingDataById($id){
         $data = DB::table('tbl_tags')
                 ->where('id',$id)

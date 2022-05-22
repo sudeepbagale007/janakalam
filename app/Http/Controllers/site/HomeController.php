@@ -36,9 +36,8 @@ class HomeController extends Controller {
         $albums = Album::where('status','1')->limit(8)->get();
         $health = Home::getHomePostListDescription($type='health',$limit=6);
         $religious = Home::getHomePostListDescription($type='religious-culture',$limit=7);
-        $mahadebeshan = Home::getHomePostListDescription($type='mahadebeshan-bishesh',$limit=11);
-
-
+        $windowpopup = Home::getAdvertisementList($type='pop1',$limit=1);
+        
         $janamat=DB::table('tbl_public_opinions')->where('status','1')
                     ->get();
         $stick_news = DB::table('tbl_posts')->where('stick_news','1')->get();          
@@ -65,7 +64,7 @@ class HomeController extends Controller {
             'health'            =>$health,
             'religious'         =>$religious,
             'stick_news'        =>$stick_news,
-            'mahadebeshan'      =>$mahadebeshan,
+            'windowpopup'       =>$windowpopup
         );
 
         return view('site.home', $result);

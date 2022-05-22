@@ -12,10 +12,36 @@
 @section('main-content')
 {{-- main news --}}
 
+
+
 @if(session('answer'))
   <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 2000)" class="container alert alert-success my-4" role="alert">
     {{session('answer')}}
     </div>
+@endif
+
+@if(!empty($windowpopup))
+    @foreach ($windowpopup as $windowpopup)
+    <div class="modal fade mt-5" style="display: flex; justify-content: center; align-items: center;" id="roadblockModal" tabindex="-1" role="dialog" aria-labelledby="roadblockModal" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+  
+          <div class="modal-content mt-5">
+  
+                <button type="button" class="close btn btn-danger pull-left" data-dismiss="modal" value="Skip" aria-label="Close" aria-hidden="true"
+                style="background: #ec0813;position:absolute;top:-36px;padding:10px;color:white;opacity:1">
+                    <span style="font-size:18px">SKIP</span>
+                  </button>
+  
+              <div class="modal-body p-sm-5">
+                  <a href="{{ $windowpopup->image}}" target="_blank">
+                      <img class="img-responsive" src="{{ $windowpopup->image}}" style="display: block;margin-left: auto;margin-right: auto;">
+                  </a>
+              </div>
+          </div>
+      </div>
+    </div>    
+    @endforeach
+ 
 @endif
 
 <section class="live__video section__top">
@@ -1177,6 +1203,21 @@
 </section>
 {{-- axds --}}
 {!! getHomeAdvertisement('hp13') !!}
+
+<script>
+  
+  $(function(){
+        $('#roadblockModal').modal('show');
+        $('.modal-backdrop.fade.in').css({
+            'opacity':'0.9',
+            'background':"#626262"
+        });
+        setTimeout(function(){
+            $('#roadblockModal').modal('hide');
+
+         });
+    },10000);
+</script>
 
 @endsection
 
