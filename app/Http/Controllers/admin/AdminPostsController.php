@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Session;
 class AdminPostsController extends Controller {
 
     private $title = 'Posts';
-    private $sort_by = 'published_date';
+    private $sort_by = 'id';
     private $sort_order = 'asc';
     private $index_link = 'posts.index';
     private $list_page = 'admin.posts.list';
@@ -81,8 +81,8 @@ class AdminPostsController extends Controller {
                     $q->where('category_id', $category);
                 });
             }
-            $list = $query->select('id', 'title', 'slug', 'published_date', 'status','viewcount','show_image','created_by','updated_by')
-                ->orderBy('published_date', 'desc')
+            $list = $query->select('id', 'title', 'slug', 'published_date', 'status','viewcount','show_image','created_by','updated_by','created_at')
+                ->orderBy('created_at', 'desc')
                 ->paginate(PAGES);
         } else {
             $list = AdminPosts::with('category')
@@ -134,6 +134,12 @@ class AdminPostsController extends Controller {
             'category'          => 'required',
         ]);
         $user_id = AdminLoginController::id();
+        if($request->status==0){
+                $published_date = null;
+        }
+        else{   
+            $published_date = $request->published_date;
+        }
 
         $crud = new AdminPosts;
         $crud->title = $request->title;
@@ -144,7 +150,7 @@ class AdminPostsController extends Controller {
         // $crud->fb_image = chunkfullurl($request->fb_image);
         $crud->image = $request->image;
         $crud->fb_image = $request->fb_image;
-        $crud->published_date = $request->published_date;
+        $crud->published_date = $published_date;
         // $crud->slug = postSlug($request->title);
         $crud->breaking_news = $request->breaking_news;
         $crud->stick_news = $request->stick_news;
@@ -166,6 +172,13 @@ class AdminPostsController extends Controller {
             $slugValue->slug=time().'-'.$slugValue->slug.'-'.$ran;
             $slugValue->save();
         }
+
+        // if($crud){
+        //     $slugValue=AdminPosts::find($crud->id);
+        //     $ran=rand(10,100);
+        //     $slugValue->slug=date('Y').'-'.date('m').'-'.date('d').'-'.$crud->id;
+        //     $slugValue->save();
+        // }
         $crud->category()->sync($request->category);
         
 
@@ -248,6 +261,19 @@ class AdminPostsController extends Controller {
             'description'       => 'required',
         ]);
 
+        // dd($request->published_date);
+        if($request->status==1){
+            if($request->published_date == null){
+                $published_date = date('Y-m-d H:i');
+            }
+            else{
+                $published_date = $request->published_date;
+            }
+        }
+        else{   
+            $published_date = $request->published_date;
+        }
+
         $user_id = AdminLoginController::id();
         $crud = AdminPosts::findOrFail($id);
         $crud->title = $request->title;
@@ -259,7 +285,7 @@ class AdminPostsController extends Controller {
         // $crud->fb_image = chunkfullurl($request->fb_image);
         $crud->image = $request->image;
         $crud->fb_image = $request->fb_image;
-        $crud->published_date = $request->published_date;
+        $crud->published_date = $published_date;
         $crud->breaking_news = $request->breaking_news;
         $crud->stick_news = $request->stick_news;
 

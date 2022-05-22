@@ -236,7 +236,7 @@ function changeFullDateTimeToNepaliFormat($requestdate){
 
         $np_time = $hour.':'.$mins.':'.$sec;
 
-        $formatdate = $np_date.' '.$np_time;
+        $formatdate = $np_date;
     } else{
         $formatdate = $requestdate;
     }

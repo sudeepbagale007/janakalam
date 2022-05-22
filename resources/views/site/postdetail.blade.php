@@ -78,7 +78,12 @@
 								@endif
 
 							<div id="rvfs-controllers" class="fontsize-controllers group"></div>
-							
+							<style>
+								.detail__infos__event img{
+									object-fit: contain;
+									height: unset;
+								}
+							</style>
 							
 							<div id="detail__content" class="detail__infos__event">
 								{!! $detail->description  !!}

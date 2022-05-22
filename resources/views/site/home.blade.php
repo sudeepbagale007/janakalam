@@ -240,6 +240,23 @@
     </a>
   </div>
 </section> --}}
+<div class="container" style="margin-top: 10px">
+  <div class="row">
+    <div class="col-md-4 col-lg-3 mt-2">
+      <img src="{{asset('site/images/dashainads/1.png')}}" class="w-100 ">
+    </div>
+    <div class="col-md-4 col-lg-3 mt-2">
+      <img src="{{asset('site/images/dashainads/2.png')}}" class="w-100 ">
+    </div>
+    <div class="col-md-4 col-lg-3 mt-2">
+      <img src="{{asset('site/images/dashainads/3.png')}}" class="w-100 ">
+    </div>
+    <div class="col-md-4 col-lg-3 mt-2">
+      <img src="{{asset('site/images/dashainads/4.png')}}" class="w-100 ">
+    </div>
+  </div>
+</div>
+  
 <?php $count=1 ?>
 @if(count($janamat)>0)
   <section class="janamat_section py-5">
@@ -287,7 +304,95 @@
     </div>
   </section>
 @endif 
+<div class="container" style="margin-top: 10px">
+  <div class="row">
+    <div class="col-md-4 col-lg-3 mt-2">
+      <img src="{{asset('site/images/dashainads/5.png')}}" class="w-100 ">
+    </div>
+    <div class="col-md-4 col-lg-3 mt-2">
+      <img src="{{asset('site/images/dashainads/6.png')}}" class="w-100 ">
+    </div>
+    <div class="col-md-4 col-lg-3 mt-2">
+      <img src="{{asset('site/images/dashainads/7.png')}}" class="w-100 ">
+    </div>
+    <div class="col-md-4 col-lg-3 mt-2">
+      <img src="{{asset('site/images/dashainads/8.png')}}" class="w-100 ">
+    </div>
+  </div>
+</div>
 {!! getHomeAdvertisement('hp2') !!}
+
+
+<section class="international__col section__top">
+  <div class="container">
+    @if(!empty($mahadebeshan))
+    <div class="title__headFlex">
+      <div class="news__title">
+        <h2>{{ $mahadebeshan->title }} </h2>
+      </div>
+      <div class="read__more">
+        <a href="{{ route('category.list',$mahadebeshan->slug) }}" class="btn btn-1">सबै</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col* col-md-12 col-lg-8">
+        <div class="main__news__bar">
+          <div class="three__cols--grid">
+            @foreach($mahadebeshan->list as $kl => $item)
+            @if($kl >= 0 && $kl <=5)
+            <div class="col__span1">
+              <div class="news__md--1">
+                   @if($item->image)
+                <figure>
+                  <a href="{{ route('post.detail',$item->slug) }}" title="{{ $item->title }}">
+                    <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title{{ $item->title }}>
+                  </a>
+                </figure>
+                @endif
+                <div class="news__infos__md">
+                  <h3><a href="{{ route('post.detail',$item->slug) }}" title="{{ $item->title }}">{{ str_limit($item->title,100) }}</a></h3>
+                  <div class="post__time--1">
+                    <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->published_date)->diffForHumans()) !!}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            @endif
+            @endforeach
+          </div>
+        </div>
+      </div>
+      <div class="col* col-md-12 col-lg-4">
+        <div class="news__list news__list--flex">
+          @foreach($mahadebeshan->list as $kl => $item)
+          @if($kl >= 6 && $kl <=10)
+          <div class="news__blockList">
+            <div class="news__flex news__img--md">
+                 @if($item->image)
+              <figure>
+                <a href="{{ route('post.detail',$item->slug) }}" title="{{ $item->title }}">
+                  
+                  <img src="{{ getImage($item->image) }}" class="w-100" alt="{{ $item->title }}" title{{ $item->title }}>
+                </a>
+              </figure>
+              @endif
+              <div class="news__infos">
+                <h3 class="news__title--sm"><a href="{{ route('post.detail',$item->slug) }}">{{ str_limit($item->title,100) }}</a></h3>
+                <div class="post__time--1">
+                  <i class="las la-clock"></i> <span>{!! changeEngHumanDateToNepali(Carbon\Carbon::parse($item->published_date)->diffForHumans()) !!}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endif
+          @endforeach
+          
+        </div>
+      </div>
+    </div>
+    @endif
+  </div>
+</section>
 
 <section class="news__col section__top py-5 bg_p_dim">
   <div class="container">
@@ -367,6 +472,17 @@
     @endif
   </div>
 </section>
+
+<div class="container" style="margin-top: 10px">
+  <div class="row">
+    <div class="col-md-4 col-lg-6 mt-2">
+      <img src="{{asset('site/images/dashainads/9.png')}}" class="w-100 ">
+    </div>
+    <div class="col-md-4 col-lg-6 mt-2">
+      <img src="{{asset('site/images/dashainads/10.png')}}" class="w-100 ">
+    </div>
+  </div>
+</div>
 <section class="international__col section__top">
   <div class="container">
     @if(!empty($finance))
