@@ -18,15 +18,15 @@ Route::group(['namespace' => 'site'], function (){
 	Route::get('album/{slug}', 'HomeController@albumSingle')->name('albumSingle');
 
 
-Route::get('/c', function() {
-    $exitCode = Artisan::call('cache:clear');
-    Artisan::call('config:clear');
-    // $exitCode = Artisan::call('optimize');
-    Artisan::call('route:clear');
-    Artisan::call('view:clear');
-    Artisan::call('config:clear');
-    return "All cleared";
-});
+	Route::get('/c', function() {
+		$exitCode = Artisan::call('cache:clear');
+		Artisan::call('config:clear');
+		// $exitCode = Artisan::call('optimize');
+		Artisan::call('route:clear');
+		Artisan::call('view:clear');
+		Artisan::call('config:clear');
+		return "All cleared";
+	});
 
 /* MANAGING WORDPRESS REDIRECTIONS */
 
