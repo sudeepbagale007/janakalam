@@ -356,7 +356,7 @@
 <!--</div>-->
 
 {!! getHomeAdvertisement('hp2') !!}
-
+{{-- 
 <section class="international__col section__top">
   <div class="container">
     @if(!empty($local_level_elections))
@@ -426,7 +426,7 @@
     </div>
     @endif
   </div>
-</section>
+</section> --}}
 
 <section class="news__col section__top py-5 bg_p_dim">
   <div class="container">

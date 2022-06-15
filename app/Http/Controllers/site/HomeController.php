@@ -41,7 +41,7 @@ class HomeController extends Controller {
         $windowpopup = Home::getAdvertisementList($type='pop1',$limit=1);
         $mahadebeshan = Home::getHomePostListDescription($type='mahadebeshan-bishesh',$limit=11);
         $pin_news = DB::table('tbl_posts')->where('pin','1')->get();
-        $local_level_elections = Home::getHomePostListDescription($type='local-level-elections-bishesh',$limit=11);
+        // $local_level_elections = Home::getHomePostListDescription($type='local-level-elections-bishesh',$limit=11);
 
 
 
@@ -69,7 +69,7 @@ class HomeController extends Controller {
             'windowpopup'     =>$windowpopup,
             'mahadebeshan'      =>$mahadebeshan,
             'pin_news'          =>$pin_news,
-            'local_level_elections'=>$local_level_elections,
+            // 'local_level_elections'=>$local_level_elections,
         );
 
         return view('site.home', $result);
